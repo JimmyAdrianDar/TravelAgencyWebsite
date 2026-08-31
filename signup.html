@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | Dreamscape Travel & Tour Co.</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+    /* ==============================
+       GENERAL
+    ============================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+
+        font-family: "DM Sans", Arial, sans-serif;
+
+        background: #f7f1e8;
+
+        color: #173337;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow-x: hidden;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    header {
+
+        height: 76px;
+
+        background: #fbfaf6;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0 5%;
+
+        border-bottom: 1px solid rgba(23, 51, 55, 0.08);
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+
+    }
+
+
+    .logo {
+
+        display: flex;
+
+        align-items: center;
+
+        font-size: 16px;
+
+        font-weight: 700;
+
+        color: #173337;
+
+        white-space: nowrap;
+
+        min-width: 0;
+
+    }
+
+
+    .logo-icon {
+
+        color: #4c9d8d;
+
+        font-size: 18px;
+
+        margin-right: 7px;
+
+    }
+
+
+    /* ==============================
+       NAVIGATION
+    ============================== */
+
+    nav {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 28px;
+
+    }
+
+
+    nav a {
+
+        font-size: 13px;
+
+        color: #65736f;
+
+        padding: 28px 0;
+
+        border-bottom: 2px solid transparent;
+
+        transition: 0.2s;
+
+        white-space: nowrap;
+
+    }
+
+
+    nav a:hover,
+    nav a.active {
+
+        color: #173337;
+
+        border-bottom-color: #4c9d8d;
+
+    }
+
+
+    /* ==============================
+       MAIN
+    ============================== */
+
+    .main {
+
+        flex: 1;
+
+        min-height: calc(100vh - 76px);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: clamp(50px, 7vw, 90px) 20px;
+
+        background:
+
+        linear-gradient(
+            rgba(247, 241, 232, 0.88),
+            rgba(247, 241, 232, 0.88)
+        ),
+
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85");
+
+        background-size: cover;
+
+        background-position: center;
+
+    }
+
+
+    /* ==============================
+       SIGN UP CARD
+    ============================== */
+
+    .signup-card {
+
+        width: 100%;
+
+        max-width: 430px;
+
+        background: #fbfaf6;
+
+        padding: 45px 48px;
+
+        border-radius: 12px;
+
+        box-shadow:
+
+        0 15px 40px rgba(18, 63, 66, 0.10);
+
+        border: 1px solid #dfe4dc;
+
+        text-align: center;
+
+        transition: 0.3s;
+
+    }
+
+
+    /* ==============================
+       EYEBROW
+    ============================== */
+
+    .eyebrow {
+
+        font-size: 10px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.16em;
+
+        color: #4c9d8d;
+
+        margin-bottom: 13px;
+
+    }
+
+
+    /* ==============================
+       DECORATIVE LINE
+    ============================== */
+
+    .decorative-line {
+
+        width: 45px;
+
+        height: 2px;
+
+        background: #bd6d43;
+
+        margin: 0 auto 20px;
+
+    }
+
+
+    /* ==============================
+       TITLE
+    ============================== */
+
+    .signup-card h1 {
+
+        font-family: "Playfair Display", serif;
+
+        font-size: 34px;
+
+        font-weight: 600;
+
+        line-height: 1.2;
+
+        color: #173337;
+
+        margin-bottom: 13px;
+
+    }
+
+
+    .intro {
+
+        color: #6e7b77;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        margin-bottom: 30px;
+
+    }
+
+
+    /* ==============================
+       FORM
+    ============================== */
+
+    .form-group {
+
+        text-align: left;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .form-group label {
+
+        display: block;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        color: #173337;
+
+        margin-bottom: 7px;
+
+    }
+
+
+    .form-group input {
+
+        width: 100%;
+
+        height: 45px;
+
+        border: 1px solid #dfe4dc;
+
+        border-radius: 7px;
+
+        background: white;
+
+        padding: 0 14px;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 13px;
+
+        color: #173337;
+
+        outline: none;
+
+        transition: 0.2s;
+
+    }
+
+
+    .form-group input:focus {
+
+        border-color: #4c9d8d;
+
+        box-shadow:
+        0 0 0 3px rgba(76, 157, 141, 0.10);
+
+    }
+
+
+    /* ==============================
+       CREATE ACCOUNT BUTTON
+    ============================== */
+
+    .signup-button {
+
+        width: 100%;
+
+        min-height: 46px;
+
+        border: none;
+
+        border-radius: 50px;
+
+        background: #4c9d8d;
+
+        color: white;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+    }
+
+
+    .signup-button:hover {
+
+        background: #3f887a;
+
+        transform: translateY(-2px);
+
+    }
+
+
+    /* ==============================
+       SIGN IN LINK
+    ============================== */
+
+    .signin {
+
+        margin-top: 25px;
+
+        padding-top: 22px;
+
+        border-top: 1px solid #dfe4dc;
+
+        font-size: 12px;
+
+        color: #6e7b77;
+
+    }
+
+
+    .signin a {
+
+        color: #4c9d8d;
+
+        font-weight: 700;
+
+    }
+
+
+    .signin a:hover {
+
+        color: #3f887a;
+
+    }
+
+
+    /* ==============================
+       SUCCESS POPUP
+    ============================== */
+
+    .popup {
+
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(16, 44, 49, 0.65);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        z-index: 9999;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition: 0.3s ease;
+
+    }
+
+
+    .popup.show {
+
+        opacity: 1;
+
+        visibility: visible;
+
+    }
+
+
+    .popup-card {
+
+        width: 100%;
+
+        max-width: 390px;
+
+        background: #fbfaf6;
+
+        border-radius: 12px;
+
+        padding: 42px 40px;
+
+        text-align: center;
+
+        border: 1px solid #dfe4dc;
+
+        box-shadow:
+
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+        transform: translateY(20px) scale(0.96);
+
+        transition: 0.3s ease;
+
+    }
+
+
+    .popup.show .popup-card {
+
+        transform: translateY(0) scale(1);
+
+    }
+
+
+    /* ==============================
+       SUCCESS CIRCLE
+    ============================== */
+
+    .success-circle {
+
+        width: 62px;
+
+        height: 62px;
+
+        border-radius: 50%;
+
+        background: #d7ebe6;
+
+        color: #4c9d8d;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin: 0 auto 20px;
+
+        font-size: 30px;
+
+        font-weight: bold;
+
+    }
+
+
+    /* ==============================
+       POPUP TEXT
+    ============================== */
+
+    .popup-card h2 {
+
+        font-family: "Playfair Display", serif;
+
+        color: #173337;
+
+        font-size: 28px;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .popup-card p {
+
+        color: #6e7b77;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    /* ==============================
+       CONTINUE BUTTON
+    ============================== */
+
+    .continue-button {
+
+        border: none;
+
+        background: #4c9d8d;
+
+        color: white;
+
+        padding: 13px 30px;
+
+        border-radius: 50px;
+
+        font-family: "DM Sans", sans-serif;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+    }
+
+
+    .continue-button:hover {
+
+        background: #3f887a;
+
+        transform: translateY(-2px);
+
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    .footer {
+
+        background: #102c31;
+
+        color: #7e9390;
+
+        text-align: center;
+
+        padding: 18px 20px;
+
+        font-size: 9px;
+
+    }
+
+
+    /* ==============================
+       LARGE DESKTOP
+       1200px+
+    ============================== */
+
+    @media (min-width: 1200px) {
+
+        .main {
+
+            padding-top: 80px;
+
+            padding-bottom: 80px;
+
+        }
+
+        .signup-card {
+
+            max-width: 470px;
+
+        }
+
+    }
+
+
+    /* ==============================
+       LARGE TV / DESKTOP
+       1600px+
+    ============================== */
+
+    @media (min-width: 1600px) {
+
+        header {
+
+            height: 88px;
+
+            padding-left: 6%;
+
+            padding-right: 6%;
+
+        }
+
+
+        .logo {
+
+            font-size: 18px;
+
+        }
+
+
+        nav {
+
+            gap: 40px;
+
+        }
+
+
+        nav a {
+
+            font-size: 15px;
+
+            padding: 32px 0;
+
+        }
+
+
+        .main {
+
+            min-height: calc(100vh - 88px);
+
+            padding: 100px 30px;
+
+        }
+
+
+        .signup-card {
+
+            max-width: 560px;
+
+            padding: 58px 65px;
+
+        }
+
+
+        .eyebrow {
+
+            font-size: 12px;
+
+        }
+
+
+        .signup-card h1 {
+
+            font-size: 44px;
+
+        }
+
+
+        .intro {
+
+            font-size: 16px;
+
+        }
+
+
+        .form-group label {
+
+            font-size: 14px;
+
+        }
+
+
+        .form-group input {
+
+            height: 54px;
+
+            font-size: 15px;
+
+        }
+
+
+        .signup-button {
+
+            min-height: 55px;
+
+            font-size: 15px;
+
+        }
+
+
+        .signin {
+
+            font-size: 14px;
+
+        }
+
+
+        .popup-card {
+
+            max-width: 500px;
+
+            padding: 55px 50px;
+
+        }
+
+
+        .popup-card h2 {
+
+            font-size: 36px;
+
+        }
+
+
+        .popup-card p {
+
+            font-size: 15px;
+
+        }
+
+
+        .footer {
+
+            padding: 25px;
+
+            font-size: 11px;
+
+        }
+
+    }
+
+
+    /* ==============================
+       4K TV
+       2500px+
+    ============================== */
+
+    @media (min-width: 2500px) {
+
+        header {
+
+            height: 105px;
+
+            padding-left: 7%;
+
+            padding-right: 7%;
+
+        }
+
+
+        .logo {
+
+            font-size: 22px;
+
+        }
+
+
+        nav {
+
+            gap: 55px;
+
+        }
+
+
+        nav a {
+
+            font-size: 18px;
+
+            padding: 40px 0;
+
+        }
+
+
+        .main {
+
+            min-height: calc(100vh - 105px);
+
+            padding: 130px 40px;
+
+        }
+
+
+        .signup-card {
+
+            max-width: 680px;
+
+            padding: 75px 85px;
+
+        }
+
+
+        .eyebrow {
+
+            font-size: 15px;
+
+        }
+
+
+        .decorative-line {
+
+            width: 60px;
+
+        }
+
+
+        .signup-card h1 {
+
+            font-size: 54px;
+
+        }
+
+
+        .intro {
+
+            font-size: 19px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .form-group label {
+
+            font-size: 17px;
+
+        }
+
+
+        .form-group input {
+
+            height: 65px;
+
+            font-size: 18px;
+
+            padding: 0 20px;
+
+        }
+
+
+        .signup-button {
+
+            min-height: 65px;
+
+            font-size: 18px;
+
+        }
+
+
+        .signin {
+
+            font-size: 17px;
+
+        }
+
+
+        .popup-card {
+
+            max-width: 650px;
+
+            padding: 70px;
+
+        }
+
+
+        .success-circle {
+
+            width: 85px;
+
+            height: 85px;
+
+            font-size: 42px;
+
+        }
+
+
+        .popup-card h2 {
+
+            font-size: 48px;
+
+        }
+
+
+        .popup-card p {
+
+            font-size: 18px;
+
+        }
+
+
+        .continue-button {
+
+            padding: 17px 45px;
+
+            font-size: 17px;
+
+        }
+
+
+        .footer {
+
+            padding: 30px;
+
+            font-size: 13px;
+
+        }
+
+    }
+
+
+    /* ==============================
+       TABLET
+    ============================== */
+
+    @media (max-width: 850px) {
+
+        header {
+
+            padding: 0 20px;
+
+        }
+
+
+        nav {
+
+            gap: 16px;
+
+        }
+
+
+        nav a {
+
+            font-size: 11px;
+
+        }
+
+
+        .main {
+
+            padding: 60px 20px;
+
+        }
+
+    }
+
+
+    /* ==============================
+       MOBILE
+    ============================== */
+
+    @media (max-width: 600px) {
+
+        header {
+
+            height: 65px;
+
+            padding: 0 20px;
+
+        }
+
+
+        .logo {
+
+            font-size: 14px;
+
+        }
+
+
+        nav {
+
+            display: none;
+
+        }
+
+
+        .main {
+
+            min-height: calc(100vh - 65px);
+
+            padding: 35px 18px;
+
+        }
+
+
+        .signup-card {
+
+            padding: 35px 25px;
+
+        }
+
+
+        .signup-card h1 {
+
+            font-size: 30px;
+
+        }
+
+
+        .intro {
+
+            font-size: 12px;
+
+        }
+
+
+        .popup-card {
+
+            padding: 35px 25px;
+
+        }
+
+
+        .popup-card h2 {
+
+            font-size: 26px;
+
+        }
+
+    }
+
+
+    /* ==============================
+       SMALL PHONE
+    ============================== */
+
+    @media (max-width: 380px) {
+
+        .logo {
+
+            font-size: 12px;
+
+        }
+
+
+        .signup-card {
+
+            padding: 30px 20px;
+
+        }
+
+
+        .signup-card h1 {
+
+            font-size: 27px;
+
+        }
+
+    }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================
+     HEADER
+=================================== -->
+
+
+
+
+
+<!-- ==================================
+     MAIN SIGN UP
+=================================== -->
+
+<main class="main">
+
+    <div class="signup-card">
+
+
+        <div class="eyebrow">
+
+            DREAMSCAPE TRAVEL & TOUR CO.
+
+        </div>
+
+
+        <div class="decorative-line"></div>
+
+
+        <h1>
+
+            Create Your Account
+
+        </h1>
+
+
+        <p class="intro">
+
+            Create your Dreamscape account and get ready
+            to discover beautiful destinations and
+            unforgettable travel experiences.
+
+        </p>
+
+
+        <!-- SIGN UP FORM -->
+
+        <form id="signupForm">
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+
+                    FULL NAME
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+
+                    EMAIL ADDRESS
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+
+                    PASSWORD
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    required
+                    minlength="6"
+                >
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+
+                    CONFIRM PASSWORD
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    required
+                    minlength="6"
+                >
+
+            </div>
+
+
+            <!-- CREATE ACCOUNT -->
+
+            <button
+                type="submit"
+                class="signup-button"
+            >
+
+                CREATE ACCOUNT
+
+            </button>
+
+
+        </form>
+
+
+        <!-- SIGN IN -->
+
+        <div class="signin">
+
+            Already have an account?
+
+            <a href="signin.html">
+
+                Sign In
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- ==================================
+     SUCCESS POPUP
+=================================== -->
+
+<div class="popup" id="successPopup">
+
+    <div class="popup-card">
+
+
+        <div class="success-circle">
+
+            ✓
+
+        </div>
+
+
+        <h2>
+
+            Welcome to Dreamscape!
+
+        </h2>
+
+
+        <p>
+
+            Your account has been created successfully.
+            You're now ready to explore beautiful
+            destinations and unforgettable journeys
+            with Dreamscape Travel & Tour Co.
+
+        </p>
+
+
+        <button
+            type="button"
+            class="continue-button"
+            id="continueButton"
+        >
+
+            Continue to Sign In
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================
+     FOOTER
+=================================== -->
+
+<footer class="footer">
+
+    © 2026 Dreamscape Travel & Tour Co.
+    All rights reserved.
+
+</footer>
+
+
+
+<!-- ==================================
+     JAVASCRIPT
+=================================== -->
+
+<script>
+
+    const signupForm =
+        document.getElementById("signupForm");
+
+    const successPopup =
+        document.getElementById("successPopup");
+
+    const continueButton =
+        document.getElementById("continueButton");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const confirmPasswordInput =
+        document.getElementById("confirmPassword");
+
+
+    /* ==============================
+       CREATE ACCOUNT
+    ============================== */
+
+    signupForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const password =
+                passwordInput.value;
+
+            const confirmPassword =
+                confirmPasswordInput.value;
+
+
+            /* CHECK PASSWORD */
+
+            if (password !== confirmPassword) {
+
+                confirmPasswordInput.setCustomValidity(
+                    "Passwords do not match."
+                );
+
+                confirmPasswordInput.reportValidity();
+
+                return;
+
+            }
+
+
+            /* CLEAR VALIDATION */
+
+            confirmPasswordInput.setCustomValidity("");
+
+
+            /* SHOW SUCCESS POPUP */
+
+            successPopup.classList.add("show");
+
+
+            /* RESET FORM */
+
+            signupForm.reset();
+
+        }
+    );
+
+
+    /* ==============================
+       REMOVE PASSWORD ERROR
+    ============================== */
+
+    confirmPasswordInput.addEventListener(
+        "input",
+        function() {
+
+            confirmPasswordInput.setCustomValidity("");
+
+        }
+    );
+
+
+    /* ==============================
+       CONTINUE TO SIGN IN
+    ============================== */
+
+    continueButton.addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "signin.html";
+
+        }
+    );
+
+
+    /* ==============================
+       CLICK OUTSIDE TO CLOSE
+    ============================== */
+
+    successPopup.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === successPopup) {
+
+                successPopup.classList.remove("show");
+
+            }
+
+        }
+    );
+
+
+    /* ==============================
+       ESC KEY TO CLOSE
+    ============================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                successPopup.classList.remove("show");
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

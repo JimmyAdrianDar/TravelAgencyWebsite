@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dreamscape Travel & Tour Co. | Sign In</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background: #fbfaf6;
+  color: #173337;
+
+  font-family: "DM Sans", Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+
+  animation: pageLoad 0.7s ease forwards;
+}
+
+@keyframes pageLoad {
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+  height: 76px;
+
+  padding: 0 5%;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(251,250,246,0.96);
+
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(23,51,55,0.08);
+
+  flex-shrink: 0;
+
+}
+
+.logo {
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition: 0.2s;
+
+}
+
+.logo:hover {
+
+  transform: translateX(3px);
+
+}
+
+.logo-icon {
+
+  color: #4c9d8d;
+
+  margin-right: 7px;
+
+}
+
+
+/* =========================================================
+   SIGN IN SECTION
+========================================================= */
+
+.signin-section {
+
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 60px 20px;
+
+  background:
+
+    linear-gradient(
+      rgba(247,241,232,0.88),
+      rgba(247,241,232,0.88)
+    ),
+
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85");
+
+  background-size: cover;
+
+  background-position: center;
+
+  position: relative;
+
+}
+
+
+/* =========================================================
+   SIGN IN CARD
+========================================================= */
+
+.signin-card {
+
+  width: 100%;
+
+  max-width: 440px;
+
+  background: #fbfaf6;
+
+  border: 1px solid #dfe4dc;
+
+  border-radius: 12px;
+
+  padding: 45px 40px;
+
+  box-shadow:
+    0 20px 60px rgba(16,44,49,0.12);
+
+  animation: cardEntrance 0.7s ease;
+
+}
+
+@keyframes cardEntrance {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(35px)
+      scale(0.97);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* =========================================================
+   SIGN IN HEADING
+========================================================= */
+
+.signin-heading {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+}
+
+.eyebrow {
+
+  color: #4c9d8d;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  margin-bottom: 8px;
+
+}
+
+.signin-heading h1 {
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 38px;
+
+  font-weight: 600;
+
+  line-height: 1.15;
+
+  margin-bottom: 8px;
+
+}
+
+.signin-heading p {
+
+  color: #6e7b77;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+
+  margin-bottom: 18px;
+
+  position: relative;
+
+}
+
+.form-group label {
+
+  display: block;
+
+  color: #173337;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  margin-bottom: 7px;
+
+}
+
+.input-wrapper {
+
+  position: relative;
+
+}
+
+.form-group input {
+
+  width: 100%;
+
+  border: 1px solid #dfe4dc;
+
+  border-radius: 7px;
+
+  background: white;
+
+  padding: 13px 15px;
+
+  outline: none;
+
+  color: #173337;
+
+  font-size: 13px;
+
+  transition: 0.2s;
+
+}
+
+.form-group input:focus {
+
+  border-color: #4c9d8d;
+
+  box-shadow:
+    0 0 0 3px rgba(76,157,141,0.10);
+
+}
+
+.form-group input.valid {
+
+  border-color: #4c9d8d;
+
+}
+
+.form-group input.invalid {
+
+  border-color: #bd6d43;
+
+}
+
+.error-message {
+
+  color: #bd6d43;
+
+  font-size: 10px;
+
+  margin-top: 5px;
+
+  min-height: 15px;
+
+  display: block;
+
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle {
+
+  position: absolute;
+
+  right: 12px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+
+  background: transparent;
+
+  color: #65736f;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 5px;
+
+}
+
+.password-toggle:hover {
+
+  color: #173337;
+
+}
+
+#password {
+
+  padding-right: 65px;
+
+}
+
+
+/* =========================================================
+   PASSWORD STRENGTH
+========================================================= */
+
+.password-strength {
+
+  height: 4px;
+
+  background: #dfe4dc;
+
+  border-radius: 10px;
+
+  margin-top: 5px;
+
+  overflow: hidden;
+
+}
+
+.password-strength-bar {
+
+  width: 0;
+
+  height: 100%;
+
+  background: #4c9d8d;
+
+  transition: 0.3s;
+
+}
+
+
+/* =========================================================
+   FORM OPTIONS
+========================================================= */
+
+.form-options {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: -4px;
+
+  margin-bottom: 22px;
+
+}
+
+.forgot-password {
+
+  color: #4c9d8d;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+.forgot-password:hover {
+
+  color: #3f887a;
+
+}
+
+
+/* =========================================================
+   SIGN IN BUTTON
+========================================================= */
+
+.signin-button {
+
+  width: 100%;
+
+  border: none;
+
+  border-radius: 50px;
+
+  padding: 14px;
+
+  background: #4c9d8d;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  position: relative;
+
+}
+
+.signin-button:hover {
+
+  background: #3f887a;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(16,44,49,0.12);
+
+}
+
+.signin-button.loading {
+
+  pointer-events: none;
+
+  opacity: 0.8;
+
+}
+
+.signin-button.loading::after {
+
+  content: "";
+
+  width: 15px;
+
+  height: 15px;
+
+  border: 2px solid rgba(255,255,255,0.5);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  margin-left: 8px;
+
+  vertical-align: middle;
+
+  animation: spin 0.7s linear infinite;
+
+}
+
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+.create-account {
+
+  text-align: center;
+
+  margin-top: 25px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #dfe4dc;
+
+  color: #6e7b77;
+
+  font-size: 12px;
+
+}
+
+.create-account a {
+
+  color: #4c9d8d;
+
+  font-weight: 700;
+
+}
+
+.create-account a:hover {
+
+  color: #3f887a;
+
+}
+
+
+/* =========================================================
+   BACK HOME
+========================================================= */
+
+.back-home {
+
+  display: block;
+
+  text-align: center;
+
+  margin-top: 18px;
+
+  color: #65736f;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  transition: 0.2s;
+
+}
+
+.back-home:hover {
+
+  color: #173337;
+
+  transform: translateX(-3px);
+
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.signin-popup {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(16,44,49,0.65);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 9999;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: 0.3s ease;
+
+  padding: 20px;
+
+}
+
+.signin-popup.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+.signin-popup-box {
+
+  width: 90%;
+
+  max-width: 420px;
+
+  background: #fbfaf6;
+
+  border: 1px solid #dfe4dc;
+
+  border-radius: 12px;
+
+  padding: 40px 35px;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(16,44,49,0.25);
+
+  transform:
+    translateY(20px)
+    scale(0.96);
+
+  transition: 0.3s ease;
+
+}
+
+.signin-popup.show .signin-popup-box {
+
+  transform:
+    translateY(0)
+    scale(1);
+
+}
+
+
+.signin-popup-icon {
+
+  width: 55px;
+
+  height: 55px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #d7ebe6;
+
+  color: #4c9d8d;
+
+  border-radius: 50%;
+
+  font-size: 25px;
+
+}
+
+
+.signin-popup-box h2 {
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 30px;
+
+  color: #173337;
+
+  margin-bottom: 10px;
+
+}
+
+
+.signin-popup-box p {
+
+  color: #6e7b77;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  margin-bottom: 22px;
+
+}
+
+
+.popup-email {
+
+  color: #4c9d8d;
+
+  font-weight: 700;
+
+  word-break: break-word;
+
+}
+
+
+.popup-button {
+
+  border: none;
+
+  background: #4c9d8d;
+
+  color: white;
+
+  border-radius: 50px;
+
+  padding: 12px 25px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+
+}
+
+.popup-button:hover {
+
+  background: #3f887a;
+
+  transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD POPUP
+========================================================= */
+
+.forgot-popup {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(16,44,49,0.65);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 9998;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: 0.3s;
+
+  padding: 20px;
+
+}
+
+.forgot-popup.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+.forgot-box {
+
+  width: 90%;
+
+  max-width: 400px;
+
+  background: #fbfaf6;
+
+  border: 1px solid #dfe4dc;
+
+  border-radius: 12px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  transform: translateY(20px);
+
+  transition: 0.3s;
+
+}
+
+.forgot-popup.show .forgot-box {
+
+  transform: translateY(0);
+
+}
+
+.forgot-box h2 {
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 28px;
+
+  margin-bottom: 10px;
+
+}
+
+.forgot-box p {
+
+  color: #6e7b77;
+
+  font-size: 12px;
+
+  margin-bottom: 20px;
+
+}
+
+.forgot-box input {
+
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dfe4dc;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  margin-bottom: 12px;
+
+}
+
+.forgot-box input:focus {
+
+  border-color: #4c9d8d;
+
+}
+
+.forgot-actions {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+}
+
+.forgot-cancel {
+
+  border: 1px solid #dfe4dc;
+
+  background: transparent;
+
+  color: #65736f;
+
+  border-radius: 50px;
+
+  padding: 11px 20px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+}
+
+.forgot-submit {
+
+  border: none;
+
+  background: #4c9d8d;
+
+  color: white;
+
+  border-radius: 50px;
+
+  padding: 11px 20px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  background: #102c31;
+
+  color: #7e9390;
+
+  text-align: center;
+
+  padding: 18px 20px;
+
+  font-size: 9px;
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP / TV
+========================================================= */
+
+@media (min-width:1200px) {
+
+  .header {
+
+    padding-left:5%;
+
+    padding-right:5%;
+
+  }
+
+  .signin-section {
+
+    padding:80px 30px;
+
+  }
+
+  .signin-card {
+
+    max-width:480px;
+
+    padding:50px 45px;
+
+  }
+
+}
+
+
+/* =========================================================
+   LARGE TCL TV
+========================================================= */
+
+@media (min-width:1600px) {
+
+  .header {
+
+    height:88px;
+
+    padding-left:6%;
+
+    padding-right:6%;
+
+  }
+
+  .logo {
+
+    font-size:18px;
+
+  }
+
+  .signin-section {
+
+    padding:100px 40px;
+
+  }
+
+  .signin-card {
+
+    max-width:560px;
+
+    padding:60px 55px;
+
+  }
+
+  .signin-heading {
+
+    margin-bottom:40px;
+
+  }
+
+  .signin-heading h1 {
+
+    font-size:46px;
+
+  }
+
+  .signin-heading p {
+
+    font-size:15px;
+
+  }
+
+  .eyebrow {
+
+    font-size:12px;
+
+  }
+
+  .form-group {
+
+    margin-bottom:23px;
+
+  }
+
+  .form-group label {
+
+    font-size:14px;
+
+  }
+
+  .form-group input {
+
+    padding:16px 18px;
+
+    font-size:15px;
+
+  }
+
+  .signin-button {
+
+    padding:17px;
+
+    font-size:15px;
+
+  }
+
+  .forgot-password {
+
+    font-size:13px;
+
+  }
+
+  .create-account {
+
+    font-size:14px;
+
+  }
+
+  .back-home {
+
+    font-size:13px;
+
+  }
+
+  .footer {
+
+    font-size:11px;
+
+    padding:22px;
+
+  }
+
+}
+
+
+/* =========================================================
+   4K TV
+========================================================= */
+
+@media (min-width:2500px) {
+
+  .header {
+
+    height:105px;
+
+    padding-left:7%;
+
+    padding-right:7%;
+
+  }
+
+  .logo {
+
+    font-size:21px;
+
+  }
+
+  .signin-section {
+
+    padding:130px 50px;
+
+  }
+
+  .signin-card {
+
+    max-width:680px;
+
+    padding:75px 70px;
+
+    border-radius:16px;
+
+  }
+
+  .signin-heading {
+
+    margin-bottom:50px;
+
+  }
+
+  .signin-heading h1 {
+
+    font-size:58px;
+
+  }
+
+  .signin-heading p {
+
+    font-size:18px;
+
+  }
+
+  .eyebrow {
+
+    font-size:14px;
+
+  }
+
+  .form-group {
+
+    margin-bottom:28px;
+
+  }
+
+  .form-group label {
+
+    font-size:16px;
+
+    margin-bottom:10px;
+
+  }
+
+  .form-group input {
+
+    padding:19px 22px;
+
+    font-size:17px;
+
+    border-radius:9px;
+
+  }
+
+  .signin-button {
+
+    padding:20px;
+
+    font-size:17px;
+
+  }
+
+  .forgot-password {
+
+    font-size:15px;
+
+  }
+
+  .create-account {
+
+    font-size:16px;
+
+  }
+
+  .back-home {
+
+    font-size:15px;
+
+  }
+
+  .footer {
+
+    font-size:13px;
+
+    padding:28px;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:600px) {
+
+  .header {
+
+    height:65px;
+
+    padding:0 20px;
+
+  }
+
+  .logo {
+
+    font-size:14px;
+
+  }
+
+  .signin-section {
+
+    padding:35px 18px;
+
+  }
+
+  .signin-card {
+
+    padding:35px 25px;
+
+  }
+
+  .signin-heading h1 {
+
+    font-size:32px;
+
+  }
+
+  .signin-popup-box {
+
+    padding:35px 25px;
+
+  }
+
+  .forgot-box {
+
+    padding:30px 25px;
+
+  }
+
+  .forgot-actions {
+
+    flex-direction:column;
+
+  }
+
+  .forgot-cancel,
+  .forgot-submit {
+
+    width:100%;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+
+
+<!-- =========================================================
+     SIGN IN SECTION
+========================================================= -->
+
+<main class="signin-section">
+
+<div class="signin-card">
+
+
+<div class="signin-heading">
+
+<p class="eyebrow">
+WELCOME BACK
+</p>
+
+<h1>
+Sign In
+</h1>
+
+<p id="welcomeText">
+Continue your journey with Dreamscape.
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     SIGN IN FORM
+===================================================== -->
+
+<form id="signinForm">
+
+
+<!-- EMAIL -->
+
+<div class="form-group">
+
+<label for="email">
+Email Address
+</label>
+
+<div class="input-wrapper">
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email address"
+autocomplete="email"
+required
+>
+
+</div>
+
+<span
+class="error-message"
+id="emailError"
+></span>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="form-group">
+
+<label for="password">
+Password
+</label>
+
+<div class="input-wrapper">
+
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+autocomplete="current-password"
+required
+>
+
+<button
+type="button"
+class="password-toggle"
+id="passwordToggle"
+>
+Show
+</button>
+
+</div>
+
+<div class="password-strength">
+
+<div
+class="password-strength-bar"
+id="passwordStrength"
+></div>
+
+</div>
+
+<span
+class="error-message"
+id="passwordError"
+></span>
+
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div class="form-options">
+
+<a
+href="#"
+class="forgot-password"
+id="forgotPassword"
+>
+Forgot Password?
+</a>
+
+</div>
+
+
+<!-- SIGN IN -->
+
+<button
+type="submit"
+class="signin-button"
+id="signinButton"
+>
+Sign In
+</button>
+
+
+</form>
+
+
+<!-- CREATE ACCOUNT -->
+
+<div class="create-account">
+
+Don't have an account?
+
+<a href="signup.html">
+Create an Account
+</a>
+
+</div>
+
+
+<!-- BACK HOME -->
+
+<a
+href="homepage.html"
+class="back-home"
+>
+← Back to Homepage
+</a>
+
+
+</div>
+
+</main>
+
+
+<!-- =========================================================
+     SUCCESS POPUP
+========================================================= -->
+
+<div
+class="signin-popup"
+id="signinPopup"
+>
+
+<div class="signin-popup-box">
+
+<div class="signin-popup-icon">
+✓
+</div>
+
+<h2>
+Welcome Back!
+</h2>
+
+<p>
+
+You're successfully signed in as
+
+<span
+class="popup-email"
+id="popupEmail"
+></span>.
+
+<br><br>
+
+Your Dreamscape journey is ready.
+
+</p>
+
+<button
+type="button"
+class="popup-button"
+id="continueButton"
+>
+Continue
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     FORGOT PASSWORD POPUP
+========================================================= -->
+
+<div
+class="forgot-popup"
+id="forgotPopup"
+>
+
+<div class="forgot-box">
+
+<p class="eyebrow">
+ACCOUNT RECOVERY
+</p>
+
+<h2>
+Forgot Password?
+</h2>
+
+<p>
+Enter your email address and we'll
+help you recover your account.
+</p>
+
+<input
+type="email"
+id="forgotEmail"
+placeholder="Enter your email"
+>
+
+<div class="forgot-actions">
+
+<button
+type="button"
+class="forgot-cancel"
+id="forgotCancel"
+>
+Cancel
+</button>
+
+<button
+type="button"
+class="forgot-submit"
+id="forgotSubmit"
+>
+Continue
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+© 2026 Dreamscape Travel & Tour Co.
+All rights reserved.
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const signinForm =
+document.querySelector("#signinForm");
+
+const emailInput =
+document.querySelector("#email");
+
+const passwordInput =
+document.querySelector("#password");
+
+const emailError =
+document.querySelector("#emailError");
+
+const passwordError =
+document.querySelector("#passwordError");
+
+const signinButton =
+document.querySelector("#signinButton");
+
+const passwordToggle =
+document.querySelector("#passwordToggle");
+
+const passwordStrength =
+document.querySelector("#passwordStrength");
+
+const signinPopup =
+document.querySelector("#signinPopup");
+
+const popupEmail =
+document.querySelector("#popupEmail");
+
+const continueButton =
+document.querySelector("#continueButton");
+
+const forgotPassword =
+document.querySelector("#forgotPassword");
+
+const forgotPopup =
+document.querySelector("#forgotPopup");
+
+const forgotEmail =
+document.querySelector("#forgotEmail");
+
+const forgotCancel =
+document.querySelector("#forgotCancel");
+
+const forgotSubmit =
+document.querySelector("#forgotSubmit");
+
+const welcomeText =
+document.querySelector("#welcomeText");
+
+
+/* =========================================================
+   CHECK PREVIOUS LOGIN
+========================================================= */
+
+const savedUser =
+localStorage.getItem("dreamscapeUser");
+
+if (savedUser) {
+
+  welcomeText.textContent =
+  "Welcome back! Sign in to continue your journey.";
+
+}
+
+
+/* =========================================================
+   EMAIL VALIDATION
+========================================================= */
+
+function validateEmail() {
+
+  const email =
+  emailInput.value.trim();
+
+  const emailPattern =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email === "") {
+
+    emailError.textContent =
+    "Please enter your email address.";
+
+    emailInput.classList.add("invalid");
+    emailInput.classList.remove("valid");
+
+    return false;
+
+  }
+
+  if (!emailPattern.test(email)) {
+
+    emailError.textContent =
+    "Please enter a valid email address.";
+
+    emailInput.classList.add("invalid");
+    emailInput.classList.remove("valid");
+
+    return false;
+
+  }
+
+  emailError.textContent = "";
+
+  emailInput.classList.remove("invalid");
+
+  emailInput.classList.add("valid");
+
+  return true;
+
+}
+
+
+/* =========================================================
+   PASSWORD VALIDATION
+========================================================= */
+
+function validatePassword() {
+
+  const password =
+  passwordInput.value;
+
+  if (password === "") {
+
+    passwordError.textContent =
+    "Please enter your password.";
+
+    passwordInput.classList.add("invalid");
+    passwordInput.classList.remove("valid");
+
+    return false;
+
+  }
+
+  if (password.length < 6) {
+
+    passwordError.textContent =
+    "Password must contain at least 6 characters.";
+
+    passwordInput.classList.add("invalid");
+    passwordInput.classList.remove("valid");
+
+    return false;
+
+  }
+
+  passwordError.textContent = "";
+
+  passwordInput.classList.remove("invalid");
+
+  passwordInput.classList.add("valid");
+
+  return true;
+
+}
+
+
+/* =========================================================
+   REAL-TIME EMAIL VALIDATION
+========================================================= */
+
+emailInput.addEventListener(
+"input",
+validateEmail
+);
+
+
+/* =========================================================
+   REAL-TIME PASSWORD VALIDATION
+========================================================= */
+
+passwordInput.addEventListener(
+"input",
+validatePassword
+);
+
+
+/* =========================================================
+   SHOW / HIDE PASSWORD
+========================================================= */
+
+passwordToggle.addEventListener(
+"click",
+function() {
+
+  if (
+    passwordInput.type === "password"
+  ) {
+
+    passwordInput.type = "text";
+
+    passwordToggle.textContent =
+    "Hide";
+
+  } else {
+
+    passwordInput.type = "password";
+
+    passwordToggle.textContent =
+    "Show";
+
+  }
+
+});
+
+
+/* =========================================================
+   PASSWORD STRENGTH
+========================================================= */
+
+passwordInput.addEventListener(
+"input",
+function() {
+
+  const password =
+  passwordInput.value;
+
+  let strength = 0;
+
+  if (password.length >= 6) {
+    strength += 25;
+  }
+
+  if (password.length >= 8) {
+    strength += 25;
+  }
+
+  if (/[A-Z]/.test(password)) {
+    strength += 25;
+  }
+
+  if (/[0-9]/.test(password)) {
+    strength += 25;
+  }
+
+  passwordStrength.style.width =
+  strength + "%";
+
+});
+
+
+/* =========================================================
+   SIGN IN
+========================================================= */
+
+signinForm.addEventListener(
+"submit",
+function(event) {
+
+  event.preventDefault();
+
+
+  const validEmail =
+  validateEmail();
+
+  const validPassword =
+  validatePassword();
+
+
+  if (!validEmail || !validPassword) {
+
+    return;
+
+  }
+
+
+  /* LOADING */
+
+  signinButton.classList.add("loading");
+
+  signinButton.textContent =
+  "Signing In";
+
+
+  /* SIMULATE LOGIN */
+
+  setTimeout(function() {
+
+    const email =
+    emailInput.value.trim();
+
+
+    /* SAVE USER */
+
+    localStorage.setItem(
+      "dreamscapeUser",
+      email
+    );
+
+
+    /* SHOW EMAIL */
+
+    popupEmail.textContent =
+    email;
+
+
+    /* SHOW POPUP */
+
+    signinPopup.classList.add("show");
+
+
+    /* RESET BUTTON */
+
+    signinButton.classList.remove(
+      "loading"
+    );
+
+    signinButton.textContent =
+    "Sign In";
+
+
+    /* RESET FORM */
+
+    signinForm.reset();
+
+    passwordStrength.style.width =
+    "0%";
+
+    emailInput.classList.remove(
+      "valid"
+    );
+
+    passwordInput.classList.remove(
+      "valid"
+    );
+
+
+  }, 900);
+
+});
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+continueButton.addEventListener(
+"click",
+function() {
+
+  window.location.href =
+  "homepage.html";
+
+});
+
+
+/* =========================================================
+   CLOSE SUCCESS POPUP
+========================================================= */
+
+signinPopup.addEventListener(
+"click",
+function(event) {
+
+  if (
+    event.target === signinPopup
+  ) {
+
+    signinPopup.classList.remove(
+      "show"
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+forgotPassword.addEventListener(
+"click",
+function(event) {
+
+  event.preventDefault();
+
+  forgotPopup.classList.add(
+    "show"
+  );
+
+  forgotEmail.value =
+  emailInput.value;
+
+  setTimeout(function() {
+
+    forgotEmail.focus();
+
+  }, 200);
+
+});
+
+
+/* =========================================================
+   CLOSE FORGOT POPUP
+========================================================= */
+
+forgotCancel.addEventListener(
+"click",
+function() {
+
+  forgotPopup.classList.remove(
+    "show"
+  );
+
+});
+
+
+forgotPopup.addEventListener(
+"click",
+function(event) {
+
+  if (
+    event.target === forgotPopup
+  ) {
+
+    forgotPopup.classList.remove(
+      "show"
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   FORGOT PASSWORD SUBMIT
+========================================================= */
+
+forgotSubmit.addEventListener(
+"click",
+function() {
+
+  const email =
+  forgotEmail.value.trim();
+
+  const emailPattern =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  if (!emailPattern.test(email)) {
+
+    forgotEmail.style.borderColor =
+    "#bd6d43";
+
+    return;
+
+  }
+
+
+  forgotEmail.style.borderColor =
+  "#4c9d8d";
+
+
+  forgotSubmit.textContent =
+  "Sent ✓";
+
+
+  setTimeout(function() {
+
+    forgotPopup.classList.remove(
+      "show"
+    );
+
+    forgotSubmit.textContent =
+    "Continue";
+
+  }, 1200);
+
+});
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+"keydown",
+function(event) {
+
+  if (event.key === "Escape") {
+
+    signinPopup.classList.remove(
+      "show"
+    );
+
+    forgotPopup.classList.remove(
+      "show"
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   ENTER KEY ON FORGOT EMAIL
+========================================================= */
+
+forgotEmail.addEventListener(
+"keydown",
+function(event) {
+
+  if (event.key === "Enter") {
+
+    event.preventDefault();
+
+    forgotSubmit.click();
+
+  }
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dreamscape Travel & Tour Co. | Henann Crystal Sands Resort</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fbfaf6;
+    color: #173337;
+    font-family: "DM Sans", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.trip-main-image,
+.trip-side-images > div {
+    overflow: hidden;
+    position: relative;
+}
+
+.trip-main-image img,
+.trip-side-images img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+      height: 76px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      background: #fbfaf6;
+      border-bottom: 1px solid rgba(23, 51, 55, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* LOGO IMAGE */
+
+    .hero-logo {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      display: block;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    /* LOGO + NAME */
+
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      color: #4c9d8d;
+      margin-right: 7px;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      gap: 28px;
+      flex: 1;
+    }
+
+    .navigation a {
+      font-size: 13px;
+      color: #65736f;
+      padding: 28px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .navigation a:hover,
+    .navigation a.active {
+      color: #173337;
+      border-bottom-color: #4c9d8d;
+    }
+
+    .header-button {
+      background: #4c9d8d;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 19px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .header-button:hover {
+      background: #3f887a;
+      transform: translateY(-1px);
+    }
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.trip-detail {
+    max-width: 1160px;
+    margin: auto;
+    padding: 55px 30px 80px;
+}
+
+
+/* =========================================================
+   HERO IMAGES
+========================================================= */
+
+.trip-hero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+    height: 360px;
+    min-height: 360px;
+    margin-bottom: 30px;
+}
+
+.trip-main-image {
+    width: 100%;
+    height: 360px;
+    min-height: 360px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.trip-side-images {
+    width: 100%;
+    height: 360px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+}
+
+.trip-side-images > div {
+    width: 100%;
+    min-height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.trip-title {
+    margin-bottom: 35px;
+}
+
+.trip-tag {
+    color: #4c9d8d;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+.trip-title h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(32px, 5vw, 45px);
+    line-height: 1.15;
+    margin: 8px 0;
+}
+
+.trip-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    color: #7b8884;
+    font-size: 11px;
+    flex-wrap: wrap;
+}
+
+.trip-rating {
+    color: #8a7950;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.trip-layout {
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 35px;
+    align-items: start;
+}
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.trip-overview h2,
+.itinerary-title,
+.included-title {
+    font-family: "Playfair Display", serif;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.trip-overview p {
+    color: #6e7b77;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   JOURNEY OPTIONS
+========================================================= */
+
+.itinerary {
+    margin-top: 25px;
+}
+
+.journey-option {
+    background: white;
+    border: 1px solid #dfe4dc;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: .2s;
+}
+
+.journey-option:hover {
+    border-color: #4c9d8d;
+    transform: translateY(-2px);
+}
+
+.journey-option.selected {
+    border-color: #4c9d8d;
+    box-shadow: 0 5px 18px rgba(22,45,45,.07);
+}
+
+.day-number {
+    min-width: 45px;
+    color: #4c9d8d;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    padding-top: 3px;
+}
+
+.journey-content {
+    flex: 1;
+}
+
+.journey-content h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.journey-content p {
+    color: #7b8884;
+    font-size: 10px;
+    margin: 0;
+}
+
+.journey-arrow {
+    color: #4c9d8d;
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+
+/* =========================================================
+   INCLUDED
+========================================================= */
+
+.included-section {
+    margin-top: 30px;
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.included-item {
+    background: white;
+    border: 1px solid #dfe4dc;
+    border-radius: 7px;
+    padding: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.check-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    background: #e7f2ef;
+    color: #4c9d8d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.included-item strong {
+    display: block;
+    color: #173337;
+    font-size: 10px;
+}
+
+.included-item span {
+    color: #8a9692;
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   PACKAGE BOX
+========================================================= */
+
+.package-box {
+    background: white;
+    border: 1px solid #dfe4dc;
+    border-radius: 10px;
+    padding: 23px;
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 7px 25px rgba(22,45,45,.06);
+}
+
+.package-label {
+    color: #8a9692;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: 5px;
+}
+
+.package-box h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.package-box h3 {
+    font-size: 10px;
+    color: #173337;
+    margin: 17px 0 10px;
+}
+
+
+/* =========================================================
+   ESTIMATED PRICE
+========================================================= */
+
+.estimated-box {
+    background: #f7f1e8;
+    border-radius: 7px;
+    padding: 13px;
+    margin-bottom: 18px;
+}
+
+.estimated-label {
+    color: #8a7950;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+.estimated-price {
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    color: #173337;
+    margin-top: 3px;
+}
+
+.estimated-note {
+    color: #7b8884;
+    font-size: 8px;
+    line-height: 1.5;
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   PACKAGE LIST
+========================================================= */
+
+.package-list {
+    list-style: none;
+}
+
+.package-list li {
+    font-size: 10px;
+    color: #687773;
+    padding: 7px 0;
+    border-bottom: 1px solid #edf0eb;
+}
+
+.package-list li::before {
+    content: "✓";
+    color: #4c9d8d;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   TRAVELER INTERPRETER
+========================================================= */
+
+.interpreter-section {
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #edf0eb;
+}
+
+.interpreter-title {
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.interpreter-button {
+    width: 100%;
+    border: 1px solid #dfe4dc;
+    background: #fbfaf6;
+    color: #4c9d8d;
+    padding: 9px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.interpreter-button:hover {
+    border-color: #4c9d8d;
+}
+
+.language-options {
+    display: none;
+    margin-top: 10px;
+}
+
+.language-options.show {
+    display: block;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 9px;
+    color: #6e7b77;
+    margin: 7px 0;
+}
+
+
+/* =========================================================
+   SELECTED PACKAGE NOTE
+========================================================= */
+
+.selected-package {
+    background: #f7f1e8;
+    padding: 11px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 9px;
+    color: #6e7b77;
+}
+
+.selected-package strong {
+    color: #173337;
+}
+
+
+/* =========================================================
+   PERSONALIZED FORM
+========================================================= */
+
+.personalized-form {
+    display: none;
+}
+
+.personalized-form.active {
+    display: block;
+}
+
+.custom-group {
+    margin-bottom: 18px;
+}
+
+.custom-group h4 {
+    font-size: 10px;
+    color: #173337;
+    margin-bottom: 8px;
+}
+
+.custom-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 7px 0;
+    font-size: 9px;
+    color: #6e7b77;
+}
+
+.custom-option input {
+    accent-color: #4c9d8d;
+}
+
+.special-request {
+    width: 100%;
+    min-height: 75px;
+    resize: vertical;
+    border: 1px solid #dfe4dc;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    outline: none;
+}
+
+.special-request:focus {
+    border-color: #4c9d8d;
+}
+
+
+/* =========================================================
+   ACTIVITY LIMIT
+========================================================= */
+
+.activity-limit {
+    font-size: 8px;
+    color: #8a7950;
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.submit-button {
+    width: 100%;
+    border: none;
+    background: #4c9d8d;
+    color: white;
+    padding: 13px;
+    border-radius: 50px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 18px;
+    transition: .2s;
+}
+
+.submit-button:hover {
+    background: #3f887a;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(16,44,49,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    padding: 20px;
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.popup {
+    background: #fbfaf6;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+
+.popup-icon {
+    width: 48px;
+    height: 48px;
+    background: #e7f2ef;
+    color: #4c9d8d;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.popup h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.popup p {
+    color: #6e7b77;
+    font-size: 11px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.popup-close {
+    display: inline-block;
+    background: #4c9d8d;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 11px 22px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    background: #102c31;
+    color: #dbe4e1;
+    padding: 55px 7% 25px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-description {
+    color: #9fb1ad;
+    font-size: 11px;
+    max-width: 230px;
+    margin-top: 10px;
+}
+
+.footer h4 {
+    color: white;
+    font-size: 11px;
+    margin-bottom: 13px;
+}
+
+.footer a:not(.footer-logo) {
+    display: block;
+    color: #aabbb8;
+    font-size: 11px;
+    margin: 7px 0;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.copyright {
+    grid-column: 1/-1;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 18px;
+    color: #7e9390;
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .navigation {
+        gap: 15px;
+    }
+
+    .navigation a {
+        font-size: 11px;
+    }
+
+    .header-button {
+        display: none;
+    }
+
+    .trip-hero {
+        height: 300px;
+    }
+
+    .trip-main-image {
+        height: 300px;
+    }
+
+    .trip-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .package-box {
+        position: static;
+    }
+
+    .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .header {
+        height: 65px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .trip-detail {
+        padding: 40px 20px 60px;
+    }
+
+    .trip-hero {
+        grid-template-columns: 1fr;
+        height: 260px;
+    }
+
+    .trip-main-image {
+        height: 260px;
+    }
+
+    .trip-side-images {
+        display: none;
+    }
+
+    .included-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trip-meta {
+        flex-wrap: wrap;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        padding: 45px 25px;
+    }
+
+    .copyright {
+        grid-column: auto;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="trip-detail">
+
+
+    <!-- =====================================================
+         BORACAY / HENANN CRYSTAL SANDS IMAGES
+    ====================================================== -->
+
+    <section class="trip-hero">
+
+        <div class="trip-main-image">
+
+            <img
+                src="https://res.klook.com/klook-hotel/image/upload/w_750,c_fill,q_85/travelapi/23000000/22630000/22627200/22627112/c5a7e9a1_z.jpg"
+                alt="Boracay Beach"
+            >
+
+        </div>
+
+
+        <div class="trip-side-images">
+
+            <div>
+
+                <img
+                    src="https://i.pinimg.com/1200x/2b/b2/a9/2bb2a9a403a13e600ce49e0d93d88c03.jpg"
+                    alt="Boracay beach resort"
+                >
+
+            </div>
+
+
+            <div>
+
+                <img
+                    src="https://i.pinimg.com/1200x/c6/9c/42/c69c420f1e523da2ac614557dc2606bb.jpg"
+                    alt="Boracay island"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
+
+    <section class="trip-title">
+
+        <span class="trip-tag">
+            VISAYAS • BEACHFRONT RESORT
+        </span>
+
+        <h1>
+            Henann Crystal Sands Resort
+        </h1>
+
+        <div class="trip-meta">
+
+            <span class="trip-rating">
+                ★ 4.5
+            </span>
+
+            <span>
+                Station 2, Boracay Island
+            </span>
+
+            <span>
+                Aklan, Philippines
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TWO COLUMN CONTENT
+    ====================================================== -->
+
+    <div class="trip-layout">
+
+
+        <!-- =================================================
+             LEFT SIDE
+        ================================================== -->
+
+        <div>
+
+
+            <!-- OVERVIEW -->
+
+            <section class="trip-overview">
+
+                <h2>
+                    Trip Overview
+                </h2>
+
+                <p>
+                    Enjoy a tropical island escape at Henann Crystal Sands
+                    Resort in Boracay, Aklan. Located near the famous White
+                    Beach, the resort offers comfortable accommodations,
+                    swimming pools, beachfront access, dining options, and
+                    convenient access to Boracay's popular attractions and
+                    activities. Choose a practical, upgraded, luxurious,
+                    or personalized journey based on your travel preferences.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 JOURNEY OPTIONS
+            ================================================== -->
+
+            <section class="itinerary">
+
+                <h2 class="itinerary-title">
+                    Choose Your Journey
+                </h2>
+
+
+                <!-- BUDGET -->
+
+                <div
+                    class="journey-option selected"
+                    data-package="Budget Journey"
+                    data-type="standard"
+                    onclick="selectPackage(this)"
+                >
+
+                    <div class="day-number">
+                        OPTION 01
+                    </div>
+
+                    <div class="journey-content">
+
+                        <h3>
+                            Budget Journey
+                        </h3>
+
+                        <p>
+                            A practical Boracay stay with essential resort
+                            experiences and 1–2 island activities.
+                        </p>
+
+                    </div>
+
+                    <div class="journey-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+
+                <!-- MID -->
+
+                <div
+                    class="journey-option"
+                    data-package="Mid-Luxury Journey"
+                    data-type="standard"
+                    onclick="selectPackage(this)"
+                >
+
+                    <div class="day-number">
+                        OPTION 02
+                    </div>
+
+                    <div class="journey-content">
+
+                        <h3>
+                            Mid-Luxury Journey
+                        </h3>
+
+                        <p>
+                            An upgraded Boracay stay with additional comfort
+                            and 1–3 island activities.
+                        </p>
+
+                    </div>
+
+                    <div class="journey-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+
+                <!-- FULL -->
+
+                <div
+                    class="journey-option"
+                    data-package="Full Luxury Journey"
+                    data-type="standard"
+                    onclick="selectPackage(this)"
+                >
+
+                    <div class="day-number">
+                        OPTION 03
+                    </div>
+
+                    <div class="journey-content">
+
+                        <h3>
+                            Full Luxury Journey
+                        </h3>
+
+                        <p>
+                            A premium Henann Crystal Sands experience
+                            with 1–5 island activities.
+                        </p>
+
+                    </div>
+
+                    <div class="journey-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+
+                <!-- PERSONALIZED -->
+
+                <div
+                    class="journey-option"
+                    data-package="Personalized Journey"
+                    data-type="personalized"
+                    onclick="selectPackage(this)"
+                >
+
+                    <div class="day-number">
+                        OPTION 04
+                    </div>
+
+                    <div class="journey-content">
+
+                        <h3>
+                            Personalized Journey
+                        </h3>
+
+                        <p>
+                            Build your own Boracay experience by selecting
+                            your preferred room, meals, activities,
+                            transportation, and traveler interpreter.
+                        </p>
+
+                    </div>
+
+                    <div class="journey-arrow">
+                        →
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 INCLUDED
+            ================================================== -->
+
+            <section class="included-section">
+
+                <h2 class="included-title">
+                    What Is Included
+                </h2>
+
+
+                <div class="included-grid">
+
+
+                    <div class="included-item">
+
+                        <div class="check-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Resort Accommodation
+                            </strong>
+
+                            <span>
+                                Selected Henann Crystal Sands room
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="included-item">
+
+                        <div class="check-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Beachfront Access
+                            </strong>
+
+                            <span>
+                                Access to Boracay's White Beach
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="included-item">
+
+                        <div class="check-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Swimming Pools
+                            </strong>
+
+                            <span>
+                                Resort pool access
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="included-item">
+
+                        <div class="check-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Travel Assistance
+                            </strong>
+
+                            <span>
+                                Assistance throughout your journey
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT PACKAGE BOX
+        ================================================== -->
+
+        <aside class="package-box">
+
+
+            <!-- STANDARD PACKAGE -->
+
+            <div id="standardPackage">
+
+                <div class="package-label">
+                    SELECTED JOURNEY
+                </div>
+
+
+                <h2 id="packageTitle">
+                    Budget Journey
+                </h2>
+
+
+
+                <!-- ESTIMATE -->
+
+                <div class="estimated-box">
+
+                    <div class="estimated-label">
+                        ESTIMATED PACKAGE
+                    </div>
+
+                    <div
+                        class="estimated-price"
+                        id="estimatedPrice"
+                    >
+                        ₱10,000 – ₱15,000
+                    </div>
+
+                    <div class="estimated-note">
+                        Estimated cost per person. Final price
+                        depends on travel dates, room availability,
+                        activities, and transportation.
+                    </div>
+
+                </div>
+
+
+
+                <h3>
+                    PACKAGE INCLUDES
+                </h3>
+
+
+                <ul
+                    class="package-list"
+                    id="packageList"
+                >
+
+                    <li>
+                        Standard room accommodation
+                    </li>
+
+                    <li>
+                        Complimentary Wi-Fi access
+                    </li>
+
+                    <li>
+                        Swimming pool access
+                    </li>
+
+                    <li>
+                        White Beach access
+                    </li>
+
+                    <li>
+                        1–2 selected Boracay activities
+                    </li>
+
+                    <li>
+                        Basic travel assistance
+                    </li>
+
+                    <li>
+                        Shared transportation
+                    </li>
+
+                </ul>
+
+
+
+                <!-- TRAVELER INTERPRETER -->
+
+                <div class="interpreter-section">
+
+                    <div class="interpreter-title">
+                        NEED A TRAVELER INTERPRETER?
+                    </div>
+
+                    <button
+                        class="interpreter-button"
+                        onclick="toggleLanguages()"
+                    >
+                        + ADD TRAVELER INTERPRETER
+                    </button>
+
+
+                    <div
+                        class="language-options"
+                        id="languageOptions"
+                    >
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="English"
+                            >
+
+                            English
+
+                        </label>
+
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="Filipino"
+                            >
+
+                            Filipino
+
+                        </label>
+
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="Cebuano"
+                            >
+
+                            Cebuano
+
+                        </label>
+
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="Japanese"
+                            >
+
+                            Japanese
+
+                        </label>
+
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="Korean"
+                            >
+
+                            Korean
+
+                        </label>
+
+
+                        <label class="language-option">
+
+                            <input
+                                type="radio"
+                                name="interpreterLanguage"
+                                value="Mandarin"
+                            >
+
+                            Mandarin
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="selected-package">
+
+                    <strong>
+                        Resort Note
+                    </strong>
+
+                    <br>
+
+                    Room allocation, activity schedules,
+                    transportation, and special requests are
+                    subject to availability.
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    onclick="submitJourney()"
+                >
+                    CHOOSE THIS JOURNEY
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PERSONALIZED PACKAGE
+            ================================================== -->
+
+            <div
+                id="personalizedPackage"
+                class="personalized-form"
+            >
+
+                <div class="package-label">
+                    BUILD YOUR OWN
+                </div>
+
+
+                <h2>
+                    Personal Journey
+                </h2>
+
+
+
+                <!-- ACCOMMODATION -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        ACCOMMODATION
+                    </h4>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="room"
+                            value="Deluxe Room"
+                        >
+
+                        Deluxe Room
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="room"
+                            value="Premier Room"
+                        >
+
+                        Premier Room
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="room"
+                            value="Crystal Cove Room"
+                        >
+
+                        Crystal Cove Room
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- MEALS -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        MEALS
+                    </h4>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="meal"
+                            value="Breakfast"
+                        >
+
+                        Breakfast
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="meal"
+                            value="Breakfast + Lunch"
+                        >
+
+                        Breakfast + Lunch
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="meal"
+                            value="Full Meals"
+                        >
+
+                        Full Meals
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="meal"
+                            value="No Meals"
+                        >
+
+                        No Meals
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BORACAY ACTIVITIES
+                ================================================== -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        BORACAY ACTIVITIES
+                    </h4>
+
+                    <p class="activity-limit">
+                        Choose as many activities as you want for your
+                        personalized journey.
+                    </p>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Island Hopping"
+                        >
+
+                        Island Hopping
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Snorkeling"
+                        >
+
+                        Snorkeling
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Sunset Sailing"
+                        >
+
+                        Sunset Sailing
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Parasailing"
+                        >
+
+                        Parasailing
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Helmet Diving"
+                        >
+
+                        Helmet Diving
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Puka Beach"
+                        >
+
+                        Puka Beach
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="D'Mall Visit"
+                        >
+
+                        D'Mall Visit
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="checkbox"
+                            name="activity"
+                            value="Bulabog Beach"
+                        >
+
+                        Bulabog Beach
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- TRANSPORTATION -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        TRANSPORTATION
+                    </h4>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="transport"
+                            value="Airport Transfer"
+                        >
+
+                        Airport Transfer
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="transport"
+                            value="Private Transportation"
+                        >
+
+                        Private Transportation
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="transport"
+                            value="Shared Transportation"
+                        >
+
+                        Shared Transportation
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="transport"
+                            value="Self-Arranged Transportation"
+                        >
+
+                        Self-Arranged Transportation
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- TRAVELER INTERPRETER -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        TRAVELER INTERPRETER
+                    </h4>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="English"
+                        >
+
+                        English
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="Filipino"
+                        >
+
+                        Filipino
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="Cebuano"
+                        >
+
+                        Cebuano
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="Japanese"
+                        >
+
+                        Japanese
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="Korean"
+                        >
+
+                        Korean
+
+                    </label>
+
+
+                    <label class="custom-option">
+
+                        <input
+                            type="radio"
+                            name="personalInterpreter"
+                            value="Mandarin"
+                        >
+
+                        Mandarin
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- SPECIAL REQUEST -->
+
+                <div class="custom-group">
+
+                    <h4>
+                        SPECIAL REQUESTS
+                    </h4>
+
+
+                    <textarea
+                        class="special-request"
+                        placeholder="Tell us anything else you'd like us to know..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    onclick="submitJourney()"
+                >
+                    SUBMIT PERSONALIZED JOURNEY
+                </button>
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     POPUP
+========================================================= -->
+
+<div
+    class="popup-overlay"
+    id="confirmationPopup"
+>
+
+    <div class="popup">
+
+        <div class="popup-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Thank You!
+        </h2>
+
+
+        <p>
+            Your travel request has been successfully submitted.
+            A confirmation will be sent to your Gmail together
+            with your travel request details.
+            You will also receive the contact information of
+            your personal travel agent for further discussion
+            and assistance in finalizing your journey.
+        </p>
+
+
+        <button
+            class="popup-close"
+            onclick="closePopup()"
+        >
+            BACK TO DESTINATIONS
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+
+    <div>
+
+        <a
+            href="homepage.html"
+            class="footer-logo"
+        >
+            Dreamscape Travel & Tour Co.
+        </a>
+
+
+        <p class="footer-description">
+            Thoughtfully crafted journeys for curious travelers.
+        </p>
+
+    </div>
+
+
+
+    <div class="footer-links">
+
+        <h4>
+            Journey
+        </h4>
+
+
+        <a href="homepage.html">
+            Budget Travel
+        </a>
+
+
+        <a href="homepage.html">
+            Mid-Luxury
+        </a>
+
+
+        <a href="homepage.html">
+            Full Luxury
+        </a>
+
+
+        <a href="homepage.html">
+            Personalized
+        </a>
+
+    </div>
+
+
+
+    <div class="footer-links">
+
+        <h4>
+            DESTINATIONS
+        </h4>
+
+
+        <a href="destination.html">
+            Luzon
+        </a>
+
+
+        <a href="destination.html">
+            Visayas
+        </a>
+
+
+        <a href="destination.html">
+            Mindanao
+        </a>
+
+    </div>
+
+
+
+    <div class="footer-links">
+
+        <h4>
+            Contact
+        </h4>
+
+
+        <a href="#">
+            # : +639286595788
+        </a>
+
+
+        <a href="#">
+            @ : Dreamscape@gmail.com
+        </a>
+
+    </div>
+
+
+
+    <small class="copyright">
+        © 2026 Dreamscape Travel & Tour Co. All rights reserved.
+    </small>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   PACKAGE DATA
+========================================================= */
+
+const packageData = {
+
+    "Budget Journey": {
+
+        price: "₱10,000 – ₱15,000",
+
+        activities: "1–2 Boracay activities",
+
+        includes: [
+
+            "Standard room accommodation",
+            "Complimentary Wi-Fi access",
+            "Swimming pool access",
+            "White Beach access",
+            "1–2 selected Boracay activities",
+            "Basic travel assistance",
+            "Shared transportation"
+
+        ]
+
+    },
+
+
+    "Mid-Luxury Journey": {
+
+        price: "₱15,000 – ₱22,000",
+
+        activities: "1–3 Boracay activities",
+
+        includes: [
+
+            "Upgraded room accommodation",
+            "Complimentary Wi-Fi access",
+            "Swimming pool access",
+            "White Beach access",
+            "1–3 selected Boracay activities",
+            "Travel planning assistance",
+            "Selected private transportation"
+
+        ]
+
+    },
+
+
+    "Full Luxury Journey": {
+
+        price: "₱22,000 – ₱32,000",
+
+        activities: "1–5 Boracay activities",
+
+        includes: [
+
+            "Premium room accommodation",
+            "Complimentary Wi-Fi access",
+            "Swimming pool access",
+            "White Beach access",
+            "1–5 selected Boracay activities",
+            "Enhanced travel assistance",
+            "Private transportation"
+
+        ]
+
+    }
+
+};
+
+
+
+/* =========================================================
+   SELECT JOURNEY
+========================================================= */
+
+function selectPackage(element) {
+
+    const options =
+        document.querySelectorAll(".journey-option");
+
+
+    options.forEach(function(option) {
+
+        option.classList.remove("selected");
+
+    });
+
+
+    element.classList.add("selected");
+
+
+    const packageName =
+        element.dataset.package;
+
+
+    const packageType =
+        element.dataset.type;
+
+
+    const standard =
+        document.getElementById("standardPackage");
+
+
+    const personalized =
+        document.getElementById("personalizedPackage");
+
+
+
+    /* PERSONALIZED */
+
+    if (packageType === "personalized") {
+
+        standard.style.display = "none";
+
+        personalized.classList.add("active");
+
+        return;
+
+    }
+
+
+
+    /* STANDARD */
+
+    standard.style.display = "block";
+
+    personalized.classList.remove("active");
+
+
+    const data =
+        packageData[packageName];
+
+
+
+    /* CHANGE TITLE */
+
+    document.getElementById("packageTitle").textContent =
+        packageName;
+
+
+
+    /* CHANGE PRICE */
+
+    document.getElementById("estimatedPrice").textContent =
+        data.price;
+
+
+
+    /* CHANGE PACKAGE INCLUSIONS */
+
+    const list =
+        document.getElementById("packageList");
+
+
+    list.innerHTML = "";
+
+
+    data.includes.forEach(function(item) {
+
+        const li =
+            document.createElement("li");
+
+        li.textContent =
+            item;
+
+        list.appendChild(li);
+
+    });
+
+}
+
+
+
+/* =========================================================
+   TRAVELER INTERPRETER
+========================================================= */
+
+function toggleLanguages() {
+
+    const languages =
+        document.getElementById("languageOptions");
+
+    languages.classList.toggle("show");
+
+}
+
+
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+function submitJourney() {
+
+    document
+        .getElementById("confirmationPopup")
+        .classList.add("show");
+
+}
+
+
+
+/* =========================================================
+   CLOSE POPUP
+========================================================= */
+
+function closePopup() {
+
+    document
+        .getElementById("confirmationPopup")
+        .classList.remove("show");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
