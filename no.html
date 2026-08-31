@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dreamscape Travel & Tour Co. | No Itinerary Available</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: #fbfaf6;
+  color: #173337;
+  font-family: "DM Sans", Arial, sans-serif;
+  line-height: 1.6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  padding: 30px;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.unavailable-page {
+  width: 100%;
+  max-width: 850px;
+
+  text-align: center;
+
+  padding: 70px 40px;
+
+  animation: pageLoad 0.8s ease forwards;
+}
+
+@keyframes pageLoad {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.unavailable-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d7ebe6;
+
+  color: #4c9d8d;
+
+  border-radius: 50%;
+
+  font-size: 32px;
+
+  box-shadow: 0 10px 30px rgba(23, 51, 55, 0.08);
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.eyebrow {
+  color: #4c9d8d;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  margin-bottom: 12px;
+}
+
+.unavailable-title {
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(42px, 6vw, 70px);
+
+  font-weight: 600;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.035em;
+
+  margin-bottom: 20px;
+}
+
+.unavailable-description {
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  color: #6e7b77;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   DECORATIVE LINE
+========================================================= */
+
+.decorative-line {
+  width: 70px;
+  height: 2px;
+
+  background: #4c9d8d;
+
+  margin: 30px auto;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.main-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 25px;
+
+  background: #4c9d8d;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 50px;
+
+  padding: 13px 25px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.main-button:hover {
+
+  background: #3f887a;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .unavailable-page {
+    padding: 60px 30px;
+  }
+
+  .unavailable-title {
+    font-size: 50px;
+  }
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 20px;
+  }
+
+  .unavailable-page {
+    padding: 40px 15px;
+  }
+
+  .unavailable-icon {
+    width: 65px;
+    height: 65px;
+
+    font-size: 27px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+  }
+
+  .unavailable-title {
+    font-size: 40px;
+  }
+
+  .unavailable-description {
+    font-size: 13px;
+  }
+
+  .main-button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP / TV
+========================================================= */
+
+@media (min-width: 1600px) {
+
+  .unavailable-page {
+    max-width: 1100px;
+  }
+
+  .unavailable-icon {
+    width: 95px;
+    height: 95px;
+
+    font-size: 40px;
+
+    margin-bottom: 35px;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+  }
+
+  .unavailable-title {
+    font-size: 85px;
+  }
+
+  .unavailable-description {
+    max-width: 750px;
+    font-size: 19px;
+  }
+
+  .decorative-line {
+    width: 90px;
+    margin: 40px auto;
+  }
+
+  .main-button {
+    padding: 16px 30px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   4K TV
+========================================================= */
+
+@media (min-width: 2500px) {
+
+  .unavailable-page {
+    max-width: 1500px;
+  }
+
+  .unavailable-icon {
+    width: 120px;
+    height: 120px;
+
+    font-size: 50px;
+  }
+
+  .eyebrow {
+    font-size: 17px;
+  }
+
+  .unavailable-title {
+    font-size: 110px;
+  }
+
+  .unavailable-description {
+    max-width: 950px;
+    font-size: 23px;
+  }
+
+  .decorative-line {
+    width: 110px;
+    height: 3px;
+  }
+
+  .main-button {
+    padding: 19px 36px;
+    font-size: 18px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<main class="unavailable-page">
+
+<div class="unavailable-icon">
+✈
+</div>
+
+<p class="eyebrow">
+DREAMSCAPE TRAVEL & TOUR CO.
+</p>
+
+<h1 class="unavailable-title">
+There's No Available Itinerary
+</h1>
+
+<div class="decorative-line"></div>
+
+<p class="unavailable-description">
+We currently don't have an available itinerary for this destination.
+Please check back soon as we're always preparing new journeys and
+experiences for our travelers.
+</p>
+
+<a href="destination.html" class="main-button">
+Explore Other Destinations →
+</a>
+
+</main>
+
+</body>
+
+</html>

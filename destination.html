@@ -1,6 +1,22 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dreamscape Travel & Tour Co. | Destinations</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dreamscape Travel & Tour Co. | Destinations</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
 
 /* =========================
    GENERAL
@@ -42,89 +58,422 @@ img {
 
 
 /* =========================
+   LOADING SCREEN
+========================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #102c31;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity .5s ease, visibility .5s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.loader-content p {
+    color: #b9cbc7;
+    font-size: 11px;
+    letter-spacing: .12em;
+}
+
+.loader-line {
+    width: 100px;
+    height: 2px;
+    background: #4c9d8d;
+    margin: 20px auto 0;
+    animation: loaderLine 1.2s infinite ease-in-out;
+}
+
+@keyframes loaderLine {
+
+    0%, 100% {
+        transform: scaleX(.3);
+        opacity: .4;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
    HEADER
 ========================= */
 
 .header {
     height: 76px;
+
     padding: 0 5%;
+
     display: flex;
     align-items: center;
+
     gap: 30px;
-    background: rgba(251, 250, 246, 0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(23, 51, 55, 0.08);
+
+    background: rgba(251,250,246,.96);
+
+    border-bottom:
+        1px solid rgba(23,51,55,.08);
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
+
+    transition: .3s ease;
 }
 
+.header.scrolled {
+
+    height: 64px;
+
+    box-shadow:
+        0 5px 20px rgba(23,51,55,.08);
+
+    background:
+        rgba(251,250,246,.98);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
 .hero-logo {
+
     width: 45px;
     height: 45px;
+
     object-fit: contain;
+
     display: block;
+
     margin: 0;
+
     flex-shrink: 0;
+
+    transition: .3s ease;
+}
+
+.header.scrolled .hero-logo {
+
+    width: 38px;
+    height: 38px;
+
 }
 
 .logo {
+
     font-size: 16px;
+
     font-weight: 700;
+
     white-space: nowrap;
+
     letter-spacing: -0.02em;
 
     display: flex;
+
     align-items: center;
+
     gap: 10px;
-
-    flex-shrink: 0;
 }
 
-.logo-icon {
-    color: #4c9d8d;
-    margin-right: 7px;
-}
+
+/* =========================
+   NAVIGATION
+========================= */
 
 .navigation {
+
     display: flex;
-    justify-content: flex-end;
+
+    justify-content: right;
+
     align-items: center;
+
     gap: 28px;
+
     flex: 1;
-    min-width: 0;
 }
 
 .navigation a {
+
+    position: relative;
+
     font-size: 13px;
+
     color: #65736f;
+
     padding: 28px 0;
-    border-bottom: 2px solid transparent;
-    transition: 0.2s;
-    white-space: nowrap;
+
+    border-bottom:
+        2px solid transparent;
+
+    transition: .2s;
+}
+
+.header.scrolled .navigation a {
+
+    padding: 22px 0;
+
+}
+
+.navigation a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -2px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: #4c9d8d;
+
+    transition: width .25s ease;
 }
 
 .navigation a:hover,
 .navigation a.active {
+
     color: #173337;
-    border-bottom-color: #4c9d8d;
+
+    border-bottom-color:
+        transparent;
 }
 
+.navigation a:hover::after,
+.navigation a.active::after {
+
+    width: 100%;
+}
+
+
+/* =========================
+   ACCOUNT BUTTON
+========================= */
+
 .header-button {
+
     background: #4c9d8d;
+
     color: white;
+
     border-radius: 50px;
+
     padding: 10px 19px;
+
     font-size: 12px;
+
     font-weight: 600;
-    transition: 0.2s;
-    white-space: nowrap;
-    flex-shrink: 0;
+
+    transition: .2s;
 }
 
 .header-button:hover {
+
     background: #3f887a;
-    transform: translateY(-1px);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(76,157,141,.25);
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.menu-toggle {
+
+    display: none;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    margin-left: auto;
+}
+
+.menu-toggle span {
+
+    position: absolute;
+
+    width: 24px;
+
+    height: 2px;
+
+    background: #173337;
+
+    left: 8px;
+
+    transition: .3s;
+}
+
+.menu-toggle span:nth-child(1) {
+
+    top: 11px;
+
+}
+
+.menu-toggle span:nth-child(2) {
+
+    top: 19px;
+
+}
+
+.menu-toggle span:nth-child(3) {
+
+    top: 27px;
+
+}
+
+.menu-toggle.open span:nth-child(1) {
+
+    transform: rotate(45deg);
+
+    top: 19px;
+
+}
+
+.menu-toggle.open span:nth-child(2) {
+
+    opacity: 0;
+
+}
+
+.menu-toggle.open span:nth-child(3) {
+
+    transform: rotate(-45deg);
+
+    top: 19px;
+
+}
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+.mobile-navigation {
+
+    position: fixed;
+
+    top: 65px;
+
+    left: 0;
+
+    width: 100%;
+
+    background: #fbfaf6;
+
+    border-bottom:
+        1px solid #dfe4dc;
+
+    padding: 20px;
+
+    display: none;
+
+    z-index: 999;
+
+    box-shadow:
+        0 10px 25px
+        rgba(23,51,55,.08);
+}
+
+.mobile-navigation.open {
+
+    display: block;
+
+    animation:
+        mobileMenu .25s ease;
+}
+
+@keyframes mobileMenu {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+.mobile-navigation a {
+
+    display: block;
+
+    padding: 14px 10px;
+
+    border-bottom:
+        1px solid #e5e9e5;
+
+    color: #65736f;
+
+    font-size: 13px;
+}
+
+.mobile-navigation a:last-child {
+
+    border-bottom: none;
+
+}
+
+.mobile-navigation a:hover,
+.mobile-navigation a.active {
+
+    color: #173337;
+
 }
 
 
@@ -133,31 +482,54 @@ img {
 ========================= */
 
 .page-intro {
-    padding: clamp(60px, 8vw, 110px) 5% clamp(50px, 6vw, 80px);
+
+    padding:
+        clamp(60px, 8vw, 110px)
+        5%
+        clamp(50px, 6vw, 80px);
+
     text-align: center;
+
     background: #f7f1e8;
 }
 
 .eyebrow {
+
     color: #4c9d8d;
-    font-size: clamp(9px, 0.7vw, 14px);
+
+    font-size:
+        clamp(9px, 0.7vw, 14px);
+
     font-weight: 700;
+
     letter-spacing: .16em;
+
     margin-bottom: 10px;
 }
 
 .page-intro h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(40px, 5vw, 72px);
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size:
+        clamp(40px, 5vw, 72px);
+
     line-height: 1.1;
+
     margin-bottom: 15px;
 }
 
 .page-intro p:last-child {
+
     width: min(620px, 90%);
+
     margin: auto;
+
     color: #6e7b77;
-    font-size: clamp(13px, 1vw, 17px);
+
+    font-size:
+        clamp(13px, 1vw, 17px);
 }
 
 
@@ -166,10 +538,16 @@ img {
 ========================= */
 
 .section {
+
     width: 100%;
+
     max-width: 1400px;
+
     margin: auto;
-    padding: clamp(55px, 7vw, 100px) 5%;
+
+    padding:
+        clamp(55px, 7vw, 100px)
+        5%;
 }
 
 
@@ -178,70 +556,122 @@ img {
 ========================= */
 
 .filter-wrapper {
+
     margin-bottom: 35px;
+
 }
 
 .filter-bar {
+
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr auto auto;
+
+    grid-template-columns:
+        1.4fr 1fr 1fr auto auto;
+
     gap: 10px;
+
     margin-bottom: 15px;
+
 }
 
 .search-box,
 .filter-bar select {
+
     width: 100%;
-    border: 1px solid #dfe4dc;
+
+    border:
+        1px solid #dfe4dc;
+
     background: white;
+
     color: #173337;
+
     border-radius: 50px;
+
     padding: 13px 17px;
-    font-family: "DM Sans", Arial, sans-serif;
+
+    font-family:
+        "DM Sans", Arial, sans-serif;
+
     font-size: 13px;
+
     outline: none;
+
 }
 
 .search-box:focus,
 .filter-bar select:focus {
+
     border-color: #4c9d8d;
-    box-shadow: 0 0 0 3px rgba(76,157,141,.12);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(76,157,141,.12);
+
 }
 
 .filter-button,
 .reset-button {
+
     border: none;
+
     border-radius: 50px;
+
     padding: 12px 22px;
+
     cursor: pointer;
+
     font-weight: 600;
-    font-family: "DM Sans", Arial, sans-serif;
+
+    font-family:
+        "DM Sans", Arial, sans-serif;
+
     white-space: nowrap;
+
     transition: .2s;
+
 }
 
 .filter-button {
+
     background: #4c9d8d;
+
     color: white;
+
 }
 
 .filter-button:hover {
+
     background: #3f887a;
-    transform: translateY(-1px);
+
+    transform:
+        translateY(-1px);
+
 }
 
 .reset-button {
+
     background: #e9eee9;
+
     color: #173337;
+
 }
 
 .reset-button:hover {
+
     background: #dce4df;
-    transform: translateY(-1px);
+
+    transform:
+        translateY(-1px);
+
 }
 
 .result-count {
+
     color: #8a9692;
+
     font-size: 13px;
+
 }
 
 
@@ -250,97 +680,181 @@ img {
 ========================= */
 
 .destination-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(18px, 2vw, 30px);
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap:
+        clamp(18px, 2vw, 30px);
+
 }
 
 .destination-card {
+
     background: white;
-    border: 1px solid #dfe4dc;
+
+    border:
+        1px solid #dfe4dc;
+
     border-radius: 5px;
+
     overflow: hidden;
-    box-shadow: 0 6px 22px rgba(22,45,45,.04);
+
+    box-shadow:
+        0 6px 22px
+        rgba(22,45,45,.04);
+
     transition: .25s;
+
     min-width: 0;
 
-    animation: cardAppear .35s ease;
+    animation:
+        cardAppear .35s ease;
 }
 
 .destination-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(22,45,45,.1);
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(22,45,45,.1);
+
 }
 
 .destination-card img {
-    height: clamp(200px, 16vw, 300px);
+
+    height:
+        clamp(200px, 16vw, 300px);
+
     width: 100%;
+
     object-fit: cover;
+
 }
 
 .card-content {
-    padding: clamp(16px, 1.5vw, 24px);
+
+    padding:
+        clamp(16px, 1.5vw, 24px);
+
 }
 
 .tag {
+
     color: #4c9d8d;
-    font-size: clamp(8px, 0.7vw, 12px);
+
+    font-size:
+        clamp(8px, 0.7vw, 12px);
+
     font-weight: 700;
+
     letter-spacing: .12em;
+
 }
 
 .rating {
+
     float: right;
+
     color: #8a7950;
-    font-size: clamp(10px, 0.8vw, 13px);
+
+    font-size:
+        clamp(10px, 0.8vw, 13px);
+
 }
 
 .card-content h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(19px, 1.5vw, 27px);
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size:
+        clamp(19px, 1.5vw, 27px);
+
     line-height: 1.2;
+
     margin: 10px 0 3px;
+
 }
 
 .accommodation {
+
     color: #173337;
-    font-size: clamp(11px, 0.85vw, 14px);
+
+    font-size:
+        clamp(11px, 0.85vw, 14px);
+
     font-weight: 600;
+
     margin-bottom: 2px;
+
 }
 
 .location {
+
     color: #8a9692;
-    font-size: clamp(9px, 0.7vw, 12px);
+
+    font-size:
+        clamp(9px, 0.7vw, 12px);
+
     margin-bottom: 9px;
+
 }
 
 .card-content p {
+
     color: #6e7b77;
-    font-size: clamp(11px, 0.85vw, 14px);
+
+    font-size:
+        clamp(11px, 0.85vw, 14px);
+
     margin-bottom: 12px;
+
 }
 
 .price {
+
     color: #bd6d43;
-    font-size: clamp(12px, 0.9vw, 15px);
+
+    font-size:
+        clamp(12px, 0.9vw, 15px);
+
     font-weight: 700;
+
 }
 
 .details-button {
+
     display: inline-block;
+
     margin-top: 12px;
+
     color: #4c9d8d;
-    font-size: clamp(10px, 0.75vw, 13px);
+
+    font-size:
+        clamp(10px, 0.75vw, 13px);
+
     font-weight: 700;
+
     cursor: pointer;
+
     border: none;
+
     background: none;
-    font-family: "DM Sans", Arial, sans-serif;
+
+    font-family:
+        "DM Sans", Arial, sans-serif;
+
 }
 
 .details-button:hover {
+
     text-decoration: underline;
+
 }
 
 
@@ -351,13 +865,21 @@ img {
 @keyframes cardAppear {
 
     from {
+
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
@@ -368,16 +890,27 @@ img {
 ========================= */
 
 .accommodation-note {
+
     margin-top: 35px;
+
     padding: 18px 20px;
+
     background: #f7f1e8;
-    border-left: 3px solid #4c9d8d;
+
+    border-left:
+        3px solid #4c9d8d;
+
     color: #6e7b77;
-    font-size: clamp(10px, 0.75vw, 13px);
+
+    font-size:
+        clamp(10px, 0.75vw, 13px);
+
 }
 
 .accommodation-note strong {
+
     color: #173337;
+
 }
 
 
@@ -386,53 +919,77 @@ img {
 ========================= */
 
 .no-results {
+
     text-align: center;
+
     color: #6e7b77;
+
     padding: 60px 20px;
+
 }
 
 .no-results h3 {
-    font-family: "Playfair Display", serif;
+
+    font-family:
+        "Playfair Display", serif;
+
     color: #173337;
+
     font-size: 25px;
+
     margin-bottom: 5px;
+
 }
 
 
 /* =========================
-   JOURNEY HTML POPUP
+   JOURNEY POPUP
 ========================= */
 
 .journey-popup {
+
     position: fixed;
+
     inset: 0;
 
-    background: rgba(16, 44, 49, 0.78);
+    background:
+        rgba(16,44,49,.78);
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 25px;
 
     opacity: 0;
+
     visibility: hidden;
 
     transition: .25s;
 
     z-index: 9999;
+
 }
 
 .journey-popup.active {
+
     opacity: 1;
+
     visibility: visible;
+
 }
 
 .journey-window {
+
     position: relative;
 
-    width: min(1200px, 95vw);
-    height: min(850px, 90vh);
+    width:
+        min(1200px,95vw);
+
+    height:
+        min(850px,90vh);
 
     background: #fbfaf6;
 
@@ -440,39 +997,57 @@ img {
 
     overflow: hidden;
 
-    box-shadow: 0 25px 80px rgba(0,0,0,.35);
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.35);
 
-    transform: translateY(25px) scale(.97);
+    transform:
+        translateY(25px)
+        scale(.97);
 
     transition: .25s;
+
 }
 
-.journey-popup.active .journey-window {
-    transform: translateY(0) scale(1);
+.journey-popup.active
+.journey-window {
+
+    transform:
+        translateY(0)
+        scale(1);
+
 }
 
 .journey-window iframe {
+
     width: 100%;
+
     height: 100%;
 
     border: none;
 
     display: block;
+
 }
 
 .journey-close {
+
     position: absolute;
 
     top: 15px;
+
     right: 15px;
 
     width: 45px;
+
     height: 45px;
 
     border: none;
+
     border-radius: 50%;
 
-    background: rgba(255,255,255,.95);
+    background:
+        rgba(255,255,255,.95);
 
     color: #173337;
 
@@ -482,14 +1057,21 @@ img {
 
     z-index: 10;
 
-    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.15);
 
     transition: .2s;
+
 }
 
 .journey-close:hover {
+
     background: white;
-    transform: rotate(90deg);
+
+    transform:
+        rotate(90deg);
+
 }
 
 
@@ -498,56 +1080,94 @@ img {
 ========================= */
 
 .footer {
+
     background: #102c31;
+
     color: #dbe4e1;
-    padding: clamp(45px, 5vw, 75px) 7% 25px;
+
+    padding:
+        clamp(45px,5vw,75px)
+        7%
+        25px;
 
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
 
-    gap: clamp(25px, 3vw, 50px);
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap:
+        clamp(25px,3vw,50px);
+
 }
 
 .footer-logo {
+
     color: white;
-    font-size: clamp(14px, 1vw, 18px);
+
+    font-size:
+        clamp(14px,1vw,18px);
+
     font-weight: 700;
+
 }
 
 .footer-description {
+
     color: #9fb1ad;
-    font-size: clamp(10px, 0.75vw, 13px);
+
+    font-size:
+        clamp(10px,.75vw,13px);
+
     max-width: 280px;
+
     margin-top: 10px;
+
 }
 
 .footer h4 {
+
     color: white;
-    font-size: clamp(10px, 0.75vw, 13px);
+
+    font-size:
+        clamp(10px,.75vw,13px);
+
     margin-bottom: 13px;
+
 }
 
 .footer a:not(.footer-logo) {
+
     display: block;
+
     color: #aabbb8;
-    font-size: clamp(10px, 0.75vw, 13px);
+
+    font-size:
+        clamp(10px,.75vw,13px);
+
     margin: 7px 0;
+
 }
 
 .footer a:hover {
+
     color: white;
+
 }
 
 .copyright {
+
     grid-column: 1/-1;
 
-    border-top: 1px solid rgba(255,255,255,.1);
+    border-top:
+        1px solid rgba(255,255,255,.1);
 
     padding-top: 18px;
 
     color: #7e9390;
 
-    font-size: clamp(8px, 0.65vw, 11px);
+    font-size:
+        clamp(8px,.65vw,11px);
+
 }
 
 
@@ -555,180 +1175,266 @@ img {
    LARGE DESKTOP / TV
 ========================= */
 
-@media (min-width: 1200px) {
+@media (min-width:1200px) {
 
     .header {
+
         padding-left: 6%;
         padding-right: 6%;
+
     }
 
     .navigation {
-        gap: clamp(28px, 2.5vw, 50px);
+
+        gap:
+            clamp(28px,2.5vw,50px);
+
     }
 
     .navigation a {
-        font-size: clamp(13px, 0.9vw, 18px);
+
+        font-size:
+            clamp(13px,.9vw,18px);
+
         padding-top: 28px;
+
         padding-bottom: 28px;
+
     }
 
     .header-button {
-        font-size: clamp(12px, 0.8vw, 16px);
+
+        font-size:
+            clamp(12px,.8vw,16px);
+
         padding: 12px 24px;
+
     }
 
     .destination-grid {
-        gap: clamp(22px, 2vw, 35px);
+
+        gap:
+            clamp(22px,2vw,35px);
+
     }
 
 }
 
 
 /* =========================
-   FULL HD TV / 1080P
+   FULL HD TV
 ========================= */
 
-@media (min-width: 1600px) {
+@media (min-width:1600px) {
 
     .header {
+
         min-height: 90px;
+
     }
 
     .hero-logo {
+
         width: 55px;
         height: 55px;
+
     }
 
     .logo {
+
         font-size: 19px;
+
     }
 
     .page-intro {
+
         padding-top: 100px;
+
         padding-bottom: 85px;
+
     }
 
     .section {
+
         max-width: 1500px;
+
     }
 
     .destination-card img {
+
         height: 310px;
+
     }
 
     .card-content {
+
         padding: 25px;
+
     }
 
     .search-box,
     .filter-bar select,
     .filter-button,
     .reset-button {
+
         font-size: 15px;
+
         padding: 15px 20px;
+
     }
 
     .result-count {
+
         font-size: 15px;
+
     }
 
     .journey-window {
-        width: min(1400px, 92vw);
+
+        width:
+            min(1400px,92vw);
+
         height: 90vh;
+
     }
 
     .journey-close {
+
         width: 55px;
+
         height: 55px;
 
         font-size: 32px;
 
         top: 20px;
+
         right: 20px;
+
     }
 
 }
 
 
 /* =========================
-   4K TV / VERY LARGE SCREENS
+   4K TV
 ========================= */
 
-@media (min-width: 2500px) {
+@media (min-width:2500px) {
 
     .header {
+
         min-height: 110px;
+
         padding-left: 7%;
+
         padding-right: 7%;
+
     }
 
     .hero-logo {
+
         width: 65px;
+
         height: 65px;
+
     }
 
     .logo {
+
         font-size: 23px;
+
     }
 
     .navigation {
+
         gap: 55px;
+
     }
 
     .navigation a {
+
         font-size: 18px;
+
     }
 
     .header-button {
+
         font-size: 16px;
+
         padding: 14px 28px;
+
     }
 
     .page-intro {
+
         padding-top: 130px;
+
         padding-bottom: 110px;
+
     }
 
     .section {
+
         max-width: 1700px;
+
         padding-top: 110px;
+
         padding-bottom: 110px;
+
     }
 
     .destination-grid {
+
         gap: 35px;
+
     }
 
     .destination-card img {
+
         height: 350px;
+
     }
 
     .card-content {
+
         padding: 28px;
+
     }
 
     .search-box,
     .filter-bar select,
     .filter-button,
     .reset-button {
+
         font-size: 17px;
+
         padding: 17px 23px;
+
     }
 
     .result-count {
+
         font-size: 17px;
+
     }
 
     .journey-window {
-        width: min(1900px, 90vw);
+
+        width:
+            min(1900px,90vw);
+
         height: 90vh;
+
     }
 
     .journey-close {
+
         width: 65px;
+
         height: 65px;
 
         font-size: 38px;
+
     }
 
 }
@@ -741,16 +1447,23 @@ img {
 @media(max-width:1100px) {
 
     .filter-bar {
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
     .search-box {
+
         grid-column: 1 / -1;
+
     }
 
     .filter-button,
     .reset-button {
+
         width: 100%;
+
     }
 
 }
@@ -759,32 +1472,49 @@ img {
 @media(max-width:850px) {
 
     .header {
+
         padding: 0 20px;
+
         gap: 18px;
+
     }
 
     .navigation {
+
         gap: 15px;
+
     }
 
     .navigation a {
+
         font-size: 11px;
+
     }
 
     .header-button {
+
         display: none;
+
     }
 
     .destination-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
     }
 
     .destination-card img {
+
         height: 220px;
+
     }
 
     .footer {
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
 }
@@ -797,86 +1527,138 @@ img {
 @media(max-width:600px) {
 
     .header {
+
         height: 65px;
+
         min-height: 65px;
+
         padding: 8px 15px;
+
     }
 
     .logo {
+
         font-size: 14px;
+
         gap: 7px;
+
     }
 
     .hero-logo {
+
         width: 38px;
+
         height: 38px;
+
     }
 
     .navigation {
+
         display: none;
+
+    }
+
+    .menu-toggle {
+
+        display: block;
+
     }
 
     .page-intro {
-        padding: 70px 20px 55px;
+
+        padding:
+            70px 20px 55px;
+
     }
 
     .page-intro h1 {
+
         font-size: 40px;
+
     }
 
     .section {
-        padding: 60px 20px;
+
+        padding:
+            60px 20px;
+
     }
 
     .filter-bar {
+
         grid-template-columns: 1fr;
+
     }
 
     .search-box {
+
         grid-column: auto;
+
     }
 
     .filter-bar select,
     .filter-button,
     .reset-button {
+
         width: 100%;
+
     }
 
     .destination-grid {
+
         grid-template-columns: 1fr;
+
     }
 
     .destination-card img {
+
         height: 240px;
+
     }
 
     .footer {
+
         grid-template-columns: 1fr;
-        padding: 45px 25px;
+
+        padding:
+            45px 25px;
+
     }
 
     .copyright {
+
         grid-column: auto;
+
     }
 
     .journey-popup {
+
         padding: 10px;
+
     }
 
     .journey-window {
+
         width: 100%;
+
         height: 94vh;
+
         border-radius: 8px;
+
     }
 
     .journey-close {
+
         width: 40px;
+
         height: 40px;
 
         font-size: 24px;
 
         top: 10px;
+
         right: 10px;
+
     }
 
 }
@@ -889,37 +1671,50 @@ img {
 @media(max-width:380px) {
 
     .logo {
+
         font-size: 12px;
+
     }
 
     .hero-logo {
+
         width: 34px;
+
         height: 34px;
+
     }
 
     .page-intro h1 {
+
         font-size: 34px;
+
     }
 
     .card-content h2 {
+
         font-size: 19px;
+
     }
 
 }
 
 
 /* =========================
-   TV REMOTE / KEYBOARD FOCUS
+   TV KEYBOARD FOCUS
 ========================= */
 
-@media (min-width: 1000px) {
+@media(min-width:1000px) {
 
     a:focus-visible,
     button:focus-visible,
     select:focus-visible,
     input:focus-visible {
-        outline: 3px solid #4c9d8d;
+
+        outline:
+            3px solid #4c9d8d;
+
         outline-offset: 5px;
+
     }
 
 }
@@ -929,42 +1724,142 @@ img {
    REDUCED MOTION
 ========================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
 
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
     }
 
 }
 
-</style></head><body><!-- =========================
-     HEADER
-========================= --><header class="header"><a href="index.html" class="logo">
+</style>
 
-    <img
-        src="https://cdn.discordapp.com/attachments/1337395108898934804/1543889504706764810/Messenger_creation_20618EA8-C788-4AE3-BBDA-E658A6DB130E.png?ex=6a9682a6&is=6a953126&hm=fa0c30aebdfba00e5434486425571d43851eca0e3361cc46984c55ac9b17f097&"
-        alt="Dreamscape Travel & Tour Co. Logo"
-        class="hero-logo"
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     LOADING SCREEN
+========================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-content">
+
+        <h2>
+            Dreamscape
+        </h2>
+
+        <p>
+            PREPARING YOUR JOURNEY
+        </p>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header" id="header">
+
+    <a
+        href="index.html"
+        class="logo"
     >
 
-    <span>
-        Dreamscape Travel & Tour Co.
-    </span>
+        <img
+            src="https://cdn.discordapp.com/attachments/1337395108898934804/1543889504706764810/Messenger_creation_20618EA8-C788-4AE3-BBDA-E658A6DB130E.png?ex=6a9682a6&is=6a953126&hm=fa0c30aebdfba00e5434486425571d43851eca0e3361cc46984c55ac9b17f097&"
+            alt="Dreamscape Travel & Tour Co. Logo"
+            class="hero-logo"
+        >
 
-</a>
+        <span>
+            Dreamscape Travel & Tour Co.
+        </span>
+
+    </a>
 
 
-<nav class="navigation">
+    <nav class="navigation">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="destination.html"
+            class="active"
+        >
+            Destinations
+        </a>
+
+        <a href="aboutus.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <a
+        href="signin.html"
+        class="header-button"
+    >
+        ACCOUNT
+    </a>
+
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+    >
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </button>
+
+</header>
+
+
+<!-- =========================
+     MOBILE NAVIGATION
+========================= -->
+
+<nav
+    class="mobile-navigation"
+    id="mobileNavigation"
+>
 
     <a href="index.html">
         Home
     </a>
 
-    <a href="destination.html" class="active">
+    <a
+        href="destination.html"
+        class="active"
+    >
         Destinations
     </a>
 
@@ -972,647 +1867,728 @@ img {
         About Us
     </a>
 
+    <a href="signin.html">
+        Account
+    </a>
+
 </nav>
 
 
-<a href="signin.html" class="header-button">
-    ACCOUNT
-</a>
-
-</header><!-- =========================
+<!-- =========================
      PAGE INTRO
-========================= --><section class="page-intro"><p class="eyebrow">
-    EXPLORE PHILIPPINES
-</p>
-
-<h1>
-    Discover Your Next Journey
-</h1>
-
-<p>
-    From hidden islands to iconic beaches,
-    find a voyage that feels made for you.
-</p>
-
-</section><!-- =========================
-     DESTINATIONS
-========================= --><section class="section"><!-- =========================
-     FILTER WRAPPER
 ========================= -->
 
-<div class="filter-wrapper">
-
-
-    <div class="filter-bar">
-
-
-        <!-- SEARCH -->
-
-        <input
-            type="text"
-            id="searchInput"
-            class="search-box"
-            placeholder="Search destinations..."
-            autocomplete="off"
-        >
-
-
-        <!-- REGION -->
-
-        <select id="region">
-
-            <option value="all">
-                All Regions
-            </option>
-
-            <option value="luzon">
-                Luzon
-            </option>
-
-            <option value="visayas">
-                Visayas
-            </option>
-
-            <option value="mindanao">
-                Mindanao
-            </option>
-
-        </select>
-
-
-        <!-- TYPE -->
-
-        <select id="type">
-
-            <option value="all">
-                All Types
-            </option>
-
-            <option value="beach">
-                Beach
-            </option>
-
-            <option value="island">
-                Island
-            </option>
-
-        </select>
-
-
-        <!-- APPLY -->
-
-        <button
-            class="filter-button"
-            onclick="filterDestinations()"
-        >
-            Apply Filters
-        </button>
-
-
-        <!-- RESET -->
-
-        <button
-            class="reset-button"
-            onclick="resetFilters()"
-        >
-            Reset
-        </button>
-
-    </div>
-
-
-    <div
-        class="result-count"
-        id="resultCount"
-    >
-        Showing 6 destinations
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     DESTINATION GRID
-========================= -->
-
-<div
-    class="destination-grid"
-    id="destinationGrid"
->
-
-
-    <!-- =========================
-         EL NIDO
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="luzon"
-        data-type="island"
-        data-name="El Nido Palawan"
-    >
-
-        <img
-            src="https://cdn.sanity.io/images/4f3ey4m9/hospitality-production/f77dd1e8dc34e5a404920937a707a9131c5a341d-5032x3640.jpg?w=2560&fit=max&auto=format&q=80"
-            alt="El Nido Palawan"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                LUZON • ISLAND
-            </span>
-
-            <span class="rating">
-                ★ 4.7
-            </span>
-
-            <h2>
-                El Nido, Palawan
-            </h2>
-
-            <div class="accommodation">
-                El Nido Resorts – Miniloc Island
-            </div>
-
-            <div class="location">
-                Palawan, Philippines
-            </div>
-
-            <p>
-                Explore turquoise lagoons, limestone cliffs,
-                hidden beaches, and beautiful island scenery.
-            </p>
-
-            <span class="price">
-                From ₱15,000
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('elnido.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =========================
-         LA UNION
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="luzon"
-        data-type="beach"
-        data-name="La Union"
-    >
-
-        <img
-            src="https://i.pinimg.com/1200x/e7/75/37/e77537782958d1a29102e7a6d1cea831.jpg"
-            alt="La Union Beach"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                LUZON • BEACH
-            </span>
-
-            <span class="rating">
-                ★ 4.5
-            </span>
-
-            <h2>
-                La Union
-            </h2>
-
-            <div class="accommodation">
-                Awesome Hotel
-            </div>
-
-            <div class="location">
-                San Juan, La Union
-            </div>
-
-            <p>
-                Enjoy surfing, relaxing beach days,
-                beautiful sunsets, and a laid-back coastal atmosphere.
-            </p>
-
-            <span class="price">
-                From ₱4,500
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('launion.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =========================
-         BORACAY
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="visayas"
-        data-type="beach"
-        data-name="Boracay"
-    >
-
-        <img
-            src="https://res.klook.com/klook-hotel/image/upload/w_750,c_fill,q_85/travelapi/23000000/22630000/22627200/22627112/c5a7e9a1_z.jpg"
-            alt="Boracay Beach"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                VISAYAS • BEACH
-            </span>
-
-            <span class="rating">
-                ★ 4.7
-            </span>
-
-            <h2>
-                Boracay
-            </h2>
-
-            <div class="accommodation">
-                Henann Crystal Sands Resort
-            </div>
-
-            <div class="location">
-                Boracay Island, Aklan
-            </div>
-
-            <p>
-                Famous white sand beaches, clear waters,
-                exciting water activities, and unforgettable sunsets.
-            </p>
-
-            <span class="price">
-                From ₱8,500
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('Example.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =========================
-         BOHOL
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="visayas"
-        data-type="island"
-        data-name="Bohol"
-    >
-
-        <img
-            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/ba/cb/eb/caption.jpg?w=900&h=500&s=1"
-            alt="Bohol Island"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                VISAYAS • ISLAND
-            </span>
-
-            <span class="rating">
-                ★ 4.5
-            </span>
-
-            <h2>
-                Bohol
-            </h2>
-
-            <div class="accommodation">
-                Bohol Beach Club
-            </div>
-
-            <div class="location">
-                Panglao, Bohol
-            </div>
-
-            <p>
-                Discover beautiful beaches, island adventures,
-                nature attractions, and peaceful coastal escapes.
-            </p>
-
-            <span class="price">
-                From ₱7,500
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('Example2.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =========================
-         SIARGAO
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="mindanao"
-        data-type="island"
-        data-name="Siargao"
-    >
-
-        <img
-            src="https://media.licdn.com/dms/image/v2/C511BAQFMrkCfRBkUEw/company-background_10000/company-background_10000/0/1584244268572/siargao_bleu_resort_spa_cover?e=2147483647&v=beta&t=sRBk6SaYMua3K3tXk11PvnHLY0jjkICDAHQ6QZrasng"
-            alt="Siargao Island"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                MINDANAO • ISLAND
-            </span>
-
-            <span class="rating">
-                ★ 4.6
-            </span>
-
-            <h2>
-                Siargao
-            </h2>
-
-            <div class="accommodation">
-                Siargao Bleu Resort and Spa
-            </div>
-
-            <div class="location">
-                General Luna, Siargao
-            </div>
-
-            <p>
-                Experience famous surf spots, island hopping,
-                tropical scenery, and the relaxed island lifestyle.
-            </p>
-
-            <span class="price">
-                From ₱9,500
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('siargao.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =========================
-         CAMIGUIN
-    ========================= -->
-
-    <article
-        class="destination-card"
-        data-region="mindanao"
-        data-type="island"
-        data-name="Camiguin"
-    >
-
-        <img
-            src="https://images.trvl-media.com/lodging/12000000/11610000/11607200/11607107/a51d0cd1.jpg?impolicy=fcrop&w=1200&h=800"
-            alt="Camiguin Island"
-        >
-
-        <div class="card-content">
-
-            <span class="tag">
-                MINDANAO • ISLAND
-            </span>
-
-            <span class="rating">
-                ★ 4.6
-            </span>
-
-            <h2>
-                Camiguin
-            </h2>
-
-            <div class="accommodation">
-                Camiguin Volcan Beach Eco Retreat
-            </div>
-
-            <div class="location">
-                Camiguin, Philippines
-            </div>
-
-            <p>
-                Discover peaceful beaches, waterfalls,
-                natural springs, and beautiful volcanic landscapes.
-            </p>
-
-            <span class="price">
-                From ₱5,500
-            </span>
-
-            <button
-                class="details-button"
-                onclick="openJourney('camiguin.html')"
-            >
-                View Journey →
-            </button>
-
-        </div>
-
-    </article>
-
-
-</div>
-
-
-
-<!-- =========================
-     NO RESULTS
-========================= -->
-
-<div
-    id="noResults"
-    class="no-results"
-    style="display:none;"
->
-
-    <h3>
-        No destinations found
-    </h3>
+<section class="page-intro">
+
+    <p class="eyebrow">
+        EXPLORE PHILIPPINES
+    </p>
+
+    <h1>
+        Discover Your Next Journey
+    </h1>
 
     <p>
-        Try changing your search or filters.
+        From hidden islands to iconic beaches,
+        find a voyage that feels made for you.
     </p>
 
-</div>
-
+</section>
 
 
 <!-- =========================
-     ACCOMMODATION NOTE
+     DESTINATIONS
 ========================= -->
 
-<div class="accommodation-note">
+<section class="section">
 
-    <strong>Note:</strong>
-    Accommodation shown is an example.
-    Clients may choose their preferred accommodation
-    and water activities when creating their travel package.
 
-</div>
+    <!-- =========================
+         FILTER WRAPPER
+    ========================= -->
 
-</section><!-- =========================
+    <div class="filter-wrapper">
+
+        <div class="filter-bar">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="Search destinations..."
+                autocomplete="off"
+            >
+
+
+            <select id="region">
+
+                <option value="all">
+                    All Regions
+                </option>
+
+                <option value="luzon">
+                    Luzon
+                </option>
+
+                <option value="visayas">
+                    Visayas
+                </option>
+
+                <option value="mindanao">
+                    Mindanao
+                </option>
+
+            </select>
+
+
+            <select id="type">
+
+                <option value="all">
+                    All Types
+                </option>
+
+                <option value="beach">
+                    Beach
+                </option>
+
+                <option value="island">
+                    Island
+                </option>
+
+            </select>
+
+
+            <button
+                class="filter-button"
+                onclick="filterDestinations()"
+            >
+                Apply Filters
+            </button>
+
+
+            <button
+                class="reset-button"
+                onclick="resetFilters()"
+            >
+                Reset
+            </button>
+
+        </div>
+
+
+        <div
+            class="result-count"
+            id="resultCount"
+        >
+            Showing 6 destinations
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         DESTINATION GRID
+    ========================= -->
+
+    <div
+        class="destination-grid"
+        id="destinationGrid"
+    >
+
+
+        <!-- EL NIDO -->
+
+        <article
+            class="destination-card"
+            data-region="luzon"
+            data-type="island"
+            data-name="El Nido Palawan"
+        >
+
+            <img
+                src="https://cdn.sanity.io/images/4f3ey4m9/hospitality-production/f77dd1e8dc34e5a404920937a707a9131c5a341d-5032x3640.jpg?w=2560&fit=max&auto=format&q=80"
+                alt="El Nido Palawan"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    LUZON • ISLAND
+                </span>
+
+                <span class="rating">
+                    ★ 4.7
+                </span>
+
+                <h2>
+                    El Nido, Palawan
+                </h2>
+
+                <div class="accommodation">
+                    El Nido Resorts – Miniloc Island
+                </div>
+
+                <div class="location">
+                    Palawan, Philippines
+                </div>
+
+                <p>
+                    Explore turquoise lagoons, limestone cliffs,
+                    hidden beaches, and beautiful island scenery.
+                </p>
+
+                <span class="price">
+                    From ₱15,000
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('no.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- LA UNION -->
+
+        <article
+            class="destination-card"
+            data-region="luzon"
+            data-type="beach"
+            data-name="La Union"
+        >
+
+            <img
+                src="https://i.pinimg.com/1200x/e7/75/37/e77537782958d1a29102e7a6d1cea831.jpg"
+                alt="La Union Beach"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    LUZON • BEACH
+                </span>
+
+                <span class="rating">
+                    ★ 4.5
+                </span>
+
+                <h2>
+                    La Union
+                </h2>
+
+                <div class="accommodation">
+                    Awesome Hotel
+                </div>
+
+                <div class="location">
+                    San Juan, La Union
+                </div>
+
+                <p>
+                    Enjoy surfing, relaxing beach days,
+                    beautiful sunsets, and a laid-back coastal atmosphere.
+                </p>
+
+                <span class="price">
+                    From ₱4,500
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('no.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- BORACAY -->
+
+        <article
+            class="destination-card"
+            data-region="visayas"
+            data-type="beach"
+            data-name="Boracay"
+        >
+
+            <img
+                src="https://res.klook.com/klook-hotel/image/upload/w_750,c_fill,q_85/travelapi/23000000/22630000/22627200/22627112/c5a7e9a1_z.jpg"
+                alt="Boracay Beach"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    VISAYAS • BEACH
+                </span>
+
+                <span class="rating">
+                    ★ 4.7
+                </span>
+
+                <h2>
+                    Boracay
+                </h2>
+
+                <div class="accommodation">
+                    Henann Crystal Sands Resort
+                </div>
+
+                <div class="location">
+                    Boracay Island, Aklan
+                </div>
+
+                <p>
+                    Famous white sand beaches, clear waters,
+                    exciting water activities, and unforgettable sunsets.
+                </p>
+
+                <span class="price">
+                    From ₱8,500
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('Example.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- BOHOL -->
+
+        <article
+            class="destination-card"
+            data-region="visayas"
+            data-type="island"
+            data-name="Bohol"
+        >
+
+            <img
+                src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/ba/cb/eb/caption.jpg?w=900&h=500&s=1"
+                alt="Bohol Island"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    VISAYAS • ISLAND
+                </span>
+
+                <span class="rating">
+                    ★ 4.5
+                </span>
+
+                <h2>
+                    Bohol
+                </h2>
+
+                <div class="accommodation">
+                    Bohol Beach Club
+                </div>
+
+                <div class="location">
+                    Panglao, Bohol
+                </div>
+
+                <p>
+                    Discover beautiful beaches, island adventures,
+                    nature attractions, and peaceful coastal escapes.
+                </p>
+
+                <span class="price">
+                    From ₱7,500
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('Example2.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- SIARGAO -->
+
+        <article
+            class="destination-card"
+            data-region="mindanao"
+            data-type="island"
+            data-name="Siargao"
+        >
+
+            <img
+                src="https://media.licdn.com/dms/image/v2/C511BAQFMrkCfRBkUEw/company-background_10000/company-background_10000/0/1584244268572/siargao_bleu_resort_spa_cover?e=2147483647&v=beta&t=sRBk6SaYMua3K3tXk11PvnHLY0jjkICDAHQ6QZrasng"
+                alt="Siargao Island"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    MINDANAO • ISLAND
+                </span>
+
+                <span class="rating">
+                    ★ 4.6
+                </span>
+
+                <h2>
+                    Siargao
+                </h2>
+
+                <div class="accommodation">
+                    Siargao Bleu Resort and Spa
+                </div>
+
+                <div class="location">
+                    General Luna, Siargao
+                </div>
+
+                <p>
+                    Experience famous surf spots, island hopping,
+                    tropical scenery, and the relaxed island lifestyle.
+                </p>
+
+                <span class="price">
+                    From ₱9,500
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('no.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAMIGUIN -->
+
+        <article
+            class="destination-card"
+            data-region="mindanao"
+            data-type="island"
+            data-name="Camiguin"
+        >
+
+            <img
+                src="https://images.trvl-media.com/lodging/12000000/11610000/11607200/11607107/a51d0cd1.jpg?impolicy=fcrop&w=1200&h=800"
+                alt="Camiguin Island"
+            >
+
+            <div class="card-content">
+
+                <span class="tag">
+                    MINDANAO • ISLAND
+                </span>
+
+                <span class="rating">
+                    ★ 4.6
+                </span>
+
+                <h2>
+                    Camiguin
+                </h2>
+
+                <div class="accommodation">
+                    Camiguin Volcan Beach Eco Retreat
+                </div>
+
+                <div class="location">
+                    Camiguin, Philippines
+                </div>
+
+                <p>
+                    Discover peaceful beaches, waterfalls,
+                    natural springs, and beautiful volcanic landscapes.
+                </p>
+
+                <span class="price">
+                    From ₱5,500
+                </span>
+
+                <button
+                    class="details-button"
+                    onclick="openJourney('no.html')"
+                >
+                    View Journey →
+                </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =========================
+         NO RESULTS
+    ========================= -->
+
+    <div
+        id="noResults"
+        class="no-results"
+        style="display:none;"
+    >
+
+        <h3>
+            No destinations found
+        </h3>
+
+        <p>
+            Try changing your search or filters.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         ACCOMMODATION NOTE
+    ========================= -->
+
+    <div class="accommodation-note">
+
+        <strong>Note:</strong>
+
+        Accommodation shown is an example.
+        Clients may choose their preferred accommodation
+        and water activities when creating their travel package.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      JOURNEY HTML POPUP
-========================= --><div
+========================= -->
+
+<div
     class="journey-popup"
     id="journeyPopup"
-><div class="journey-window">
+>
 
-    <button
-        class="journey-close"
-        onclick="closeJourney()"
-        aria-label="Close journey"
-    >
-        ×
-    </button>
+    <div class="journey-window">
 
-    <iframe
-        id="journeyFrame"
-        src=""
-        title="Journey Details"
-    ></iframe>
+        <button
+            class="journey-close"
+            onclick="closeJourney()"
+            aria-label="Close journey"
+        >
+            ×
+        </button>
+
+        <iframe
+            id="journeyFrame"
+            src=""
+            title="Journey Details"
+        ></iframe>
+
+    </div>
 
 </div>
 
-</div><!-- =========================
+
+<!-- =========================
      FOOTER
-========================= --><footer class="footer"><div>
+========================= -->
 
-    <a
-        href="index.html"
-        class="footer-logo"
-    >
+<footer class="footer">
 
-        Dreamscape Travel & Tour Co.
+    <div>
 
-    </a>
+        <a
+            href="index.html"
+            class="footer-logo"
+        >
+            Dreamscape Travel & Tour Co.
+        </a>
 
-    <p class="footer-description">
-        Thoughtfully crafted journeys for curious travelers.
-    </p>
+        <p class="footer-description">
+            Thoughtfully crafted journeys for curious travelers.
+        </p>
 
-</div>
-
-
-<div class="footer-links">
-
-    <h4>
-        Journey
-    </h4>
-
-    <a href="index.html">
-        Budget Travel
-    </a>
-
-    <a href="index.html">
-        Mid-Luxury
-    </a>
-
-    <a href="index.html">
-        Full Luxury
-    </a>
-
-    <a href="index.html">
-        Personalized
-    </a>
-
-</div>
+    </div>
 
 
-<div class="footer-links">
+    <div class="footer-links">
 
-    <h4>
-        DESTINATIONS
-    </h4>
+        <h4>
+            Journey
+        </h4>
 
-    <a href="destination.html">
-        Luzon
-    </a>
+        <a href="index.html">
+            Budget Travel
+        </a>
 
-    <a href="destination.html">
-        Visayas
-    </a>
+        <a href="index.html">
+            Mid-Luxury
+        </a>
 
-    <a href="destination.html">
-        Mindanao
-    </a>
+        <a href="index.html">
+            Full Luxury
+        </a>
 
-</div>
+        <a href="index.html">
+            Personalized
+        </a>
 
-
-<div class="footer-links">
-
-    <h4>
-        Contact
-    </h4>
-
-    <a href="#">
-        # : +639286595788
-    </a>
-
-    <a href="#">
-        @ : Dreamscape@gmail.com
-    </a>
-
-</div>
+    </div>
 
 
-<small class="copyright">
-    © 2026 Dreamscape Travel & Tour Co. All rights reserved.
-</small>
+    <div class="footer-links">
 
-</footer><!-- =========================
+        <h4>
+            DESTINATIONS
+        </h4>
+
+        <a href="destination.html">
+            Luzon
+        </a>
+
+        <a href="destination.html">
+            Visayas
+        </a>
+
+        <a href="destination.html">
+            Mindanao
+        </a>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <h4>
+            Contact
+        </h4>
+
+        <a href="tel:+639286595788">
+            # : +639286595788
+        </a>
+
+        <a href="mailto:Dreamscape@gmail.com">
+            @ : Dreamscape@gmail.com
+        </a>
+
+    </div>
+
+
+    <small class="copyright">
+
+        © 2026 Dreamscape Travel & Tour Co.
+        All rights reserved.
+
+    </small>
+
+</footer>
+
+
+<!-- =========================
      JAVASCRIPT
-========================= --><script>
+========================= -->
+
+<script>
+
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+window.addEventListener("load", function() {
+
+    const loader =
+        document.getElementById("loader");
+
+    setTimeout(function() {
+
+        loader.classList.add("hidden");
+
+    }, 700);
+
+});
+
+
+/* =========================
+   HEADER SCROLL EFFECT
+========================= */
+
+const header =
+    document.getElementById("header");
+
+window.addEventListener("scroll", function() {
+
+    if (window.scrollY > 50) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mobileNavigation =
+    document.getElementById("mobileNavigation");
+
+
+menuToggle.addEventListener("click", function() {
+
+    menuToggle.classList.toggle("open");
+
+    mobileNavigation.classList.toggle("open");
+
+});
+
+
+/* =========================
+   CLOSE MOBILE MENU
+   WHEN LINK IS CLICKED
+========================= */
+
+const mobileLinks =
+    mobileNavigation.querySelectorAll("a");
+
+mobileLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        menuToggle.classList.remove("open");
+
+        mobileNavigation.classList.remove("open");
+
+    });
+
+});
 
 
 /* =========================
@@ -1635,7 +2611,9 @@ function filterDestinations() {
 
 
     const cards =
-        document.querySelectorAll(".destination-card");
+        document.querySelectorAll(
+            ".destination-card"
+        );
 
 
     let visibleCards = 0;
@@ -1674,13 +2652,15 @@ function filterDestinations() {
             searchMatch
         ) {
 
-            card.style.display = "block";
+            card.style.display =
+                "block";
 
             visibleCards++;
 
         } else {
 
-            card.style.display = "none";
+            card.style.display =
+                "none";
 
         }
 
@@ -1699,27 +2679,35 @@ function filterDestinations() {
 function updateResults(count) {
 
     const resultCount =
-        document.getElementById("resultCount");
+        document.getElementById(
+            "resultCount"
+        );
 
     const noResults =
-        document.getElementById("noResults");
+        document.getElementById(
+            "noResults"
+        );
 
 
     resultCount.textContent =
         "Showing " +
         count +
-        (count === 1
+        (
+            count === 1
             ? " destination"
-            : " destinations");
+            : " destinations"
+        );
 
 
     if (count === 0) {
 
-        noResults.style.display = "block";
+        noResults.style.display =
+            "block";
 
     } else {
 
-        noResults.style.display = "none";
+        noResults.style.display =
+            "none";
 
     }
 
@@ -1732,11 +2720,20 @@ function updateResults(count) {
 
 function resetFilters() {
 
-    document.getElementById("region").value = "all";
+    document.getElementById(
+        "region"
+    ).value = "all";
 
-    document.getElementById("type").value = "all";
 
-    document.getElementById("searchInput").value = "";
+    document.getElementById(
+        "type"
+    ).value = "all";
+
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
 
     filterDestinations();
 
@@ -1776,16 +2773,20 @@ document
 
 
 /* =========================
-   OPEN JOURNEY HTML PAGE
+   OPEN JOURNEY
 ========================= */
 
 function openJourney(page) {
 
     const popup =
-        document.getElementById("journeyPopup");
+        document.getElementById(
+            "journeyPopup"
+        );
 
     const frame =
-        document.getElementById("journeyFrame");
+        document.getElementById(
+            "journeyFrame"
+        );
 
 
     frame.src = page;
@@ -1794,22 +2795,28 @@ function openJourney(page) {
     popup.classList.add("active");
 
 
-    document.body.classList.add("modal-open");
+    document.body.classList.add(
+        "modal-open"
+    );
 
 }
 
 
 /* =========================
-   CLOSE JOURNEY HTML PAGE
+   CLOSE JOURNEY
 ========================= */
 
 function closeJourney() {
 
     const popup =
-        document.getElementById("journeyPopup");
+        document.getElementById(
+            "journeyPopup"
+        );
 
     const frame =
-        document.getElementById("journeyFrame");
+        document.getElementById(
+            "journeyFrame"
+        );
 
 
     popup.classList.remove("active");
@@ -1818,14 +2825,15 @@ function closeJourney() {
     frame.src = "";
 
 
-    document.body.classList.remove("modal-open");
+    document.body.classList.remove(
+        "modal-open"
+    );
 
 }
 
 
 /* =========================
-   CLOSE WHEN CLICKING
-   OUTSIDE THE WINDOW
+   CLOSE POPUP OUTSIDE
 ========================= */
 
 document
@@ -1836,7 +2844,9 @@ document
 
             if (
                 event.target ===
-                document.getElementById("journeyPopup")
+                document.getElementById(
+                    "journeyPopup"
+                )
             ) {
 
                 closeJourney();
@@ -1855,9 +2865,7 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeJourney();
 
@@ -1873,4 +2881,17 @@ document.addEventListener(
 
 filterDestinations();
 
-</script></body></html>
+
+/* =========================
+   CONSOLE MESSAGE
+========================= */
+
+console.log(
+    "Dreamscape Travel & Tour Co. - Destinations page loaded successfully."
+);
+
+</script>
+
+
+</body>
+</html>
