@@ -1,2897 +1,2592 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dreamscape Travel & Tour Co. | Destinations</title>
+<title>Destinations | Dreamscape Travel & Tour Co.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-
 <style>
-
-/* =========================
-   GENERAL
-========================= */
+:root {
+  --sacramento: #043927;
+  --ivory: #F7F4EC;
+  --sage: #DCE7DC;
+  --eucalyptus: #B7C9B5;
+  --champagne: #C6A66B;
+  --forest-text: #283A32;
+  --muted-text: #65736A;
+  --white: #FFFFFF;
+  --border: rgba(4,57,39,.12);
+  --shadow: 0 12px 35px rgba(4,57,39,.09);
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background: #fbfaf6;
-    color: #173337;
-    font-family: "DM Sans", Arial, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  color: var(--forest-text);
+  font-family: "DM Sans", Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-body.modal-open {
-    overflow: hidden;
-}
+body.modal-open { overflow: hidden; }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
 
 img {
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    object-fit: cover;
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
 
-/* =========================
-   LOADING SCREEN
-========================= */
-
+/* LOADING SCREEN */
 .loader {
-    position: fixed;
-    inset: 0;
-    background: #102c31;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-    transition: opacity .5s ease, visibility .5s ease;
+  position: fixed;
+  inset: 0;
+  background: var(--sacramento);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity .5s, visibility .5s;
 }
 
 .loader.hidden {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .loader-content {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: var(--white);
 }
 
 .loader-content h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 30px;
-    margin-bottom: 12px;
+  font: 600 30px "Playfair Display", serif;
+  margin-bottom: 12px;
 }
 
 .loader-content p {
-    color: #b9cbc7;
-    font-size: 11px;
-    letter-spacing: .12em;
+  color: var(--eucalyptus);
+  font-size: 11px;
+  letter-spacing: .12em;
 }
 
 .loader-line {
-    width: 100px;
-    height: 2px;
-    background: #4c9d8d;
-    margin: 20px auto 0;
-    animation: loaderLine 1.2s infinite ease-in-out;
+  width: 100px;
+  height: 2px;
+  background: var(--champagne);
+  margin: 20px auto 0;
+  animation: loaderLine 1.2s infinite ease-in-out;
 }
 
 @keyframes loaderLine {
-
-    0%, 100% {
-        transform: scaleX(.3);
-        opacity: .4;
-    }
-
-    50% {
-        transform: scaleX(1);
-        opacity: 1;
-    }
-
+  0%, 100% { transform: scaleX(.3); opacity: .4; }
+  50% { transform: scaleX(1); opacity: 1; }
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
+/* HEADER */
 .header {
-    height: 76px;
-
-    padding: 0 5%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 30px;
-
-    background: rgba(251,250,246,.96);
-
-    border-bottom:
-        1px solid rgba(23,51,55,.08);
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    transition: .3s ease;
+  min-height: 76px;
+  padding: 0px 5%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: var(--sacramento);
+  border-bottom: 1px solid rgba(220,231,220,.12);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: min-height.3s ease, box-shadow.3s ease, background .3s ease;
 }
 
 .header.scrolled {
-
-    height: 64px;
-
-    box-shadow:
-        0 5px 20px rgba(23,51,55,.08);
-
-    background:
-        rgba(251,250,246,.98);
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-.hero-logo {
-
-    width: 45px;
-    height: 45px;
-
-    object-fit: contain;
-
-    display: block;
-
-    margin: 0;
-
-    flex-shrink: 0;
-
-    transition: .3s ease;
-}
-
-.header.scrolled .hero-logo {
-
-    width: 38px;
-    height: 38px;
-
+  min-height: 64px;
+  box-shadow: 0 5px 20px rgba(4,57,39,.10);
+    background: rgba(4, 57, 39, .98);
 }
 
 .logo {
+  display: flex; align-items: center; gap: 10px;
+    color: var(--white); font-size: 16px; font-weight: 700;
+    white-space: nowrap; letter-spacing: -.02em; min-width: 0;
+}
 
-    font-size: 16px;
+.logo img {
+  margin: 0;
+}
 
-    font-weight: 700;
+.hero-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: .3s ease;
+}
 
-    white-space: nowrap;
-
-    letter-spacing: -0.02em;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
+.header.scrolled .hero-logo {
+  width: 38px;
+  height: 38px;
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
 
 .navigation {
-
-    display: flex;
-
-    justify-content: right;
-
-    align-items: center;
-
-    gap: 28px;
-
-    flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
 }
 
 .navigation a {
-
-    position: relative;
-
-    font-size: 13px;
-
-    color: #65736f;
-
-    padding: 28px 0;
-
-    border-bottom:
-        2px solid transparent;
-
-    transition: .2s;
-}
-
-.header.scrolled .navigation a {
-
-    padding: 22px 0;
-
+  position: relative;
+  font-size: 13px;
+  color: var(--white);
+  padding: 27px 0;
+  border-bottom: 2px solid transparent;
+  transition: color .2s;
 }
 
 .navigation a::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    bottom: -2px;
-
-    width: 0;
-
-    height: 2px;
-
-    background: #4c9d8d;
-
-    transition: width .25s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--champagne);
+  transition: width .25s ease;
 }
 
 .navigation a:hover,
 .navigation a.active {
-
-    color: #173337;
-
-    border-bottom-color:
-        transparent;
+  color: var(--eucalyptus);
 }
 
 .navigation a:hover::after,
 .navigation a.active::after {
-
-    width: 100%;
+  width: 100%;
 }
 
-
-/* =========================
-   ACCOUNT BUTTON
-========================= */
-
-.header-button {
-
-    background: #4c9d8d;
-
-    color: white;
-
-    border-radius: 50px;
-
-    padding: 10px 19px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    transition: .2s;
-}
-
-.header-button:hover {
-
-    background: #3f887a;
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 7px 18px
-        rgba(76,157,141,.25);
-}
-
-
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
 
 .menu-toggle {
-
-    display: none;
-
-    width: 40px;
-
-    height: 40px;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    position: relative;
-
-    margin-left: auto;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .menu-toggle span {
-
-    position: absolute;
-
-    width: 24px;
-
-    height: 2px;
-
-    background: #173337;
-
-    left: 8px;
-
-    transition: .3s;
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  left: 8px;
+  transition: .3s;
 }
 
-.menu-toggle span:nth-child(1) {
-
-    top: 11px;
-
+.header.scrolled .menu-toggle span {
+  background: var(--sacramento);
 }
 
-.menu-toggle span:nth-child(2) {
-
-    top: 19px;
-
-}
-
-.menu-toggle span:nth-child(3) {
-
-    top: 27px;
-
-}
+.menu-toggle span:nth-child(1) { top: 11px; }
+.menu-toggle span:nth-child(2) { top: 19px; }
+.menu-toggle span:nth-child(3) { top: 27px; }
 
 .menu-toggle.open span:nth-child(1) {
-
-    transform: rotate(45deg);
-
-    top: 19px;
-
+  transform: rotate(45deg);
+  top: 19px;
 }
 
-.menu-toggle.open span:nth-child(2) {
-
-    opacity: 0;
-
-}
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
 
 .menu-toggle.open span:nth-child(3) {
-
-    transform: rotate(-45deg);
-
-    top: 19px;
-
+  transform: rotate(-45deg);
+  top: 19px;
 }
 
-
-/* =========================
-   MOBILE NAVIGATION
-========================= */
-
 .mobile-navigation {
-
-    position: fixed;
-
-    top: 65px;
-
-    left: 0;
-
-    width: 100%;
-
-    background: #fbfaf6;
-
-    border-bottom:
-        1px solid #dfe4dc;
-
-    padding: 20px;
-
-    display: none;
-
-    z-index: 999;
-
-    box-shadow:
-        0 10px 25px
-        rgba(23,51,55,.08);
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--eucalyptus);
+  padding: 20px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 10px 25px rgba(4,57,39,.12);
 }
 
 .mobile-navigation.open {
-
-    display: block;
-
-    animation:
-        mobileMenu .25s ease;
+  display: block;
+  animation: mobileMenu .25s ease;
 }
 
 @keyframes mobileMenu {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(-10px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .mobile-navigation a {
-
-    display: block;
-
-    padding: 14px 10px;
-
-    border-bottom:
-        1px solid #e5e9e5;
-
-    color: #65736f;
-
-    font-size: 13px;
+  display: block;
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--sage);
+  color: var(--muted-text);
+  font-size: 13px;
 }
 
-.mobile-navigation a:last-child {
-
-    border-bottom: none;
-
-}
+.mobile-navigation a:last-child { border-bottom: 0; }
 
 .mobile-navigation a:hover,
 .mobile-navigation a.active {
-
-    color: #173337;
-
+  color: var(--sacramento);
 }
 
-
-/* =========================
-   PAGE INTRO
-========================= */
-
-.page-intro {
-
-    padding:
-        clamp(60px, 8vw, 110px)
-        5%
-        clamp(50px, 6vw, 80px);
-
-    text-align: center;
-
-    background: #f7f1e8;
+/* HERO */
+.hero {
+  background: var(--sacramento);
+  color: var(--ivory);
+  text-align: center;
+  padding: 65px 22px 72px;
 }
 
 .eyebrow {
-
-    color: #4c9d8d;
-
-    font-size:
-        clamp(9px, 0.7vw, 14px);
-
-    font-weight: 700;
-
-    letter-spacing: .16em;
-
-    margin-bottom: 10px;
+  color: var(--eucalyptus);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.page-intro h1 {
-
-    font-family:
-        "Playfair Display", serif;
-
-    font-size:
-        clamp(40px, 5vw, 72px);
-
-    line-height: 1.1;
-
-    margin-bottom: 15px;
+.hero h1 {
+  font: 500 clamp(35px,6vw,58px)/1.15 "Playfair Display", serif;
+  margin: 12px 0;
 }
 
-.page-intro p:last-child {
-
-    width: min(620px, 90%);
-
-    margin: auto;
-
-    color: #6e7b77;
-
-    font-size:
-        clamp(13px, 1vw, 17px);
+.hero h1 em {
+  color: var(--champagne);
+  font-weight: 500;
 }
 
-
-/* =========================
-   MAIN SECTION
-========================= */
-
-.section {
-
-    width: 100%;
-
-    max-width: 1400px;
-
-    margin: auto;
-
-    padding:
-        clamp(55px, 7vw, 100px)
-        5%;
+.hero p {
+  max-width: 620px;
+  margin: auto;
+  color: #e1e9e1;
+  font-size: 13px;
 }
 
-
-/* =========================
-   FILTER AREA
-========================= */
-
-.filter-wrapper {
-
-    margin-bottom: 35px;
-
+/* DESTINATIONS */
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 48px 25px 80px;
 }
 
-.filter-bar {
-
-    display: grid;
-
-    grid-template-columns:
-        1.4fr 1fr 1fr auto auto;
-
-    gap: 10px;
-
-    margin-bottom: 15px;
-
+.section-heading {
+  text-align: center;
+  margin-bottom: 26px;
 }
 
-.search-box,
-.filter-bar select {
-
-    width: 100%;
-
-    border:
-        1px solid #dfe4dc;
-
-    background: white;
-
-    color: #173337;
-
-    border-radius: 50px;
-
-    padding: 13px 17px;
-
-    font-family:
-        "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
-    outline: none;
-
+.section-heading h2 {
+  font: 600 clamp(27px,4vw,36px) "Playfair Display", serif;
+  color: var(--sacramento);
 }
 
-.search-box:focus,
-.filter-bar select:focus {
-
-    border-color: #4c9d8d;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(76,157,141,.12);
-
+.section-heading p {
+  color: var(--muted-text);
+  font-size: 12px;
+  margin-top: 7px;
 }
 
-.filter-button,
-.reset-button {
-
-    border: none;
-
-    border-radius: 50px;
-
-    padding: 12px 22px;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-    font-family:
-        "DM Sans", Arial, sans-serif;
-
-    white-space: nowrap;
-
-    transition: .2s;
-
+.filters {
+  display: grid;
+  grid-template-columns: minmax(180px,1fr) 180px 180px auto;
+  gap: 11px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.filter-button {
-
-    background: #4c9d8d;
-
-    color: white;
-
+.filters input,
+.filters select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--ivory);
+  padding: 11px;
+  color: var(--forest-text);
+  font-size: 12px;
 }
 
-.filter-button:hover {
-
-    background: #3f887a;
-
-    transform:
-        translateY(-1px);
-
+.reset-btn {
+  border: 0;
+  background: var(--sacramento);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.reset-button {
-
-    background: #e9eee9;
-
-    color: #173337;
-
+.reset-btn:hover,
+.submit-button:hover {
+  background: #0B4A34;
 }
 
-.reset-button:hover {
-
-    background: #dce4df;
-
-    transform:
-        translateY(-1px);
-
+.results-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted-text);
+  font-size: 11px;
+  margin: 0 2px 17px;
 }
-
-.result-count {
-
-    color: #8a9692;
-
-    font-size: 13px;
-
-}
-
-
-/* =========================
-   DESTINATION GRID
-========================= */
 
 .destination-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap:
-        clamp(18px, 2vw, 30px);
-
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 23px;
 }
 
 .destination-card {
-
-    background: white;
-
-    border:
-        1px solid #dfe4dc;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 6px 22px
-        rgba(22,45,45,.04);
-
-    transition: .25s;
-
-    min-width: 0;
-
-    animation:
-        cardAppear .35s ease;
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: .2s;
 }
 
 .destination-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 12px 30px
-        rgba(22,45,45,.1);
-
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
-.destination-card img {
-
-    height:
-        clamp(200px, 16vw, 300px);
-
-    width: 100%;
-
-    object-fit: cover;
-
+.card-image {
+  height: 210px;
+  position: relative;
+  background: var(--sage);
+  overflow: hidden;
 }
 
-.card-content {
-
-    padding:
-        clamp(16px, 1.5vw, 24px);
-
+.card-image img {
+  width: 100%;
+  height: 100%;
+  transition: transform .3s;
 }
 
-.tag {
-
-    color: #4c9d8d;
-
-    font-size:
-        clamp(8px, 0.7vw, 12px);
-
-    font-weight: 700;
-
-    letter-spacing: .12em;
-
+.destination-card:hover .card-image img {
+  transform: scale(1.04);
 }
 
-.rating {
-
-    float: right;
-
-    color: #8a7950;
-
-    font-size:
-        clamp(10px, 0.8vw, 13px);
-
+.card-tag {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  background: var(--ivory);
+  color: var(--sacramento);
+  border-radius: 30px;
+  padding: 5px 10px;
+  font-size: 9px;
+  font-weight: 700;
 }
 
-.card-content h2 {
-
-    font-family:
-        "Playfair Display", serif;
-
-    font-size:
-        clamp(19px, 1.5vw, 27px);
-
-    line-height: 1.2;
-
-    margin: 10px 0 3px;
-
+.card-body {
+  padding: 19px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.accommodation {
-
-    color: #173337;
-
-    font-size:
-        clamp(11px, 0.85vw, 14px);
-
-    font-weight: 600;
-
-    margin-bottom: 2px;
-
+.card-location {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--sacramento);
 }
 
-.location {
-
-    color: #8a9692;
-
-    font-size:
-        clamp(9px, 0.7vw, 12px);
-
-    margin-bottom: 9px;
-
+.card-body h3 {
+  font: 600 25px "Playfair Display", serif;
+  margin: 5px 0 8px;
+  color: var(--forest-text);
 }
 
-.card-content p {
-
-    color: #6e7b77;
-
-    font-size:
-        clamp(11px, 0.85vw, 14px);
-
-    margin-bottom: 12px;
-
+.card-body p {
+  color: var(--muted-text);
+  font-size: 11px;
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: 18px;
 }
 
-.price {
-
-    color: #bd6d43;
-
-    font-size:
-        clamp(12px, 0.9vw, 15px);
-
-    font-weight: 700;
-
+.card-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.details-button {
-
-    display: inline-block;
-
-    margin-top: 12px;
-
-    color: #4c9d8d;
-
-    font-size:
-        clamp(10px, 0.75vw, 13px);
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    border: none;
-
-    background: none;
-
-    font-family:
-        "DM Sans", Arial, sans-serif;
-
+.card-region {
+  font-size: 10px;
+  color: var(--muted-text);
 }
 
-.details-button:hover {
-
-    text-decoration: underline;
-
+.view-btn {
+  background: var(--sacramento);
+  color: var(--white);
+  border: 0;
+  border-radius: 50px;
+  padding: 10px 13px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-
-/* =========================
-   CARD ANIMATION
-========================= */
-
-@keyframes cardAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(15px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
-
-/* =========================
-   ACCOMMODATION NOTE
-========================= */
-
-.accommodation-note {
-
-    margin-top: 35px;
-
-    padding: 18px 20px;
-
-    background: #f7f1e8;
-
-    border-left:
-        3px solid #4c9d8d;
-
-    color: #6e7b77;
-
-    font-size:
-        clamp(10px, 0.75vw, 13px);
-
-}
-
-.accommodation-note strong {
-
-    color: #173337;
-
-}
-
-
-/* =========================
-   NO RESULTS
-========================= */
+.view-btn:hover { background: #0B4A34; }
 
 .no-results {
-
-    text-align: center;
-
-    color: #6e7b77;
-
-    padding: 60px 20px;
-
+  display: none;
+  text-align: center;
+  padding: 45px 15px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted-text);
 }
 
-.no-results h3 {
-
-    font-family:
-        "Playfair Display", serif;
-
-    color: #173337;
-
-    font-size: 25px;
-
-    margin-bottom: 5px;
-
-}
-
-
-/* =========================
-   JOURNEY POPUP
-========================= */
-
+/* JOURNEY POPUP */
 .journey-popup {
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(16,44,49,.78);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: .25s;
-
-    z-index: 9999;
-
+  position: fixed;
+  inset: 0;
+  background: rgba(4,25,18,.76);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1500;
 }
 
-.journey-popup.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
+.journey-popup.active { display: flex; }
 
 .journey-window {
-
-    position: relative;
-
-    width:
-        min(1200px,95vw);
-
-    height:
-        min(850px,90vh);
-
-    background: #fbfaf6;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 80px
-        rgba(0,0,0,.35);
-
-    transform:
-        translateY(25px)
-        scale(.97);
-
-    transition: .25s;
-
-}
-
-.journey-popup.active
-.journey-window {
-
-    transform:
-        translateY(0)
-        scale(1);
-
-}
-
-.journey-window iframe {
-
-    width: 100%;
-
-    height: 100%;
-
-    border: none;
-
-    display: block;
-
+  position: relative;
+  background: var(--ivory);
+  width: 100%;
+  max-width: 1150px;
+  height: 94vh;
+  max-height: 1000px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 70px #0004;
 }
 
 .journey-close {
-
-    position: absolute;
-
-    top: 15px;
-
-    right: 15px;
-
-    width: 45px;
-
-    height: 45px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.95);
-
-    color: #173337;
-
-    font-size: 27px;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.15);
-
-    transition: .2s;
-
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  z-index: 10;
+  width: 39px;
+  height: 39px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--sacramento);
+  font-size: 25px;
+  line-height: 1;
 }
 
 .journey-close:hover {
-
-    background: white;
-
-    transform:
-        rotate(90deg);
-
+  background: var(--sacramento);
+  color: var(--white);
 }
 
+.journey-scroll {
+  overflow-y: auto;
+  min-height: 0;
+}
 
-/* =========================
-   FOOTER
-========================= */
+.trip-detail {
+  max-width: 1160px;
+  margin: auto;
+  padding: 34px 30px 55px;
+}
 
+.trip-hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  height: 300px;
+  margin-bottom: 25px;
+}
+
+.trip-main-image,
+.trip-side-images > div {
+  overflow: hidden;
+  border-radius: 9px;
+  background: var(--sage);
+}
+
+.trip-main-image img,
+.trip-side-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trip-side-images {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  min-height: 0;
+}
+
+.trip-title {
+  margin-bottom: 28px;
+  padding-right: 45px;
+}
+
+.trip-tag {
+  font-size: 9px;
+  color: var(--sacramento);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.trip-title h1 {
+  font: 600 clamp(30px,4vw,43px)/1.2 "Playfair Display", serif;
+  margin: 7px 0;
+  color: var(--sacramento);
+}
+
+.trip-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 10px;
+  color: var(--muted-text);
+}
+
+.trip-layout {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 300px;
+  gap: 30px;
+  align-items: start;
+}
+
+.trip-overview h2,
+.itinerary-title,
+.included-title,
+.route-title,
+.extra-title {
+  font: 600 21px "Playfair Display", serif;
+  margin-bottom: 10px;
+  color: var(--sacramento);
+}
+
+.trip-overview p {
+  color: var(--muted-text);
+  font-size: 11px;
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.itinerary { margin-top: 20px; }
+
+.journey-option {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  transition: .2s;
+}
+
+.journey-option:hover,
+.journey-option.selected {
+  border-color: var(--champagne);
+  box-shadow: 0 4px 15px rgba(4,57,39,.08);
+}
+
+.day-number {
+  min-width: 48px;
+  color: var(--sacramento);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  padding-top: 3px;
+}
+
+.journey-option-content { flex: 1; }
+
+.journey-option-content h3 {
+  font: 600 14px "Playfair Display", serif;
+  margin-bottom: 3px;
+}
+
+.journey-option-content p {
+  font-size: 10px;
+  color: var(--muted-text);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.journey-arrow { color: var(--champagne); }
+
+.itinerary-details { margin: 18px 0 28px; }
+
+.day-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 16px;
+}
+
+.day-panel h3 {
+  font: 600 16px "Playfair Display", serif;
+  margin-bottom: 7px;
+  color: var(--sacramento);
+}
+
+.day-panel p,
+.day-panel li {
+  font-size: 10px;
+  color: var(--muted-text);
+  line-height: 1.8;
+}
+
+.day-panel ul {
+  padding-left: 18px;
+  margin-top: 5px;
+}
+
+.day-panel li { margin-bottom: 4px; }
+
+.route-title { margin-top: 25px; }
+
+.route-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.route-card h4 {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--forest-text);
+}
+
+.route-time {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--sacramento);
+  border-radius: 30px;
+  padding: 4px 9px;
+  font-size: 9px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.route-card p {
+  font-size: 10px;
+  color: var(--muted-text);
+  line-height: 1.8;
+  margin-top: 5px;
+}
+
+.included-section { margin-top: 25px; }
+
+.included-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.included-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 11px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.check-icon {
+  width: 23px;
+  height: 23px;
+  min-width: 23px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--sacramento);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.included-item strong {
+  display: block;
+  font-size: 10px;
+}
+
+.included-item span {
+  display: block;
+  font-size: 8px;
+  color: var(--muted-text);
+}
+
+.extra-section { margin-top: 25px; }
+
+.extra-section p,
+.extra-section li {
+  font-size: 10px;
+  color: var(--muted-text);
+  line-height: 1.9;
+}
+
+.extra-section ul { padding-left: 18px; }
+
+.package-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  position: sticky;
+  top: 15px;
+  box-shadow: 0 6px 20px rgba(4,57,39,.08);
+}
+
+.package-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: var(--muted-text);
+  margin-bottom: 5px;
+}
+
+.package-box h2 {
+  font: 600 22px "Playfair Display", serif;
+  margin-bottom: 15px;
+  color: var(--sacramento);
+}
+
+.package-box h3 {
+  font-size: 10px;
+  margin: 16px 0 8px;
+}
+
+.estimated-box {
+  background: #f1eadb;
+  border-radius: 7px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.estimated-label {
+  color: #806638;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.estimated-price {
+  font: 600 21px "Playfair Display", serif;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+  color: var(--sacramento);
+}
+
+.estimated-note {
+  font-size: 8px;
+  line-height: 1.7;
+  color: var(--muted-text);
+  margin-top: 5px;
+}
+
+.package-list { list-style: none; }
+
+.package-list li {
+  font-size: 9px;
+  color: var(--muted-text);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.package-list li::before {
+  content: "✓";
+  color: var(--sacramento);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.package-note {
+  background: var(--sage);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 13px;
+  color: var(--muted-text);
+  font-size: 9px;
+}
+
+.package-note strong { color: var(--sacramento); }
+
+.interpreter-section {
+  margin-top: 17px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.interpreter-title {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.interpreter-button {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--ivory);
+  color: var(--sacramento);
+  padding: 9px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.interpreter-button:hover { border-color: var(--champagne); }
+
+.language-options { display: none; margin-top: 8px; }
+.language-options.show { display: block; }
+
+.language-option,
+.custom-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  color: var(--muted-text);
+  margin: 8px 0;
+}
+
+.language-option input,
+.custom-option input {
+  accent-color: var(--sacramento);
+}
+
+.interpreter-note {
+  font-size: 9px;
+  color: var(--muted-text);
+  margin-top: 9px;
+  line-height: 1.7;
+}
+
+.personalized-form { display: none; }
+.personalized-form.active { display: block; }
+
+.custom-group { margin-bottom: 17px; }
+
+.custom-group h4 {
+  font-size: 10px;
+  margin-bottom: 7px;
+  color: var(--sacramento);
+}
+
+.custom-group p {
+  font-size: 9px;
+  color: var(--muted-text);
+  margin-bottom: 7px;
+}
+
+.special-request {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px;
+  font-size: 10px;
+  background: var(--ivory);
+  color: var(--forest-text);
+}
+
+.submit-button {
+  width: 100%;
+  border: 0;
+  background: var(--sacramento);
+  color: var(--white);
+  padding: 12px;
+  border-radius: 50px;
+  font-size: 9px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.personalized-price {
+  font: 600 22px "Playfair Display", serif;
+  color: var(--sacramento);
+}
+
+.form-hint {
+  font-size: 9px;
+  color: var(--muted-text);
+  line-height: 1.7;
+  margin: 7px 0 14px;
+}
+
+/* CONFIRMATION POPUP */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4,25,18,.72);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 18px;
+}
+
+.popup-overlay.show { display: flex; }
+
+.popup {
+  background: var(--ivory);
+  width: 100%;
+  max-width: 430px;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px #0003;
+}
+
+.popup-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--sacramento);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  font-size: 20px;
+}
+
+.popup h2 {
+  font: 600 25px "Playfair Display", serif;
+  margin-bottom: 8px;
+  color: var(--sacramento);
+}
+
+.popup p {
+  font-size: 11px;
+  color: var(--muted-text);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.popup-close {
+  background: var(--sacramento);
+  color: var(--white);
+  border: 0;
+  border-radius: 50px;
+  padding: 11px 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.popup-close:hover { background: #0B4A34; }
+
+#journeyContent table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 420px;
+  font-size: 10px;
+}
+
+#journeyContent table th {
+  background: var(--sacramento) !important;
+  color: var(--white) !important;
+}
+
+#journeyContent table td {
+  color: var(--forest-text);
+  border-color: var(--border) !important;
+}
+
+#journeyContent table th,
+#journeyContent table td { padding: 9px; }
+
+#journeyContent .day-panel { overflow-wrap: anywhere; }
+
+/* FOOTER */
 .footer {
-
-    background: #102c31;
-
-    color: #dbe4e1;
-
-    padding:
-        clamp(45px,5vw,75px)
-        7%
-        25px;
-
-    display: grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr 1fr;
-
-    gap:
-        clamp(25px,3vw,50px);
-
+  position: relative;
+  margin-top: auto;
+  flex-shrink: 0;
+  width: 100%;
+  background: var(--sacramento);
+  color: var(--sage);
+  padding: clamp(40px,5vw,70px) 7% 25px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(25px,3vw,50px);
 }
 
 .footer-logo {
-
-    color: white;
-
-    font-size:
-        clamp(14px,1vw,18px);
-
-    font-weight: 700;
-
+  color: var(--white);
+  font-size: clamp(14px,1vw,18px);
+  font-weight: 700;
 }
 
 .footer-description {
-
-    color: #9fb1ad;
-
-    font-size:
-        clamp(10px,.75vw,13px);
-
-    max-width: 280px;
-
-    margin-top: 10px;
-
+  color: var(--eucalyptus);
+  font-size: clamp(10px,.75vw,13px);
+  max-width: 280px;
+  margin-top: 10px;
 }
 
 .footer h4 {
-
-    color: white;
-
-    font-size:
-        clamp(10px,.75vw,13px);
-
-    margin-bottom: 13px;
-
+  color: var(--white);
+  font-size: clamp(10px,.75vw,13px);
+  margin-bottom: 13px;
 }
 
 .footer a:not(.footer-logo) {
-
-    display: block;
-
-    color: #aabbb8;
-
-    font-size:
-        clamp(10px,.75vw,13px);
-
-    margin: 7px 0;
-
+  display: block;
+  color: var(--sage);
+  font-size: clamp(10px,.75vw,13px);
+  margin: 7px 0;
+  transition: color .2s;
 }
 
-.footer a:hover {
-
-    color: white;
-
-}
+.footer a:hover { color: var(--champagne); }
 
 .copyright {
-
-    grid-column: 1/-1;
-
-    border-top:
-        1px solid rgba(255,255,255,.1);
-
-    padding-top: 18px;
-
-    color: #7e9390;
-
-    font-size:
-        clamp(8px,.65vw,11px);
-
+  grid-column: 1/-1;
+  border-top: 1px solid rgba(220,231,220,.2);
+  padding-top: 18px;
+  color: var(--eucalyptus);
+  font-size: clamp(8px,.65vw,11px);
 }
 
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .destination-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 
-/* =========================
-   LARGE DESKTOP / TV
-========================= */
+  .filters {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
 
-@media (min-width:1200px) {
+  .filters input { grid-column: 1/-1; }
 
-    .header {
+  .trip-layout {
+    grid-template-columns: minmax(0,1fr) 270px;
+    gap: 18px;
+  }
 
-        padding-left: 6%;
-        padding-right: 6%;
-
-    }
-
-    .navigation {
-
-        gap:
-            clamp(28px,2.5vw,50px);
-
-    }
-
-    .navigation a {
-
-        font-size:
-            clamp(13px,.9vw,18px);
-
-        padding-top: 28px;
-
-        padding-bottom: 28px;
-
-    }
-
-    .header-button {
-
-        font-size:
-            clamp(12px,.8vw,16px);
-
-        padding: 12px 24px;
-
-    }
-
-    .destination-grid {
-
-        gap:
-            clamp(22px,2vw,35px);
-
-    }
-
+  .trip-detail { padding: 25px 20px 40px; }
+  .footer { grid-template-columns: 1fr 1fr; }
 }
 
-
-/* =========================
-   FULL HD TV
-========================= */
-
-@media (min-width:1600px) {
-
-    .header {
-
-        min-height: 90px;
-
-    }
-
-    .hero-logo {
-
-        width: 55px;
-        height: 55px;
-
-    }
-
-    .logo {
-
-        font-size: 19px;
-
-    }
-
-    .page-intro {
-
-        padding-top: 100px;
-
-        padding-bottom: 85px;
-
-    }
-
-    .section {
-
-        max-width: 1500px;
-
-    }
-
-    .destination-card img {
-
-        height: 310px;
-
-    }
-
-    .card-content {
-
-        padding: 25px;
-
-    }
-
-    .search-box,
-    .filter-bar select,
-    .filter-button,
-    .reset-button {
-
-        font-size: 15px;
-
-        padding: 15px 20px;
-
-    }
-
-    .result-count {
-
-        font-size: 15px;
-
-    }
-
-    .journey-window {
-
-        width:
-            min(1400px,92vw);
-
-        height: 90vh;
-
-    }
-
-    .journey-close {
-
-        width: 55px;
-
-        height: 55px;
-
-        font-size: 32px;
-
-        top: 20px;
-
-        right: 20px;
-
-    }
-
+@media (max-width: 850px) {
+  .header { padding: 10px 20px; gap: 18px; }
+  .navigation { gap: 15px; }
+  .navigation a { font-size: 11px; }
 }
 
+@media (max-width: 650px) {
+  .header {
+    min-height: 65px;
+    padding: 8px 15px;
+    gap: 10px;
+  }
 
-/* =========================
-   4K TV
-========================= */
+  .header.scrolled { min-height: 65px; }
 
-@media (min-width:2500px) {
+  .logo {
+    font-size: 13px;
+    gap: 7px;
+  }
 
-    .header {
+  .hero-logo,
+  .header.scrolled .hero-logo {
+    width: 37px;
+    height: 37px;
+  }
 
-        min-height: 110px;
+  .navigation { display: none; }
+  .menu-toggle { display: block; }
 
-        padding-left: 7%;
+  .hero { padding: 48px 18px 55px; }
+  main { padding: 32px 15px 50px; }
 
-        padding-right: 7%;
+  .filters {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
 
-    }
+  .filters input { grid-column: auto; }
 
-    .hero-logo {
+  .destination-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 
-        width: 65px;
+  .card-image { height: 220px; }
+  .journey-popup { padding: 6px; }
 
-        height: 65px;
+  .journey-window {
+    height: 96vh;
+    border-radius: 9px;
+  }
 
-    }
+  .trip-detail { padding: 20px 14px 35px; }
 
-    .logo {
+  .trip-hero {
+    grid-template-columns: 1fr;
+    height: 230px;
+  }
 
-        font-size: 23px;
+  .trip-main-image { height: 230px; }
+  .trip-side-images { display: none; }
 
-    }
+  .trip-title {
+    padding-right: 35px;
+    margin-bottom: 22px;
+  }
 
-    .navigation {
+  .trip-layout { grid-template-columns: 1fr; }
+  .package-box { position: static; }
+  .included-grid { grid-template-columns: 1fr; }
 
-        gap: 55px;
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 38px 23px;
+  }
 
-    }
-
-    .navigation a {
-
-        font-size: 18px;
-
-    }
-
-    .header-button {
-
-        font-size: 16px;
-
-        padding: 14px 28px;
-
-    }
-
-    .page-intro {
-
-        padding-top: 130px;
-
-        padding-bottom: 110px;
-
-    }
-
-    .section {
-
-        max-width: 1700px;
-
-        padding-top: 110px;
-
-        padding-bottom: 110px;
-
-    }
-
-    .destination-grid {
-
-        gap: 35px;
-
-    }
-
-    .destination-card img {
-
-        height: 350px;
-
-    }
-
-    .card-content {
-
-        padding: 28px;
-
-    }
-
-    .search-box,
-    .filter-bar select,
-    .filter-button,
-    .reset-button {
-
-        font-size: 17px;
-
-        padding: 17px 23px;
-
-    }
-
-    .result-count {
-
-        font-size: 17px;
-
-    }
-
-    .journey-window {
-
-        width:
-            min(1900px,90vw);
-
-        height: 90vh;
-
-    }
-
-    .journey-close {
-
-        width: 65px;
-
-        height: 65px;
-
-        font-size: 38px;
-
-    }
-
+  .copyright { grid-column: auto; }
 }
 
+@media (max-width: 380px) {
+  .logo { font-size: 11px; }
 
-/* =========================
-   TABLET
-========================= */
+  .hero-logo,
+  .header.scrolled .hero-logo {
+    width: 32px;
+    height: 32px;
+  }
 
-@media(max-width:1100px) {
-
-    .filter-bar {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
-    .search-box {
-
-        grid-column: 1 / -1;
-
-    }
-
-    .filter-button,
-    .reset-button {
-
-        width: 100%;
-
-    }
-
+  .results-line { font-size: 10px; }
 }
 
-
-@media(max-width:850px) {
-
-    .header {
-
-        padding: 0 20px;
-
-        gap: 18px;
-
-    }
-
-    .navigation {
-
-        gap: 15px;
-
-    }
-
-    .navigation a {
-
-        font-size: 11px;
-
-    }
-
-    .header-button {
-
-        display: none;
-
-    }
-
-    .destination-grid {
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
-    }
-
-    .destination-card img {
-
-        height: 220px;
-
-    }
-
-    .footer {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px) {
-
-    .header {
-
-        height: 65px;
-
-        min-height: 65px;
-
-        padding: 8px 15px;
-
-    }
-
-    .logo {
-
-        font-size: 14px;
-
-        gap: 7px;
-
-    }
-
-    .hero-logo {
-
-        width: 38px;
-
-        height: 38px;
-
-    }
-
-    .navigation {
-
-        display: none;
-
-    }
-
-    .menu-toggle {
-
-        display: block;
-
-    }
-
-    .page-intro {
-
-        padding:
-            70px 20px 55px;
-
-    }
-
-    .page-intro h1 {
-
-        font-size: 40px;
-
-    }
-
-    .section {
-
-        padding:
-            60px 20px;
-
-    }
-
-    .filter-bar {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .search-box {
-
-        grid-column: auto;
-
-    }
-
-    .filter-bar select,
-    .filter-button,
-    .reset-button {
-
-        width: 100%;
-
-    }
-
-    .destination-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .destination-card img {
-
-        height: 240px;
-
-    }
-
-    .footer {
-
-        grid-template-columns: 1fr;
-
-        padding:
-            45px 25px;
-
-    }
-
-    .copyright {
-
-        grid-column: auto;
-
-    }
-
-    .journey-popup {
-
-        padding: 10px;
-
-    }
-
-    .journey-window {
-
-        width: 100%;
-
-        height: 94vh;
-
-        border-radius: 8px;
-
-    }
-
-    .journey-close {
-
-        width: 40px;
-
-        height: 40px;
-
-        font-size: 24px;
-
-        top: 10px;
-
-        right: 10px;
-
-    }
-
-}
-
-
-/* =========================
-   VERY SMALL PHONES
-========================= */
-
-@media(max-width:380px) {
-
-    .logo {
-
-        font-size: 12px;
-
-    }
-
-    .hero-logo {
-
-        width: 34px;
-
-        height: 34px;
-
-    }
-
-    .page-intro h1 {
-
-        font-size: 34px;
-
-    }
-
-    .card-content h2 {
-
-        font-size: 19px;
-
-    }
-
-}
-
-
-/* =========================
-   TV KEYBOARD FOCUS
-========================= */
-
-@media(min-width:1000px) {
-
-    a:focus-visible,
-    button:focus-visible,
-    select:focus-visible,
-    input:focus-visible {
-
-        outline:
-            3px solid #4c9d8d;
-
-        outline-offset: 5px;
-
-    }
-
-}
-
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media(prefers-reduced-motion:reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            0.01ms !important;
-
-        transition-duration:
-            0.01ms !important;
-
-        scroll-behavior:
-            auto !important;
-
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     LOADING SCREEN
-========================= -->
-
+<!-- LOADING SCREEN -->
 <div class="loader" id="loader">
-
-    <div class="loader-content">
-
-        <h2>
-            Dreamscape
-        </h2>
-
-        <p>
-            PREPARING YOUR JOURNEY
-        </p>
-
-        <div class="loader-line"></div>
-
-    </div>
-
+  <div class="loader-content">
+    <h2>Dreamscape</h2>
+    <p>PREPARING YOUR JOURNEY</p>
+    <div class="loader-line"></div>
+  </div>
 </div>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
+<!-- HEADER -->
 <header class="header" id="header">
-
-    <a
-        href="index.html"
-        class="logo"
-    >
-
-        <img
-            src="https://cdn.discordapp.com/attachments/1337395108898934804/1543889504706764810/Messenger_creation_20618EA8-C788-4AE3-BBDA-E658A6DB130E.png?ex=6a9682a6&is=6a953126&hm=fa0c30aebdfba00e5434486425571d43851eca0e3361cc46984c55ac9b17f097&"
-            alt="Dreamscape Travel & Tour Co. Logo"
-            class="hero-logo"
-        >
-
-        <span>
-            Dreamscape Travel & Tour Co.
-        </span>
-
+    <a href="index.html" class="logo" aria-label="Dreamscape Travel & Tour Co. home">
+        <img src="https://cdn.discordapp.com/attachments/1337395108898934804/1564392990963794021/LOGO.png?ex=6ae11a02&is=6adfc882&hm=e3b52b739806c15a0a370d6fa286f2f559e3d82a29bf82e3fd44f4f3beb0415f&" alt="Dreamscape Travel & Tour Co. Logo" class="hero-logo">
+        <span>Dreamscape Travel &amp; Tour Co.</span>
     </a>
 
-
-    <nav class="navigation">
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a
-            href="destination.html"
-            class="active"
-        >
-            Destinations
-        </a>
-
-        <a href="aboutus.html">
-            About Us
-        </a>
-
+    <nav class="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="destination.html" class="active">Destinations</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="signin.html">Account</a>
     </nav>
 
-
-    <a
-        href="signin.html"
-        class="header-button"
-    >
-        ACCOUNT
-    </a>
-
-
-    <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open menu"
-    >
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
+    <button class="menu-toggle" id="menuToggle" type="button"
+        aria-label="Open menu" aria-expanded="false" aria-controls="mobileNavigation">
+        <span></span><span></span><span></span>
     </button>
-
 </header>
 
-
-<!-- =========================
-     MOBILE NAVIGATION
-========================= -->
-
-<nav
-    class="mobile-navigation"
-    id="mobileNavigation"
->
-
-    <a href="index.html">
-        Home
-    </a>
-
-    <a
-        href="destination.html"
-        class="active"
-    >
-        Destinations
-    </a>
-
-    <a href="aboutus.html">
-        About Us
-    </a>
-
-    <a href="signin.html">
-        Account
-    </a>
-
+<!-- MOBILE NAVIGATION -->
+<nav class="mobile-navigation" id="mobileNavigation">
+  <a href="index.html">Home</a>
+  <a href="destination.html" class="active">Destinations</a>
+  <a href="aboutus.html">About Us</a>
+  <a href="signin.html">Account</a>
 </nav>
 
-
-<!-- =========================
-     PAGE INTRO
-========================= -->
-
-<section class="page-intro">
-
-    <p class="eyebrow">
-        EXPLORE PHILIPPINES
-    </p>
-
-    <h1>
-        Discover Your Next Journey
-    </h1>
-
-    <p>
-        From hidden islands to iconic beaches,
-        find a voyage that feels made for you.
-    </p>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Your next adventure starts here</div>
+  <h1>Discover Your <em>Dream Destination</em></h1>
+  <p>
+    Explore the beauty of the Philippines and choose a journey that
+    matches your travel style, interests, and budget.
+  </p>
 </section>
 
+<!-- DESTINATION CONTENT 1IMAGEDESTINATION-->
+<main id="mainContent">
 
-<!-- =========================
-     DESTINATIONS
-========================= -->
+  <div class="section-heading">
+    <h2>Explore Our Destinations</h2>
+    <p>Search for a destination or filter by region and travel experience.</p>
+  </div>
 
-<section class="section">
-
-
-    <!-- =========================
-         FILTER WRAPPER
-    ========================= -->
-
-    <div class="filter-wrapper">
-
-        <div class="filter-bar">
-
-            <input
-                type="text"
-                id="searchInput"
-                class="search-box"
-                placeholder="Search destinations..."
-                autocomplete="off"
-            >
-
-
-            <select id="region">
-
-                <option value="all">
-                    All Regions
-                </option>
-
-                <option value="luzon">
-                    Luzon
-                </option>
-
-                <option value="visayas">
-                    Visayas
-                </option>
-
-                <option value="mindanao">
-                    Mindanao
-                </option>
-
-            </select>
-
-
-            <select id="type">
-
-                <option value="all">
-                    All Types
-                </option>
-
-                <option value="beach">
-                    Beach
-                </option>
-
-                <option value="island">
-                    Island
-                </option>
-
-            </select>
-
-
-            <button
-                class="filter-button"
-                onclick="filterDestinations()"
-            >
-                Apply Filters
-            </button>
-
-
-            <button
-                class="reset-button"
-                onclick="resetFilters()"
-            >
-                Reset
-            </button>
-
-        </div>
-
-
-        <div
-            class="result-count"
-            id="resultCount"
-        >
-            Showing 6 destinations
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         DESTINATION GRID
-    ========================= -->
-
-    <div
-        class="destination-grid"
-        id="destinationGrid"
+  <section class="filters">
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Search destinations..."
+      aria-label="Search destinations"
     >
 
-
-        <!-- EL NIDO -->
-
-        <article
-            class="destination-card"
-            data-region="luzon"
-            data-type="island"
-            data-name="El Nido Palawan"
-        >
-
-            <img
-                src="https://cdn.sanity.io/images/4f3ey4m9/hospitality-production/f77dd1e8dc34e5a404920937a707a9131c5a341d-5032x3640.jpg?w=2560&fit=max&auto=format&q=80"
-                alt="El Nido Palawan"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    LUZON • ISLAND
-                </span>
-
-                <span class="rating">
-                    ★ 4.7
-                </span>
-
-                <h2>
-                    El Nido, Palawan
-                </h2>
-
-                <div class="accommodation">
-                    El Nido Resorts – Miniloc Island
-                </div>
-
-                <div class="location">
-                    Palawan, Philippines
-                </div>
-
-                <p>
-                    Explore turquoise lagoons, limestone cliffs,
-                    hidden beaches, and beautiful island scenery.
-                </p>
-
-                <span class="price">
-                    From ₱15,000
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('no.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- LA UNION -->
-
-        <article
-            class="destination-card"
-            data-region="luzon"
-            data-type="beach"
-            data-name="La Union"
-        >
-
-            <img
-                src="https://i.pinimg.com/1200x/e7/75/37/e77537782958d1a29102e7a6d1cea831.jpg"
-                alt="La Union Beach"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    LUZON • BEACH
-                </span>
-
-                <span class="rating">
-                    ★ 4.5
-                </span>
-
-                <h2>
-                    La Union
-                </h2>
-
-                <div class="accommodation">
-                    Awesome Hotel
-                </div>
-
-                <div class="location">
-                    San Juan, La Union
-                </div>
-
-                <p>
-                    Enjoy surfing, relaxing beach days,
-                    beautiful sunsets, and a laid-back coastal atmosphere.
-                </p>
-
-                <span class="price">
-                    From ₱4,500
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('no.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- BORACAY -->
-
-        <article
-            class="destination-card"
-            data-region="visayas"
-            data-type="beach"
-            data-name="Boracay"
-        >
-
-            <img
-                src="https://res.klook.com/klook-hotel/image/upload/w_750,c_fill,q_85/travelapi/23000000/22630000/22627200/22627112/c5a7e9a1_z.jpg"
-                alt="Boracay Beach"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    VISAYAS • BEACH
-                </span>
-
-                <span class="rating">
-                    ★ 4.7
-                </span>
-
-                <h2>
-                    Boracay
-                </h2>
-
-                <div class="accommodation">
-                    Henann Crystal Sands Resort
-                </div>
-
-                <div class="location">
-                    Boracay Island, Aklan
-                </div>
-
-                <p>
-                    Famous white sand beaches, clear waters,
-                    exciting water activities, and unforgettable sunsets.
-                </p>
-
-                <span class="price">
-                    From ₱8,500
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('Example.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- BOHOL -->
-
-        <article
-            class="destination-card"
-            data-region="visayas"
-            data-type="island"
-            data-name="Bohol"
-        >
-
-            <img
-                src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/ba/cb/eb/caption.jpg?w=900&h=500&s=1"
-                alt="Bohol Island"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    VISAYAS • ISLAND
-                </span>
-
-                <span class="rating">
-                    ★ 4.5
-                </span>
-
-                <h2>
-                    Bohol
-                </h2>
-
-                <div class="accommodation">
-                    Bohol Beach Club
-                </div>
-
-                <div class="location">
-                    Panglao, Bohol
-                </div>
-
-                <p>
-                    Discover beautiful beaches, island adventures,
-                    nature attractions, and peaceful coastal escapes.
-                </p>
-
-                <span class="price">
-                    From ₱7,500
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('Example2.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- SIARGAO -->
-
-        <article
-            class="destination-card"
-            data-region="mindanao"
-            data-type="island"
-            data-name="Siargao"
-        >
-
-            <img
-                src="https://media.licdn.com/dms/image/v2/C511BAQFMrkCfRBkUEw/company-background_10000/company-background_10000/0/1584244268572/siargao_bleu_resort_spa_cover?e=2147483647&v=beta&t=sRBk6SaYMua3K3tXk11PvnHLY0jjkICDAHQ6QZrasng"
-                alt="Siargao Island"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    MINDANAO • ISLAND
-                </span>
-
-                <span class="rating">
-                    ★ 4.6
-                </span>
-
-                <h2>
-                    Siargao
-                </h2>
-
-                <div class="accommodation">
-                    Siargao Bleu Resort and Spa
-                </div>
-
-                <div class="location">
-                    General Luna, Siargao
-                </div>
-
-                <p>
-                    Experience famous surf spots, island hopping,
-                    tropical scenery, and the relaxed island lifestyle.
-                </p>
-
-                <span class="price">
-                    From ₱9,500
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('no.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- CAMIGUIN -->
-
-        <article
-            class="destination-card"
-            data-region="mindanao"
-            data-type="island"
-            data-name="Camiguin"
-        >
-
-            <img
-                src="https://images.trvl-media.com/lodging/12000000/11610000/11607200/11607107/a51d0cd1.jpg?impolicy=fcrop&w=1200&h=800"
-                alt="Camiguin Island"
-            >
-
-            <div class="card-content">
-
-                <span class="tag">
-                    MINDANAO • ISLAND
-                </span>
-
-                <span class="rating">
-                    ★ 4.6
-                </span>
-
-                <h2>
-                    Camiguin
-                </h2>
-
-                <div class="accommodation">
-                    Camiguin Volcan Beach Eco Retreat
-                </div>
-
-                <div class="location">
-                    Camiguin, Philippines
-                </div>
-
-                <p>
-                    Discover peaceful beaches, waterfalls,
-                    natural springs, and beautiful volcanic landscapes.
-                </p>
-
-                <span class="price">
-                    From ₱5,500
-                </span>
-
-                <button
-                    class="details-button"
-                    onclick="openJourney('no.html')"
-                >
-                    View Journey →
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
-
-
-    <!-- =========================
-         NO RESULTS
-    ========================= -->
-
-    <div
-        id="noResults"
-        class="no-results"
-        style="display:none;"
-    >
-
-        <h3>
-            No destinations found
-        </h3>
-
-        <p>
-            Try changing your search or filters.
-        </p>
-
-    </div>
-
-
-    <!-- =========================
-         ACCOMMODATION NOTE
-    ========================= -->
-
-    <div class="accommodation-note">
-
-        <strong>Note:</strong>
-
-        Accommodation shown is an example.
-        Clients may choose their preferred accommodation
-        and water activities when creating their travel package.
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     JOURNEY HTML POPUP
-========================= -->
-
-<div
-    class="journey-popup"
-    id="journeyPopup"
->
-
-    <div class="journey-window">
-
-        <button
-            class="journey-close"
-            onclick="closeJourney()"
-            aria-label="Close journey"
-        >
-            ×
-        </button>
-
-        <iframe
-            id="journeyFrame"
-            src=""
-            title="Journey Details"
-        ></iframe>
-
-    </div>
-
+    <select id="regionFilter" aria-label="Filter by region">
+      <option value="">All Regions</option>
+      <option value="Luzon">Luzon</option>
+      <option value="Visayas">Visayas</option>
+      <option value="Mindanao">Mindanao</option>
+    </select>
+
+    <select id="typeFilter" aria-label="Filter by experience">
+      <option value="">All Experiences</option>
+      <option value="Beach">Beach</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Nature">Nature</option>
+      <option value="Culture">Culture</option>
+    </select>
+
+    <button class="reset-btn" id="resetFilters" type="button">
+      Reset Filters
+    </button>
+  </section>
+
+  <div class="results-line">
+    <span id="resultCount">Showing 6 destinations</span>
+    <span>Philippines</span>
+  </div>
+
+  <section class="destination-grid" id="destinationGrid">
+
+    <article class="destination-card"
+      data-name="El Nido"
+      data-location="Palawan"
+      data-region="Luzon"
+      data-type="Beach Nature Adventure">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1000&q=85" alt="Tropical beach in El Nido" loading="lazy">
+        <span class="card-tag">Beach &amp; Nature</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">Palawan, Philippines</div>
+        <h3>El Nido</h3>
+        <p>Explore clear waters, limestone scenery, golden beaches, and the beautiful coastline of Palawan.</p>
+        <div class="card-bottom">
+          <span class="card-region">Luzon</span>
+          <button class="view-btn" onclick="openJourney('el-nido')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="destination-card"
+      data-name="La Union"
+      data-location="San Juan surfing"
+      data-region="Luzon"
+      data-type="Beach Adventure Culture">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1000&q=85" alt="Surfing along the coast" loading="lazy">
+        <span class="card-tag">Surf &amp; Adventure</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">La Union, Philippines</div>
+        <h3>La Union</h3>
+        <p>Enjoy surfing, coastal sunsets, local food, and a relaxed beach-town atmosphere.</p>
+        <div class="card-bottom">
+          <span class="card-region">Luzon</span>
+          <button class="view-btn" onclick="openJourney('la-union')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="destination-card"
+      data-name="Boracay"
+      data-location="Aklan White Beach"
+      data-region="Visayas"
+      data-type="Beach Adventure">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1000&q=85" alt="White sand tropical beach" loading="lazy">
+        <span class="card-tag">Beach Escape</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">Aklan, Philippines</div>
+        <h3>Boracay</h3>
+        <p>Experience white sand, island activities, stunning sunsets, and exciting seaside adventures.</p>
+        <div class="card-bottom">
+          <span class="card-region">Visayas</span>
+          <button class="view-btn" onclick="openJourney('boracay')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="destination-card"
+      data-name="Bohol"
+      data-location="Panglao Chocolate Hills"
+      data-region="Visayas"
+      data-type="Nature Culture Adventure">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85" alt="Green natural landscape" loading="lazy">
+        <span class="card-tag">Nature &amp; Culture</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">Bohol, Philippines</div>
+        <h3>Bohol</h3>
+        <p>Discover countryside landscapes, local heritage, nature attractions, and the famous Chocolate Hills.</p>
+        <div class="card-bottom">
+          <span class="card-region">Visayas</span>
+          <button class="view-btn" onclick="openJourney('bohol')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="destination-card"
+      data-name="Siargao"
+      data-location="Surigao del Norte General Luna"
+      data-region="Mindanao"
+      data-type="Beach Adventure Nature">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=85" alt="Ocean waves on a tropical island" loading="lazy">
+        <span class="card-tag">Surf &amp; Nature</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">Surigao del Norte, Philippines</div>
+        <h3>Siargao</h3>
+        <p>Enjoy surf culture, island scenery, coastal views, and the natural beauty of this tropical island.</p>
+        <div class="card-bottom">
+          <span class="card-region">Mindanao</span>
+          <button class="view-btn" onclick="openJourney('siargao')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="destination-card"
+      data-name="Camiguin"
+      data-location="Mambajao waterfalls volcano"
+      data-region="Mindanao"
+      data-type="Nature Adventure Culture">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="Mountain landscape" loading="lazy">
+        <span class="card-tag">Nature &amp; Adventure</span>
+      </div>
+      <div class="card-body">
+        <div class="card-location">Camiguin, Philippines</div>
+        <h3>Camiguin</h3>
+        <p>Explore volcanic scenery, waterfalls, hot springs, and peaceful island landscapes.</p>
+        <div class="card-bottom">
+          <span class="card-region">Mindanao</span>
+          <button class="view-btn" onclick="openJourney('camiguin')">View Journey →</button>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="no-results" id="noResults">
+    <h3>No destinations found</h3>
+    <p>Try another search or change your filters.</p>
+  </div>
+</main>
+
+<!-- JOURNEY DETAILS POPUP -->
+<div class="journey-popup" id="journeyPopup" role="dialog" aria-modal="true" aria-label="Destination journey details">
+  <div class="journey-window">
+    <button class="journey-close" onclick="closeJourney()" aria-label="Close journey">×</button>
+    <div class="journey-scroll" id="journeyContent"></div>
+  </div>
 </div>
 
+<!-- CONFIRMATION POPUP -->
+<div class="popup-overlay" id="confirmationPopup" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle">
+  <div class="popup">
+    <div class="popup-icon">✓</div>
+    <h2 id="confirmationTitle">Thank You!</h2>
+    <p id="confirmationMessage">Your travel request is ready.</p>
+    <button class="popup-close" onclick="closeConfirmation()">BACK TO DESTINATIONS</button>
+  </div>
+</div>
 
-<!-- =========================
-     FOOTER
-========================= -->
-
+<!-- FOOTER -->
 <footer class="footer">
+  <div>
+    <a href="index.html" class="footer-logo">Dreamscape Travel &amp; Tour Co.</a>
+    <p class="footer-description">Thoughtfully crafted journeys for curious travelers.</p>
+  </div>
 
-    <div>
+  <div class="footer-links">
+    <h4>Journey</h4>
+    <a href="index.html">Budget Travel</a>
+    <a href="index.html">Mid-Luxury</a>
+    <a href="index.html">Full Luxury</a>
+    <a href="index.html">Personalized</a>
+  </div>
 
-        <a
-            href="index.html"
-            class="footer-logo"
-        >
-            Dreamscape Travel & Tour Co.
-        </a>
+  <div class="footer-links">
+    <h4>DESTINATIONS</h4>
+    <a href="destination.html">Luzon</a>
+    <a href="destination.html">Visayas</a>
+    <a href="destination.html">Mindanao</a>
+  </div>
 
-        <p class="footer-description">
-            Thoughtfully crafted journeys for curious travelers.
-        </p>
+  <div class="footer-links">
+    <h4>Contact</h4>
+    <a href="tel:+639286595788"># : +639286595788</a>
+    <a href="mailto:Dreamscape@gmail.com">@ : Dreamscape@gmail.com</a>
+  </div>
 
-    </div>
-
-
-    <div class="footer-links">
-
-        <h4>
-            Journey
-        </h4>
-
-        <a href="index.html">
-            Budget Travel
-        </a>
-
-        <a href="index.html">
-            Mid-Luxury
-        </a>
-
-        <a href="index.html">
-            Full Luxury
-        </a>
-
-        <a href="index.html">
-            Personalized
-        </a>
-
-    </div>
-
-
-    <div class="footer-links">
-
-        <h4>
-            DESTINATIONS
-        </h4>
-
-        <a href="destination.html">
-            Luzon
-        </a>
-
-        <a href="destination.html">
-            Visayas
-        </a>
-
-        <a href="destination.html">
-            Mindanao
-        </a>
-
-    </div>
-
-
-    <div class="footer-links">
-
-        <h4>
-            Contact
-        </h4>
-
-        <a href="tel:+639286595788">
-            # : +639286595788
-        </a>
-
-        <a href="mailto:Dreamscape@gmail.com">
-            @ : Dreamscape@gmail.com
-        </a>
-
-    </div>
-
-
-    <small class="copyright">
-
-        © 2026 Dreamscape Travel & Tour Co.
-        All rights reserved.
-
-    </small>
-
+  <small class="copyright">
+    © 2026 Dreamscape Travel &amp; Tour Co. All rights reserved.
+  </small>
 </footer>
 
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
-
-
-/* =========================
-   LOADING SCREEN
-========================= */
-
-window.addEventListener("load", function() {
-
-    const loader =
-        document.getElementById("loader");
-
-    setTimeout(function() {
-
-        loader.classList.add("hidden");
-
-    }, 700);
-
+/* LOADER */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    setTimeout(() => loader.classList.add("hidden"), 700);
+  }
 });
 
+/* HEADER SCROLL */
+const header = document.getElementById("header");
 
-/* =========================
-   HEADER SCROLL EFFECT
-========================= */
-
-const header =
-    document.getElementById("header");
-
-window.addEventListener("scroll", function() {
-
-    if (window.scrollY > 50) {
-
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
-    }
-
+window.addEventListener("scroll", () => {
+  if (header) {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  }
 });
 
+/* MOBILE MENU */
+const menuToggle = document.getElementById("menuToggle");
+const mobileNavigation = document.getElementById("mobileNavigation");
 
-/* =========================
-   MOBILE MENU
-========================= */
+if (menuToggle && mobileNavigation) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileNavigation.classList.toggle("open");
 
-const menuToggle =
-    document.getElementById("menuToggle");
+    menuToggle.classList.toggle("open", isOpen);
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu"
+    );
+  });
 
-const mobileNavigation =
-    document.getElementById("mobileNavigation");
-
-
-menuToggle.addEventListener("click", function() {
-
-    menuToggle.classList.toggle("open");
-
-    mobileNavigation.classList.toggle("open");
-
-});
-
-
-/* =========================
-   CLOSE MOBILE MENU
-   WHEN LINK IS CLICKED
-========================= */
-
-const mobileLinks =
-    mobileNavigation.querySelectorAll("a");
-
-mobileLinks.forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        menuToggle.classList.remove("open");
-
-        mobileNavigation.classList.remove("open");
-
+  mobileNavigation.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileNavigation.classList.remove("open");
+      menuToggle.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
     });
+  });
+}
 
+/* DESTINATION DATA */ /*3IMAGEDESTINATION*/
+const destinations = {
+  "el-nido": {
+    name: "El Nido, Palawan",
+    region: "LUZON",
+    tag: "BEACH • NATURE • ISLAND ESCAPE",
+    location: "Palawan, Philippines",
+    hotel: "El Nido Garden Resort",
+    address: "Cañiguelas Street, Barangay Maligaya, El Nido, Palawan",
+    images: [
+      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Spend three days exploring El Nido's beaches, coastal scenery, and laid-back town atmosphere. This 3D2N journey includes accommodation at El Nido Garden Resort and visits to El Nido Town Beach, Las Cabañas Beach, and Nacpan Beach.",
+    prices: {
+      budget: { solo: 18000, per: 15000, total: 30000 },
+      mid: { solo: 28000, per: 21000, total: 42000 },
+      luxury: { solo: 49500, per: 41000, total: 82000 }
+    },
+    days: [
+      {
+        title: "El Nido Town Beach",
+        activities: [
+          "Enjoy the soft golden sand and clear blue waters in the heart of El Nido.",
+          "Walk along the shoreline and watch traditional outrigger boats pass by.",
+          "Swim in the calm, shallow waters when conditions are safe.",
+          "Capture sunset views over the bay.",
+          "Explore nearby shops and small eateries for seafood and tropical fruits."
+        ]
+      },
+      {
+        title: "Las Cabañas Beach",
+        activities: [
+          "Visit this cove known for turquoise waters and sandy shores.",
+          "Walk across the small bridge connecting the mainland to Depeldet Island.",
+          "Swim, snorkel, or relax under the palm trees.",
+          "Consider the beachfront zipline if it is operating and you meet its safety requirements.",
+          "Enjoy the sunset as the sky changes color."
+        ]
+      },
+      {
+        title: "Nacpan Beach",
+        activities: [
+          "Explore the long stretch of white sand at Nacpan Beach.",
+          "Enjoy views of the twin coves of Nacpan and Calitang.",
+          "Swim when sea conditions and local advisories allow.",
+          "Visit a designated viewpoint for coastline photos.",
+          "Try coconut water and local snacks from beachside vendors."
+        ]
+      }
+    ],
+    routes: [
+      {
+        title: "Stop 1: Las Cabañas Beach",
+        time: "Approximately 14 minutes from the resort",
+        route: "From El Nido Garden Resort, head south past the El Nido Airport turnoff. Continue toward Depeldet Island, cross the narrow bridge, and follow the road to the beach.",
+        pin: "Depeldet Island, Barangay Masagana, El Nido, Palawan."
+      },
+      {
+        title: "Stop 2: Nacpan Beach",
+        time: "Approximately 40 minutes from the resort",
+        route: "Head toward El Nido Town Proper, go north at the roundabout, and follow the main highway along the coastal road. Look for the Welcome to Nacpan Beach sign and turn left toward the beach parking area.",
+        pin: "Barangay Nacpan, El Nido, Palawan, near the twin-cove area with Calitang Beach."
+      }
+    ]
+  },
+
+  "boracay": {
+    name: "Boracay Island, Aklan",
+    region: "VISAYAS",
+    tag: "BEACH • ISLAND ADVENTURE",
+    location: "Aklan, Philippines",
+    hotel: "Discovery Shores Boracay",
+    address: "Station 1, White Beach, Malay, Aklan",
+    images: [
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Enjoy a three-day Boracay getaway based at Discovery Shores Boracay, Station 1. Explore the famous White Beach, the quieter Puka Shell Beach, and the coastal eco-adventure destination Ariel's Point.",
+    prices: {
+      budget: { solo: 16000, per: 13000, total: 26000 },
+      mid: { solo: 30000, per: 23000, total: 46000 },
+      luxury: { solo: 58000, per: 36000, total: 72000 }
+    },
+    days: [
+      {
+        title: "White Beach, Boracay",
+        activities: [
+          "Step onto Boracay's famous white sand.",
+          "Swim in designated areas when sea conditions are safe.",
+          "Stroll along the beachfront from Station 1 toward Station 3.",
+          "Relax by the beach or explore available beachfront services.",
+          "Watch the sunset over the sea."
+        ]
+      },
+      {
+        title: "Puka Shell Beach",
+        activities: [
+          "Visit the quieter northern shore of the island.",
+          "Enjoy the natural scenery and beach atmosphere.",
+          "Swim only in areas considered safe by local advisories.",
+          "Try local food and fresh fruit from available vendors.",
+          "Take photos of the shoreline and coconut trees."
+        ]
+      },
+      {
+        title: "Ariel's Point",
+        activities: [
+          "Take a boat trip to this cliffside eco-adventure destination.",
+          "Try available cliff-diving platforms only if permitted, supervised, and suitable for you.",
+          "Enjoy kayaking or paddleboarding when available.",
+          "Snorkel in designated areas when sea conditions permit.",
+          "Enjoy the ocean scenery and any meal included in the confirmed tour."
+        ]
+      }
+    ],
+    routes: [
+      {
+        title: "Stop 1: Puka Shell Beach",
+        time: "Approximately 11 minutes from the resort",
+        route: "Take the main road north, pass Station 0 and the golf course, follow the winding road over the hill, and turn at the signed beach entrance.",
+        pin: "Barangay Yapak, northern coast of Boracay Island, Aklan."
+      },
+      {
+        title: "Stop 2: Ariel's Point",
+        time: "Travel time depends on the boat operator",
+        route: "Go to the designated boat pickup area on White Beach and board the arranged boat to Ariel's Point. Actual travel time depends on the operator, departure point, and sea conditions.",
+        pin: "Southwest of Boracay Island, off Barangay Manoc-Manoc. Confirm boat arrangements and the exact departure location with the tour operator."
+      }
+    ]
+  },
+
+  "siargao": {
+    name: "Siargao Island, Surigao del Norte",
+    region: "MINDANAO",
+    tag: "SURF • BEACH • NATURE",
+    location: "Surigao del Norte, Philippines",
+    hotel: "Siargao Island Villas",
+    address: "Tourism Road, General Luna, Siargao Island",
+    images: [
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Spend three days enjoying Siargao's laid-back island atmosphere. Stay at Siargao Island Villas in General Luna and visit General Luna Beach, the Cloud 9 Boardwalk, and the Sugba Lagoon area.",
+    prices: {
+      budget: { solo: 20000, per: 17000, total: 34000 },
+      mid: { solo: 27000, per: 22000, total: 44000 },
+      luxury: { solo: 35000, per: 27000, total: 54000 }
+    },
+    days: [
+      {
+        title: "General Luna Beach & Island Vibe",
+        activities: [
+          "Settle in and relax along General Luna's shoreline.",
+          "Walk along the beach and enjoy the laid-back island atmosphere.",
+          "Enjoy the waves and island scenery.",
+          "Visit cafes and boutique shops in General Luna town center.",
+          "Try tropical fruit shakes and local food."
+        ]
+      },
+      {
+        title: "Cloud 9 Boardwalk",
+        activities: [
+          "Walk along the wooden boardwalk extending over the water.",
+          "Watch surfers at Siargao's well-known surf spot from designated viewing areas.",
+          "Take photos near the Cloud 9 landmark when access is available.",
+          "Relax at the viewing deck and enjoy the ocean breeze.",
+          "Visit nearby cafes and enjoy the coastal scenery."
+        ]
+      },
+      {
+        title: "Sugba Lagoon",
+        activities: [
+          "Travel by boat through a mangrove area on the way to the lagoon.",
+          "Enjoy the emerald-green water and surrounding limestone scenery.",
+          "Try kayaking or paddleboarding when available.",
+          "Use designated swimming areas and follow local rules.",
+          "Swim or snorkel where conditions allow and follow the boat operator's safety instructions."
+        ]
+      }
+    ],
+    routes: [
+      {
+        title: "Stop 1: Cloud 9 Boardwalk",
+        time: "Approximately 5 minutes from the resort",
+        route: "Head south along Tourism Road toward the Cloud 9 parking area. From there, walk along the wooden boardwalk to the viewing deck.",
+        pin: "Barangay 1, General Luna, near the southern end of Tourism Road."
+      },
+      {
+        title: "Stop 2: Sugba Lagoon Boat Departure",
+        time: "Travel time depends on road and boat conditions",
+        route: "Take the Circumferential Road north toward Del Carmen. Follow signs to the municipal port and use the designated Sugba Lagoon boat departure area. Confirm boat schedules in advance.",
+        pin: "Del Carmen Municipal Port, Siargao."
+      }
+    ]
+  },
+
+  "la-union": {
+    name: "La Union",
+    region: "LUZON",
+    tag: "SURF • BEACH • LOCAL CULTURE",
+    location: "La Union, Philippines",
+    hotel: "Accommodation to be confirmed",
+    address: "La Union, Philippines",
+    images: [
+      "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Explore La Union's surfing culture, coastal scenery, local food, and relaxed beach-town atmosphere. The final hotel, attractions, route, and package price must be confirmed before booking.",
+    prices: null,
+    days: null,
+    routes: null
+  },
+
+  "bohol": {
+    name: "Bohol",
+    region: "VISAYAS",
+    tag: "NATURE • COUNTRYSIDE • CULTURE",
+    location: "Bohol, Philippines",
+    hotel: "Accommodation to be confirmed",
+    address: "Bohol, Philippines",
+    images: [
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Discover Bohol's countryside, natural attractions, local heritage, and famous Chocolate Hills. The final hotel, attraction schedule, route, and package price must be confirmed before booking.",
+    prices: null,
+    days: null,
+    routes: null
+  },
+
+  "camiguin": {
+    name: "Camiguin Island",
+    region: "MINDANAO",
+    tag: "NATURE • WATERFALLS • ADVENTURE",
+    location: "Camiguin, Philippines",
+    hotel: "Accommodation to be confirmed",
+    address: "Camiguin, Philippines",
+    images: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=85"
+    ],
+    overview: "Experience Camiguin's volcanic scenery, waterfalls, hot springs, and peaceful island landscapes. The final hotel, attractions, route, and package price must be confirmed before booking.",
+    prices: null,
+    days: null,
+    routes: null
+  }
+};
+
+const sharedInclusions = [
+  ["Accommodation", "Two nights at the selected hotel or resort"],
+  ["Meals", "Subject to the selected package"],
+  ["Transportation", "According to package arrangement"],
+  ["Activities", "Scheduled activities and included attraction entrance fees"],
+  ["Environmental fees", "Applicable fees for included attractions"],
+  ["Tour assistance", "Professional guide and tour coordination"],
+  ["Travel insurance", "Basic coverage subject to policy terms"],
+  ["Reservations", "Booking coordination and operational arrangements"]
+];
+
+const sharedExclusions = [
+  "Transport from home to the official pickup point and back.",
+  "Extra meals, snacks, or drinks not listed in the inclusions.",
+  "Souvenirs, shopping, toiletries, and personal purchases.",
+  "Optional activities or fees not listed in the itinerary.",
+  "Room upgrades, extra nights, extra guests, and special requests.",
+  "Costs arising from missed departures, late arrivals, or personal changes, subject to terms.",
+  "Tips and gratuities.",
+  "Anything not expressly listed as included."
+];
+
+let currentDestination = null;
+let selectedPackage = "budget";
+
+function peso(amount) {
+  return "₱" + Number(amount).toLocaleString("en-PH");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function makeList(items) {
+  return "<ul>" + items.map(item =>
+    "<li>" + escapeHTML(item) + "</li>"
+  ).join("") + "</ul>";
+}
+
+function packagePrice(destination, key) {
+  if (!destination.prices) return "Price to be confirmed";
+
+  const price = destination.prices[key];
+
+  return peso(price.solo) + " solo / " +
+    peso(price.per) + " per person for 2";
+}
+
+function renderDayPlans(destination) {
+  if (!destination.days) {
+    return `
+      <div class="day-panel">
+        <h3>Itinerary to be confirmed</h3>
+        <p>
+          The specific three-day schedule has not been supplied yet.
+          Stops, timings, transport, and fees must be confirmed before
+          the final itinerary is published.
+        </p>
+      </div>`;
+  }
+
+  return destination.days.map((day, index) => `
+    <div class="day-panel">
+      <h3>Day ${index + 1} — ${escapeHTML(day.title)}</h3>
+      ${makeList(day.activities)}
+    </div>
+  `).join("");
+}
+
+function renderRoutes(destination) {
+  if (!destination.routes) {
+    return `
+      <div class="route-card">
+        <h4>Route details pending</h4>
+        <p>
+          Exact stops, travel times, directions, and departure points
+          are still to be confirmed for this destination.
+        </p>
+      </div>`;
+  }
+
+  return destination.routes.map(stop => `
+    <div class="route-card">
+      <h4>${escapeHTML(stop.title)}</h4>
+      <span class="route-time">${escapeHTML(stop.time)}</span>
+      <p><strong>Route:</strong> ${escapeHTML(stop.route)}</p>
+      <p><strong>Pinpoint:</strong> ${escapeHTML(stop.pin)}</p>
+    </div>
+  `).join("");
+}
+
+function renderPriceOptions(destination) {
+  if (!destination.prices) {
+    return `
+      <div class="day-panel">
+        <h3>Estimated Package Price</h3>
+        <p>
+          A destination-specific price is not available yet.
+          The package will be quoted after accommodation,
+          transportation, activities, and supplier rates are confirmed.
+        </p>
+      </div>`;
+  }
+
+  const p = destination.prices;
+
+  return `
+    <div class="day-panel">
+      <h3>Estimated Package Prices</h3>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:left">Pricing Option</th>
+              <th>Budget</th>
+              <th>Mid-Luxury</th>
+              <th>Full Luxury</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Solo traveler (1 pax)</td>
+              <td>${peso(p.budget.solo)}</td>
+              <td>${peso(p.mid.solo)}</td>
+              <td>${peso(p.luxury.solo)}</td>
+            </tr>
+            <tr>
+              <td>Total for 2 pax</td>
+              <td>${peso(p.budget.total)}</td>
+              <td>${peso(p.mid.total)}</td>
+              <td>${peso(p.luxury.total)}</td>
+            </tr>
+            <tr>
+              <td>Per person (2 pax)</td>
+              <td>${peso(p.budget.per)}</td>
+              <td>${peso(p.mid.per)}</td>
+              <td>${peso(p.luxury.per)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:9px">
+        Budget: affordable hotel or guesthouse.
+        Mid-Luxury: comfortable mid-range hotel or resort.
+        Full Luxury: ${escapeHTML(destination.hotel)}.
+      </p>
+    </div>
+
+    <div class="day-panel">
+      <h3>Group Rates &amp; Promotions</h3>
+      <ul>
+        <li>Groups of 2–5 guests: regular package rate.</li>
+        <li>Groups of 6–9 guests: 5% off per person.</li>
+        <li>Groups of 10 or more: 10% off per person.</li>
+        <li>Early Bird: 5% for bookings at least 30 days in advance.</li>
+        <li>Barkada Promo: 5% for groups of 6–9.</li>
+        <li>Large Group Promo: 10% for groups of 10 or more.</li>
+        <li>Holiday offers may be available.</li>
+      </ul>
+      <p>
+        Only one promotional discount applies per booking unless
+        otherwise stated. Promotions are subject to availability
+        and confirmation.
+      </p>
+    </div>`;
+}
+
+function renderInclusions() {
+  return sharedInclusions.map(item => `
+    <div class="included-item">
+      <div class="check-icon">✓</div>
+      <div>
+        <strong>${escapeHTML(item[0])}</strong>
+        <span>${escapeHTML(item[1])}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function getActivityOptions(destination) {
+  const key = Object.keys(destinations).find(
+    item => destinations[item] === destination
+  );
+
+  const options = {
+    "el-nido": [
+      "El Nido Town Beach",
+      "Las Cabañas Beach",
+      "Nacpan Beach",
+      "Snorkeling",
+      "Beach zipline, subject to availability"
+    ],
+    "boracay": [
+      "White Beach",
+      "Puka Shell Beach",
+      "Ariel's Point boat trip",
+      "Snorkeling",
+      "Kayaking or paddleboarding, subject to availability"
+    ],
+    "siargao": [
+      "General Luna Beach",
+      "Cloud 9 Boardwalk",
+      "Sugba Lagoon boat trip",
+      "Kayaking or paddleboarding, subject to availability"
+    ],
+    "la-union": [
+      "Surfing lesson",
+      "Beach visit",
+      "Local food experience",
+      "Town sightseeing"
+    ],
+    "bohol": [
+      "Chocolate Hills",
+      "Countryside tour",
+      "Nature attractions",
+      "Local heritage visit"
+    ],
+    "camiguin": [
+      "Waterfall visit",
+      "Hot spring visit",
+      "Volcanic scenery",
+      "Island sightseeing"
+    ]
+  };
+
+  return options[key] || [];
+}
+
+function renderJourney(destination) {
+  const heroImages = destination.images.map((url, index) => `
+    <div ${index === 0 ? 'class="trip-main-image"' : ""}>
+      <img
+        src="${escapeHTML(url)}"
+        alt="${escapeHTML(destination.name)} scenery ${index + 1}"
+        ${index > 0 ? 'loading="lazy"' : ""}
+      >
+    </div>
+  `);
+
+  const languageOptions = [
+    "English", "Filipino", "Spanish", "Japanese", "Korean", "Mandarin"
+  ];
+
+  return `
+    <div class="trip-detail">
+
+      <section class="trip-hero">
+        ${heroImages[0]}
+        <div class="trip-side-images">
+          ${heroImages[1]}
+          ${heroImages[2]}
+        </div>
+      </section>
+
+      <section class="trip-title">
+        <span class="trip-tag">
+          ${escapeHTML(destination.region)} • ${escapeHTML(destination.tag)}
+        </span>
+        <h1>${escapeHTML(destination.name)}</h1>
+        <div class="trip-meta">
+          <span>${escapeHTML(destination.location)}</span>
+          <span>3 Days • 2 Nights</span>
+          <span>Dreamscape Travel &amp; Tour Co.</span>
+        </div>
+      </section>
+
+      <div class="trip-layout">
+
+        <div>
+          <section class="trip-overview">
+            <h2>Trip Overview</h2>
+            <p>${escapeHTML(destination.overview)}</p>
+            <p>
+              <strong>Where you'll stay:</strong>
+              ${escapeHTML(destination.hotel)}.
+              ${escapeHTML(destination.address)}.
+            </p>
+          </section>
+
+          <section class="itinerary">
+            <h2 class="itinerary-title">Choose Your Journey</h2>
+
+            <div class="journey-option selected"
+                 data-package="budget"
+                 onclick="selectPackage(this)">
+              <div class="day-number">OPTION 01</div>
+              <div class="journey-option-content">
+                <h3>Budget Journey</h3>
+                <p>Practical accommodation and essential experiences.</p>
+              </div>
+              <div class="journey-arrow">→</div>
+            </div>
+
+            <div class="journey-option"
+                 data-package="mid"
+                 onclick="selectPackage(this)">
+              <div class="day-number">OPTION 02</div>
+              <div class="journey-option-content">
+                <h3>Mid-Luxury Journey</h3>
+                <p>More comfort with upgraded accommodation options.</p>
+              </div>
+              <div class="journey-arrow">→</div>
+            </div>
+
+            <div class="journey-option"
+                 data-package="luxury"
+                 onclick="selectPackage(this)">
+              <div class="day-number">OPTION 03</div>
+              <div class="journey-option-content">
+                <h3>Full Luxury Journey</h3>
+                <p>A premium stay based on the listed luxury accommodation.</p>
+              </div>
+              <div class="journey-arrow">→</div>
+            </div>
+
+            <div class="journey-option"
+                 data-package="personalized"
+                 onclick="selectPackage(this)">
+              <div class="day-number">OPTION 04</div>
+              <div class="journey-option-content">
+                <h3>Personalized Journey</h3>
+                <p>Customize your room, meals, activities, transportation, and interpreter request.</p>
+              </div>
+              <div class="journey-arrow">→</div>
+            </div>
+          </section>
+
+          <section class="itinerary-details">
+            <h2 class="itinerary-title">Your 3-Day Itinerary</h2>
+            ${renderDayPlans(destination)}
+          </section>
+
+          <section class="extra-section">
+            <h2 class="route-title">Route Directions</h2>
+            <p style="margin-bottom:12px">
+              Travel times are estimates and may vary depending on traffic,
+              weather, and transportation availability.
+            </p>
+            ${renderRoutes(destination)}
+          </section>
+
+          <section class="included-section">
+            <h2 class="included-title">What Is Included</h2>
+            <div class="included-grid">${renderInclusions()}</div>
+          </section>
+
+          <section class="extra-section">
+            <h2 class="extra-title">Package Exclusions</h2>
+            ${makeList(sharedExclusions)}
+          </section>
+
+          <section class="extra-section">
+            <h2 class="extra-title">Estimated Pricing &amp; Promotions</h2>
+            ${renderPriceOptions(destination)}
+          </section>
+
+          <section class="extra-section">
+            <h2 class="extra-title">Important Reminders</h2>
+            <ul>
+              <li>Prices are estimates for this project and can change with dates, supplier rates, and availability.</li>
+              <li>Solo prices are for one traveler without room sharing.</li>
+              <li>Two-person package totals assume two guests sharing suitable accommodation.</li>
+              <li>Confirm actual supplier quotes, airfare, activity availability, and fees before making bookings.</li>
+              <li>Personalized packages start at an estimated ₱20,000+ and require an agent's quotation.</li>
+            </ul>
+          </section>
+        </div>
+
+        <aside class="package-box">
+
+          <div id="standardPackage">
+            <div class="package-label">SELECTED JOURNEY</div>
+            <h2 id="packageTitle">Budget Journey</h2>
+
+            <div class="estimated-box">
+              <div class="estimated-label">ESTIMATED PACKAGE</div>
+              <div class="estimated-price" id="estimatedPrice">
+                ${packagePrice(destination, "budget")}
+              </div>
+              <div class="estimated-note">
+                Estimated price for the 3D2N package. Final pricing depends
+                on the selected option and confirmed supplier rates.
+              </div>
+            </div>
+
+            <h3>PACKAGE INCLUDES</h3>
+
+            <ul class="package-list" id="packageList">
+              <li>2 nights accomodation</li>
+              <li>Meals</li>
+              <li>Transfers</li>
+              <li>Activities and Fees</li>
+              <li>Tour assistance and basic travel insurance</li>
+            </ul>
+
+            <div class="interpreter-section">
+              <div class="interpreter-title">NEED A TRAVELER INTERPRETER?</div>
+
+              <button class="interpreter-button" onclick="toggleLanguages()">
+                + ADD TRAVELER INTERPRETER
+              </button>
+
+              <div class="language-options" id="languageOptions">
+                ${languageOptions.map(language => `
+                  <label class="language-option">
+                    <input type="radio" name="interpreterLanguage" value="${language}">
+                    ${language}
+                  </label>
+                `).join("")}
+              </div>
+
+              <p class="interpreter-note">
+                An interpreter has an additional charge. The exact fee and
+                availability will be discussed by your travel agent.
+              </p>
+            </div>
+
+            <div class="package-note">
+              <strong>Accommodation:</strong><br>
+              ${escapeHTML(destination.hotel)}
+              <br><br>
+              Room allocation and special requests depend on availability.
+            </div>
+
+            <button class="submit-button" onclick="submitJourney()">
+              CHOOSE THIS JOURNEY
+            </button>
+          </div>
+
+          <div id="personalizedPackage" class="personalized-form">
+            <div class="package-label">BUILD YOUR OWN JOURNEY</div>
+            <h2>Personalized Journey</h2>
+
+            <div class="estimated-box">
+              <div class="estimated-label">ESTIMATED STARTING PRICE</div>
+              <div class="personalized-price">₱20,000+</div>
+              <p class="estimated-note">
+                Final quotation depends on your selected options and
+                supplier availability.
+              </p>
+            </div>
+
+            <p class="form-hint">
+              Choose your preferences below. The travel agent will review
+              the request and confirm the final price.
+            </p>
+
+            <div class="custom-group">
+              <h4>ACCOMMODATION PREFERENCE</h4>
+              ${[
+                "Budget accommodation",
+                "Mid-range hotel or resort",
+                "Full luxury accommodation"
+              ].map(option => `
+                <label class="custom-option">
+                  <input type="radio" name="room" value="${option}">
+                  ${option}
+                </label>
+              `).join("")}
+            </div>
+
+            <div class="custom-group">
+              <h4>MEALS</h4>
+              ${[
+                "Included package meals",
+                "Breakfast + lunch",
+                "Full meals",
+                "No additional meal request"
+              ].map(option => `
+                <label class="custom-option">
+                  <input type="radio" name="meal" value="${option}">
+                  ${option}
+                </label>
+              `).join("")}
+            </div>
+
+            <div class="custom-group">
+              <h4>ACTIVITIES</h4>
+              <p>Select the activities you would like the agent to consider.</p>
+              ${getActivityOptions(destination).map(activity => `
+                <label class="custom-option">
+                  <input type="checkbox" name="activity" value="${escapeHTML(activity)}">
+                  ${escapeHTML(activity)}
+                </label>
+              `).join("")}
+            </div>
+
+            <div class="custom-group">
+              <h4>TRANSPORTATION</h4>
+              ${[
+                "Shared transportation",
+                "Private transportation",
+                "Airport transfer",
+                "Self-arranged transportation"
+              ].map(option => `
+                <label class="custom-option">
+                  <input type="radio" name="transport" value="${option}">
+                  ${option}
+                </label>
+              `).join("")}
+            </div>
+
+            <div class="custom-group">
+              <h4>TRAVELER INTERPRETER</h4>
+              <p>An additional interpreter fee applies.</p>
+              ${languageOptions.map(language => `
+                <label class="custom-option">
+                  <input type="radio" name="personalInterpreter" value="${language}">
+                  ${language}
+                </label>
+              `).join("")}
+            </div>
+
+            <div class="custom-group">
+              <h4>SPECIAL REQUESTS</h4>
+              <textarea
+                class="special-request"
+                id="specialRequest"
+                placeholder="Tell us any other preferences or requests..."
+              ></textarea>
+            </div>
+
+            <button class="submit-button" onclick="submitJourney()">
+              SUBMIT PERSONALIZED REQUEST
+            </button>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  `;
+}
+
+/* OPEN AND CLOSE JOURNEY */
+function openJourney(key) {
+  currentDestination = destinations[key];
+  selectedPackage = "budget";
+
+  if (!currentDestination) return;
+
+  document.getElementById("journeyContent").innerHTML =
+    renderJourney(currentDestination);
+
+  document.getElementById("journeyPopup").classList.add("active");
+  document.body.classList.add("modal-open");
+  document.querySelector(".journey-close").focus();
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const journey = params.get("journey");
+
+    if (journey) {
+        openJourney(journey);
+    }
+});
+  
+function closeJourney() {
+  document.getElementById("journeyPopup").classList.remove("active");
+  document.body.classList.remove("modal-open");
+}
+
+/* PACKAGE SELECTION */
+function selectPackage(element) {
+  document.querySelectorAll(".journey-option").forEach(option => {
+    option.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+  selectedPackage = element.dataset.package;
+
+  const standard = document.getElementById("standardPackage");
+  const personalized = document.getElementById("personalizedPackage");
+
+  if (selectedPackage === "personalized") {
+    standard.style.display = "none";
+    personalized.classList.add("active");
+    return;
+  }
+
+  standard.style.display = "block";
+  personalized.classList.remove("active");
+  document.getElementById("languageOptions").classList.remove("show");
+
+  const names = {
+    budget: "Budget Journey",
+    mid: "Mid-Luxury Journey",
+    luxury: "Full Luxury Journey"
+  };
+
+  document.getElementById("packageTitle").textContent =
+    names[selectedPackage];
+
+  document.getElementById("estimatedPrice").textContent =
+    packagePrice(currentDestination, selectedPackage);
+
+  const lists = {
+    budget: [
+      "Standard accomodation",
+      "2 Full Meals",
+      "Activity Transfer",
+      "1 Activity + Entrance and Environmental Fees",
+      "Tour coordination and basic insurance"
+    ],
+    mid: [
+      "Deluxe accommodation",
+      "4 Full Meals",
+      "Pick-up and Activity Transfer",
+      "2-3 Activities + Entrance and Environmental Fees",
+      "Tour coordination and basic insurance"
+    ],
+    luxury: [
+      "Full luxury accommodation ",
+      "6 Full Meals",
+      "Airport, Pick-up, and Activity Transfers",
+      "3-5 Activities + Entrance and Environmental Fees",
+      "Tour coordination and basic insurance"
+    ]
+  };
+
+  document.getElementById("packageList").innerHTML =
+    lists[selectedPackage].map(item =>
+      `<li>${escapeHTML(item)}</li>`
+    ).join("");
+}
+
+function toggleLanguages() {
+  document.getElementById("languageOptions").classList.toggle("show");
+}
+
+/* FORM HELPERS */
+function getChecked(name) {
+  const item = document.querySelector(`input[name="${name}"]:checked`);
+  return item ? item.value : "Not selected";
+}
+
+function getCheckedMany(name) {
+  return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+    .map(item => item.value);
+}
+
+/* SUBMIT REQUEST */
+function submitJourney() {
+  if (!currentDestination) return;
+
+  const isPersonalized = selectedPackage === "personalized";
+
+  const interpreter = isPersonalized
+    ? getChecked("personalInterpreter")
+    : getChecked("interpreterLanguage");
+
+  const chosenName = isPersonalized
+    ? "Personalized Journey"
+    : {
+        budget: "Budget Journey",
+        mid: "Mid-Luxury Journey",
+        luxury: "Full Luxury Journey"
+      }[selectedPackage];
+
+  let message =
+    "Your " + chosenName + " request for " +
+    currentDestination.name + " has been prepared for review. ";
+
+  if (interpreter !== "Not selected") {
+    message += "You selected " + interpreter +
+      " as your interpreter preference. An additional interpreter fee applies; " +
+      "the agent will discuss the exact price and availability with you. ";
+  }
+
+  if (isPersonalized) {
+    const activities = getCheckedMany("activity");
+    const specialRequest = document.getElementById("specialRequest").value.trim();
+
+    message +=
+      "Accommodation: " + getChecked("room") + ". " +
+      "Meals: " + getChecked("meal") + ". " +
+      "Activities: " + (activities.join(", ") || "No activities selected") + ". " +
+      "Transportation: " + getChecked("transport") + ". ";
+
+    if (specialRequest) {
+      message += "Special request: " + specialRequest + ". ";
+    }
+  } else {
+    message += "Estimated package: " +
+      packagePrice(currentDestination, selectedPackage) + ". ";
+  }
+
+  message +=
+    "The final package quotation depends on supplier availability and confirmation. " +
+    "This page is a front-end demo and does not send an actual Gmail message by itself. " +
+    "A connected email or booking service is required for the agent to contact you through Gmail.";
+
+  document.getElementById("confirmationMessage").textContent = message;
+  document.getElementById("confirmationPopup").classList.add("show");
+}
+
+function closeConfirmation() {
+  document.getElementById("confirmationPopup").classList.remove("show");
+}
+
+/* CLOSE POPUPS BY CLICKING OUTSIDE OR PRESSING ESC */
+document.getElementById("journeyPopup").addEventListener("click", event => {
+  if (event.target.id === "journeyPopup") closeJourney();
 });
 
+document.getElementById("confirmationPopup").addEventListener("click", event => {
+  if (event.target.id === "confirmationPopup") closeConfirmation();
+});
 
-/* =========================
-   FILTER DESTINATIONS
-========================= */
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeConfirmation();
+    closeJourney();
+  }
+});
+
+/* SEARCH AND FILTERS */
+const searchInput = document.getElementById("searchInput");
+const regionFilter = document.getElementById("regionFilter");
+const typeFilter = document.getElementById("typeFilter");
+
+const cards = [
+  ...document.querySelectorAll(".destination-card")
+];
 
 function filterDestinations() {
+  const term = searchInput.value.toLowerCase().trim();
+  const region = regionFilter.value;
+  const type = typeFilter.value;
 
-    const region =
-        document.getElementById("region").value;
+  let count = 0;
 
-    const type =
-        document.getElementById("type").value;
+  cards.forEach(card => {
+    const searchable =
+      (card.dataset.name + " " + card.dataset.location).toLowerCase();
 
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+    const types = card.dataset.type.split(" ");
 
+    const show =
+      searchable.includes(term) &&
+      (!region || card.dataset.region === region) &&
+      (!type || types.includes(type));
 
-    const cards =
-        document.querySelectorAll(
-            ".destination-card"
-        );
+    card.style.display = show ? "flex" : "none";
 
+    if (show) count++;
+  });
 
-    let visibleCards = 0;
+  document.getElementById("resultCount").textContent =
+    `Showing ${count} of ${cards.length} destinations`;
 
+  document.getElementById("noResults").style.display =
+    count ? "none" : "block";
 
-    cards.forEach(function(card) {
-
-        const cardRegion =
-            card.dataset.region;
-
-        const cardType =
-            card.dataset.type;
-
-        const cardName =
-            card.dataset.name.toLowerCase();
-
-
-        const regionMatch =
-            region === "all" ||
-            region === cardRegion;
-
-
-        const typeMatch =
-            type === "all" ||
-            type === cardType;
-
-
-        const searchMatch =
-            search === "" ||
-            cardName.includes(search);
-
-
-        if (
-            regionMatch &&
-            typeMatch &&
-            searchMatch
-        ) {
-
-            card.style.display =
-                "block";
-
-            visibleCards++;
-
-        } else {
-
-            card.style.display =
-                "none";
-
-        }
-
-    });
-
-
-    updateResults(visibleCards);
-
+  document.getElementById("destinationGrid").style.display =
+    count ? "grid" : "none";
 }
 
-
-/* =========================
-   UPDATE RESULT COUNT
-========================= */
-
-function updateResults(count) {
-
-    const resultCount =
-        document.getElementById(
-            "resultCount"
-        );
-
-    const noResults =
-        document.getElementById(
-            "noResults"
-        );
-
-
-    resultCount.textContent =
-        "Showing " +
-        count +
-        (
-            count === 1
-            ? " destination"
-            : " destinations"
-        );
-
-
-    if (count === 0) {
-
-        noResults.style.display =
-            "block";
-
-    } else {
-
-        noResults.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* =========================
-   RESET FILTERS
-========================= */
-
-function resetFilters() {
-
-    document.getElementById(
-        "region"
-    ).value = "all";
-
-
-    document.getElementById(
-        "type"
-    ).value = "all";
-
-
-    document.getElementById(
-        "searchInput"
-    ).value = "";
-
-
-    filterDestinations();
-
-}
-
-
-/* =========================
-   LIVE SEARCH
-========================= */
-
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "input",
-        filterDestinations
-    );
-
-
-/* =========================
-   FILTER WHEN SELECT CHANGES
-========================= */
-
-document
-    .getElementById("region")
-    .addEventListener(
-        "change",
-        filterDestinations
-    );
-
-
-document
-    .getElementById("type")
-    .addEventListener(
-        "change",
-        filterDestinations
-    );
-
-
-/* =========================
-   OPEN JOURNEY
-========================= */
-
-function openJourney(page) {
-
-    const popup =
-        document.getElementById(
-            "journeyPopup"
-        );
-
-    const frame =
-        document.getElementById(
-            "journeyFrame"
-        );
-
-
-    frame.src = page;
-
-
-    popup.classList.add("active");
-
-
-    document.body.classList.add(
-        "modal-open"
-    );
-
-}
-
-
-/* =========================
-   CLOSE JOURNEY
-========================= */
-
-function closeJourney() {
-
-    const popup =
-        document.getElementById(
-            "journeyPopup"
-        );
-
-    const frame =
-        document.getElementById(
-            "journeyFrame"
-        );
-
-
-    popup.classList.remove("active");
-
-
-    frame.src = "";
-
-
-    document.body.classList.remove(
-        "modal-open"
-    );
-
-}
-
-
-/* =========================
-   CLOSE POPUP OUTSIDE
-========================= */
-
-document
-    .getElementById("journeyPopup")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target ===
-                document.getElementById(
-                    "journeyPopup"
-                )
-            ) {
-
-                closeJourney();
-
-            }
-
-        }
-    );
-
-
-/* =========================
-   ESC KEY CLOSE
-========================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-
-            closeJourney();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   INITIAL RESULT COUNT
-========================= */
+searchInput.addEventListener("input", filterDestinations);
+regionFilter.addEventListener("change", filterDestinations);
+typeFilter.addEventListener("change", filterDestinations);
+
+document.getElementById("resetFilters").addEventListener("click", () => {
+  searchInput.value = "";
+  regionFilter.value = "";
+  typeFilter.value = "";
+  filterDestinations();
+});
 
 filterDestinations();
-
-
-/* =========================
-   CONSOLE MESSAGE
-========================= */
-
-console.log(
-    "Dreamscape Travel & Tour Co. - Destinations page loaded successfully."
-);
-
 </script>
-
 
 </body>
 </html>
